@@ -1,5 +1,6 @@
 package mcomp.dissertation.databse.streamer.listeners;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 
 import mcomp.dissertation.database.streamer.beans.HistoryAggregateBean;
@@ -35,6 +36,7 @@ public class AggregateListener implements UpdateListener {
          aggBean.setAggregateSpeed((Double) msg.get("avgSpeed"));
          aggBean.setAggregateVolume((Double) msg.get("avgVolume"));
          aggBean.setLinkId((Long) msg.get("linkId"));
+         aggBean.setTimeStamp((Timestamp) msg.get("timeStamp"));
          cepRT.sendEvent(aggBean);
 
       }

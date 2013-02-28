@@ -102,10 +102,11 @@ public class StreamerCore {
          df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
          EPStatement cepStatement = cepAdm
                .createEPL("select live.linkId,live.avgSpeed,live.timeStamp,"
-                     + "historyAgg.aggregateSpeed,historyAgg.linkId, historyAgg.aggregateVolume "
+                     + "historyAgg.aggregateSpeed,historyAgg.linkId, historyAgg.aggregateVolume,historyAgg.timeStamp "
                      + "from mcomp.dissertation.database.streamer.beans.LiveBean.std:unique(linkId) as "
                      + "live, mcomp.dissertation.database.streamer.beans.HistoryAggregateBean.std:unique(linkId) "
-                     + "as historyAgg where historyAgg.linkId=live.linkId");
+                     + "as historyAgg where historyAgg.linkId=live.linkId and historyAgg.timeStamp.getHours()=live.timeStamp.getHours()" +
+                     " and historyAgg.timeStamp.getMinutes()=live.timeStamp.getMinutes()"+" and historyAgg.timeStamp.getSeconds()=live.timeStamp.getSeconds()");
          cepStatement.addListener(new FinalListener());
          startTime = df.parse(
                configProperties.getProperty("archive.stream.start.time"))
@@ -152,8 +153,10 @@ public class StreamerCore {
             HistoryBean.class.getName());
       cepAdmAggregate = cepAggregate.getEPAdministrator();
       EPStatement cepStatementAggregate = cepAdmAggregate
-            .createEPL("select  count(*) as countRec, avg(volume) as avgVolume, avg(speed) as avgSpeed, linkId from "
-                  + "mcomp.dissertation.database.streamer.beans.HistoryBean.std:groupwin(linkId).win:length(6) group by linkId HAVING count(*) = "
+            .createEPL("select  count(*) as countRec, avg(volume) as avgVolume, avg(speed) as " +
+            		"avgSpeed, linkId, timeStamp from "
+                  + "mcomp.dissertation.database.streamer.beans.HistoryBean.std:groupwin(linkId).win:length("+
+            		numberOfArchiveStreams+") group by linkId HAVING count(*) = "
                   + numberOfArchiveStreams);
       cepStatementAggregate.addListener(new AggregateListener(cepRT));
       cepRTAggregate = cepAggregate.getEPRuntime();

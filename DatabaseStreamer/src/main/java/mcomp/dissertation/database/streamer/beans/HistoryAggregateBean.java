@@ -1,5 +1,7 @@
 package mcomp.dissertation.database.streamer.beans;
 
+import java.sql.Timestamp;
+
 /**
  * The bean class representing the aggregated stream of all the archived
  * sub-streams.
@@ -10,6 +12,7 @@ public class HistoryAggregateBean {
    private double aggregateSpeed;
    private double aggregateVolume;
    private long linkId;
+   private Timestamp timeStamp;
 
    /**
     * @return the aggregateSpeed
@@ -51,6 +54,14 @@ public class HistoryAggregateBean {
     */
    public void setLinkId(long linkId) {
       this.linkId = linkId;
+   }
+
+   public Timestamp getTimeStamp() {
+      return timeStamp;
+   }
+
+   public void setTimeStamp(Timestamp timeStamp) {
+      this.timeStamp = timeStamp;
    }
 
 }
