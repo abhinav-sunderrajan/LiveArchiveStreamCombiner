@@ -1,0 +1,101 @@
+2013-02-02 16:29:15.460 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:29:16.847 [INFO] com.espertech.esper.epl.spec.FilterStreamSpecRaw:179 - .resolveType Event type named 'edu.mit.livesingapore.DatabaseLoader.LiveBean' not resolved as Java-Class event
+2013-02-02 16:29:16.848 [INFO] com.espertech.esper.core.service.StatementLifecycleSvcImpl:1028 - Failed to compile statement: Failed to resolve event type: Event type or class named 'edu.mit.livesingapore.DatabaseLoader.LiveBean' was not found
+com.espertech.esper.epl.expression.ExprValidationException: Failed to resolve event type: Event type or class named 'edu.mit.livesingapore.DatabaseLoader.LiveBean' was not found
+	at com.espertech.esper.epl.spec.FilterStreamSpecRaw.resolveType(FilterStreamSpecRaw.java:196)
+	at com.espertech.esper.epl.spec.FilterStreamSpecRaw.compile(FilterStreamSpecRaw.java:106)
+	at com.espertech.esper.core.service.StatementLifecycleSvcImpl.compile(StatementLifecycleSvcImpl.java:1022)
+	at com.espertech.esper.core.service.StatementLifecycleSvcImpl.createStopped(StatementLifecycleSvcImpl.java:248)
+	at com.espertech.esper.core.service.StatementLifecycleSvcImpl.createStoppedAssignName(StatementLifecycleSvcImpl.java:177)
+	at com.espertech.esper.core.service.StatementLifecycleSvcImpl.createAndStart(StatementLifecycleSvcImpl.java:131)
+	at com.espertech.esper.core.service.EPAdministratorImpl.createEPLStmt(EPAdministratorImpl.java:118)
+	at com.espertech.esper.core.service.EPAdministratorImpl.createEPL(EPAdministratorImpl.java:67)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamerCore.<init>(StreamerCore.java:94)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamerCore.main(StreamerCore.java:67)
+2013-02-02 16:41:07.492 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:41:10.380 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:43:25.675 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:43:26.958 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:44:14.744 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:44:16.079 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:44:51.280 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:44:52.513 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:45:13.702 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:45:14.970 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:45:53.398 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:45:54.651 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:46:42.902 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:46:44.212 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:49:08.763 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:49:10.018 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:49:47.507 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:49:48.726 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:51:10.454 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:51:11.725 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:51:52.782 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:51:54.054 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:55:58.246 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:55:59.474 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:56:49.565 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:56:50.819 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 16:57:51.514 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 16:57:52.743 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:05:19.707 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 17:05:20.954 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:10:25.170 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 17:10:26.368 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:11:57.190 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 17:11:58.401 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:14:39.626 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 17:14:40.813 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:20:11.955 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 17:20:13.161 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:23:11.962 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 17:23:13.187 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:23:29.825 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 17:23:31.028 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:48:51.559 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 17:48:52.797 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:48:52.904 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:50:11.367 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 17:50:12.535 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:50:12.637 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:50:50.373 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 17:50:51.603 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:50:51.734 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 17:50:51.770 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:01:25.961 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 18:01:27.186 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:01:27.305 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:01:27.409 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:03:46.959 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 18:03:48.171 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:03:48.280 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:03:48.344 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:07:23.345 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 18:07:24.542 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:07:24.675 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:07:24.753 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:18:26.646 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 18:18:27.967 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:18:28.034 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:18:28.159 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:23:18.167 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 18:23:19.489 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:23:19.587 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:23:19.690 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:36:45.510 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 18:36:46.806 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:36:46.930 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:36:46.954 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:38:06.888 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 18:38:43.745 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 18:39:05.486 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 18:39:44.518 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 18:39:45.765 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:39:45.815 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:39:45.983 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:40:40.041 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-02-02 18:40:41.292 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:40:41.337 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
+2013-02-02 18:40:41.481 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:45 - Connected to MySQL
