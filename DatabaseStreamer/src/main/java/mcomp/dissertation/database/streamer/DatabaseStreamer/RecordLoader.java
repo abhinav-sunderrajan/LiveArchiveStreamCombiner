@@ -24,8 +24,6 @@ public class RecordLoader extends Thread {
    private DBConnect dbconnect;
    private static long INTERVAL = 300000;
    private static final Logger LOGGER = Logger.getLogger(RecordLoader.class);
-   private Properties connectionProperties;
-
    /**
     * @param buffer
     * @param startTime
@@ -36,7 +34,6 @@ public class RecordLoader extends Thread {
       this.buffer = buffer;
       this.startTime = new Timestamp(startTime);
       this.endTime = new Timestamp(startTime + INTERVAL);
-      this.connectionProperties=connectionProperties;
       dbconnect=new DBConnect();
       dbconnect.openDBConnection(connectionProperties);
 
