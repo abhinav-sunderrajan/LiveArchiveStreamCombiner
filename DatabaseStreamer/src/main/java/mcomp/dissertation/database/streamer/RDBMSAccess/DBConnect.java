@@ -64,7 +64,6 @@ public class DBConnect {
       ResultSet rs = null;
       PreparedStatement preparedStatement = (PreparedStatement) connect
             .prepareStatement(queryString);
-      System.out.println(start+" "+end);
       try {
          preparedStatement.setTimestamp(1, start);
          preparedStatement.setTimestamp(2, end);

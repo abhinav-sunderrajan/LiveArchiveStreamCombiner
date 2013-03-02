@@ -15,35 +15,51 @@ import org.apache.log4j.Logger;
 /**
  * This class is responsible for loading an optimal number of records to the
  * buffer for streaming.
- * 
  */
 public class RecordLoader extends Thread {
    private Queue<HistoryBean> buffer;
    private Timestamp startTime;
    private Timestamp endTime;
    private DBConnect dbconnect;
-   private static long INTERVAL = 300000;
+   private int loopCount;
+   private int numberOfArchiveStreams;
+   private Object monitor;
    private static final Logger LOGGER = Logger.getLogger(RecordLoader.class);
+   private static final long REFRESH_INTERVAL = 240000L;
+
    /**
     * @param buffer
     * @param startTime
     * @param connectionProperties
     */
-   public RecordLoader(ConcurrentLinkedQueue<HistoryBean> buffer,
-         long startTime, Properties connectionProperties) {
+   public RecordLoader(final ConcurrentLinkedQueue<HistoryBean> buffer,
+         final long startTime, final Properties connectionProperties,
+         final Object monitor, final int loopCount,
+         final int numberofArchiveStreams) {
       this.buffer = buffer;
       this.startTime = new Timestamp(startTime);
-      this.endTime = new Timestamp(startTime + INTERVAL);
-      dbconnect=new DBConnect();
+      this.endTime = new Timestamp(startTime + REFRESH_INTERVAL);
+      dbconnect = new DBConnect();
       dbconnect.openDBConnection(connectionProperties);
+      this.monitor = monitor;
+      this.loopCount = loopCount;
+      this.numberOfArchiveStreams = numberofArchiveStreams;
 
    }
 
    @Override
    public void run() {
-       while (true) {
-          try {
-         ResultSet rs = dbconnect.retrieveWithinTimeStamp(startTime, endTime);         
+      while (true) {
+         try {
+            ResultSet rs = dbconnect
+                  .retrieveWithinTimeStamp(startTime, endTime);
+            if (loopCount == numberOfArchiveStreams) {
+               synchronized (monitor) {
+                  System.out.println("Waking the streamer threads..");
+                  monitor.notifyAll();
+               }
+            }
+
             while (rs.next()) {
                long linkID = rs.getInt(1);
                float speed = rs.getFloat(2);
@@ -53,11 +69,11 @@ public class RecordLoader extends Thread {
             }
 
             // Update the time stamps for the next fetch.
-            long start = startTime.getTime() + INTERVAL;
-            long end = endTime.getTime() + INTERVAL;
+            long start = startTime.getTime() + REFRESH_INTERVAL;
+            long end = endTime.getTime() + REFRESH_INTERVAL;
             startTime = new Timestamp(start);
             endTime = new Timestamp(end);
-            Thread.sleep(INTERVAL-50000);
+            Thread.sleep(REFRESH_INTERVAL);
          } catch (SQLException e) {
             LOGGER.error(
                   "Error accessing the database to retrieve archived data", e);

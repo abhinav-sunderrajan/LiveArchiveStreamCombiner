@@ -36,8 +36,8 @@ public class LiveStreamer extends Thread {
     * @param streamRate
     * @param monitor
     */
-   public LiveStreamer(EPRuntime cepRT, int streamRate, DateFormat df,
-         Object monitor) {
+   public LiveStreamer(final EPRuntime cepRT, final int streamRate,
+         final DateFormat df, final Object monitor) {
       try {
          this.cepRT = cepRT;
          this.streamRate = streamRate;
@@ -58,7 +58,8 @@ public class LiveStreamer extends Thread {
 
          // Release the lock on the monitor lock to release all waiting threads.
          synchronized (monitor) {
-            monitor.notifyAll();
+            monitor.wait();
+            LOGGER.info("Awake!! Start streaming now");
          }
          while (br.ready()) {
             LiveBean bean;
@@ -83,7 +84,7 @@ public class LiveStreamer extends Thread {
    private File readLTALinkData() throws Exception {
       File dir = new File(
             "C:\\Users\\Usha Sundarajan\\Documents\\ProjectData\\dummy data\\");
-      LOGGER.info("Reading live data from "+ dir.getAbsolutePath());
+      LOGGER.info("Reading live data from " + dir.getAbsolutePath());
       File[] files = dir.listFiles(new FileFilter() {
 
          public boolean accept(File pathname) {

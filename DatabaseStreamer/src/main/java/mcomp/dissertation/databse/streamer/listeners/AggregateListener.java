@@ -32,13 +32,15 @@ public class AggregateListener implements UpdateListener {
       Object obj = newData[0].getUnderlying();
       if (obj instanceof HashMap) {
          HashMap<String, Object> msg = (HashMap<String, Object>) obj;
-         HistoryAggregateBean aggBean = new HistoryAggregateBean();
-         aggBean.setAggregateSpeed((Double) msg.get("avgSpeed"));
-         aggBean.setAggregateVolume((Double) msg.get("avgVolume"));
-         aggBean.setLinkId((Long) msg.get("linkId"));
-         aggBean.setTimeStamp((Timestamp) msg.get("timeStamp"));
-         cepRT.sendEvent(aggBean);
-
+         System.out.println(msg);
+         if ((Long) msg.get("countRec") > 0) {
+            HistoryAggregateBean aggBean = new HistoryAggregateBean();
+            aggBean.setAggregateSpeed((Double) msg.get("avgSpeed"));
+            aggBean.setAggregateVolume((Double) msg.get("avgVolume"));
+            aggBean.setLinkId((Long) msg.get("linkId"));
+            aggBean.setTimeStamp((Timestamp) msg.get("timeStamp"));
+            cepRT.sendEvent(aggBean);
+         }
       }
    }
 

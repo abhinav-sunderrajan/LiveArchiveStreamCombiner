@@ -11,7 +11,6 @@ import com.espertech.esper.client.EPRuntime;
 /**
  * This thread is responsible removing records from the buffer as a streamer and
  * sending it to Esper be aggregated with other archive streams.
- * 
  */
 public class RecordStreamer extends Thread {
    private static final Logger LOGGER = Logger.getLogger(RecordStreamer.class);
@@ -26,8 +25,9 @@ public class RecordStreamer extends Thread {
     * @param cepRTAggegate
     * @param monitor
     */
-   public RecordStreamer(ConcurrentLinkedQueue<HistoryBean> buffer,
-         int streamRate, EPRuntime cepRTAggegate, Object monitor) {
+   public RecordStreamer(final ConcurrentLinkedQueue<HistoryBean> buffer,
+         final int streamRate, final EPRuntime cepRTAggegate,
+         final Object monitor) {
       this.buffer = buffer;
       this.streamRate = streamRate;
       this.cepRTAggegate = cepRTAggegate;
@@ -37,22 +37,24 @@ public class RecordStreamer extends Thread {
 
    @Override
    public void run() {
+      // wait for the live streamer to start before starting the archive
+      // streams.
+      try {
+         synchronized (monitor) {
+            monitor.wait();
+            LOGGER.info("Awake!! Start streaming now..");
+         }
+
+      } catch (InterruptedException e) {
+         LOGGER.error("Interrupted while waiting on lock", e);
+      }
+
       while (buffer.isEmpty()) {
          // Poll till the producer has filled the queue. bad approach will
          // optimize this.
 
       }
 
-      // wait for the live streamer to start before starting the archive
-      // streams.
-      // try {
-      // synchronized (monitor) {
-      // monitor.wait();
-      // }
-      //
-      // } catch (InterruptedException e) {
-      // LOGGER.error("Interrupted while waiting on lock", e);
-      // }
       while (true) {
          try {
             HistoryBean history = buffer.poll();

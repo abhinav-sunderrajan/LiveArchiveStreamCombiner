@@ -18,7 +18,7 @@ public class FinalListener implements UpdateListener {
       Object obj = newData[0].getUnderlying();
       if (obj instanceof HashMap) {
          HashMap<String, Object> msg = (HashMap<String, Object>) obj;
-         System.out.println("here" + msg);
+         //System.out.println("here" + msg);
 
       } else {
          LiveBean stockBean = (LiveBean) obj;

@@ -48,7 +48,7 @@ public class StreamerCore {
    /**
     * @param args
     */
-   public static void main(String[] args) {
+   public static void main(final String[] args) {
 
       String configFilePath;
       String connectionFilePath;
@@ -66,8 +66,7 @@ public class StreamerCore {
       try {
          StreamerCore streamerCore;
          streamerCore = new StreamerCore(configFilePath, connectionFilePath);
-         streamerCore.setUpArchiveStreams(numberOfArchiveStreams,
-               connectionProperties);
+         streamerCore.setUpArchiveStreams();
          LiveStreamer live = new LiveStreamer(cepRT, streamRate, df, monitor);
          live.setName("live");
          live.start();
@@ -83,7 +82,8 @@ public class StreamerCore {
     * @param connectionFilePath Instantiate all the required settings and start
     * the archive data stream threads.
     */
-   public StreamerCore(String configFilePath, String connectionFilePath) {
+   public StreamerCore(final String configFilePath,
+         final String connectionFilePath) {
       try {
 
          connectionProperties = new Properties();
@@ -105,8 +105,9 @@ public class StreamerCore {
                      + "historyAgg.aggregateSpeed,historyAgg.linkId, historyAgg.aggregateVolume,historyAgg.timeStamp "
                      + "from mcomp.dissertation.database.streamer.beans.LiveBean.std:unique(linkId) as "
                      + "live, mcomp.dissertation.database.streamer.beans.HistoryAggregateBean.std:unique(linkId) "
-                     + "as historyAgg where historyAgg.linkId=live.linkId and historyAgg.timeStamp.getHours()=live.timeStamp.getHours()" +
-                     " and historyAgg.timeStamp.getMinutes()=live.timeStamp.getMinutes()"+" and historyAgg.timeStamp.getSeconds()=live.timeStamp.getSeconds()");
+                     + "as historyAgg where historyAgg.linkId=live.linkId and historyAgg.timeStamp.getHours()=live.timeStamp.getHours()"
+                     + " and historyAgg.timeStamp.getMinutes()=live.timeStamp.getMinutes()"
+                     + " and historyAgg.timeStamp.getSeconds()=live.timeStamp.getSeconds()");
          cepStatement.addListener(new FinalListener());
          startTime = df.parse(
                configProperties.getProperty("archive.stream.start.time"))
@@ -128,20 +129,15 @@ public class StreamerCore {
 
    }
 
-   /*
+   /**
     * This section is responsible for the settings to aggregate all the archived
     * sub data streams to create a single stream consisting of the average of
-    * all.
+    * all.Create separate Esper aggregate listener for all archive sub streams
+    * streams. This is not be confused with the instance variable settings which
+    * finally combines the live stream with the the aggregate stream.
     */
 
-   private void setUpArchiveStreams(int numberOfArchiveStreams,
-         Properties connectionProperties) throws InterruptedException {
-
-      /*
-       * Create separate Esper setting for all archive streams. This is not be
-       * confused with the instance variable settings which finally combines the
-       * live stream with the the aggregate stream.
-       */
+   private void setUpArchiveStreams() throws InterruptedException {
       EPServiceProvider cepAggregate;
       EPRuntime cepRTAggregate;
       EPAdministrator cepAdmAggregate;
@@ -153,34 +149,41 @@ public class StreamerCore {
             HistoryBean.class.getName());
       cepAdmAggregate = cepAggregate.getEPAdministrator();
       EPStatement cepStatementAggregate = cepAdmAggregate
-            .createEPL("select  count(*) as countRec, avg(volume) as avgVolume, avg(speed) as " +
-            		"avgSpeed, linkId, timeStamp from "
-                  + "mcomp.dissertation.database.streamer.beans.HistoryBean.std:groupwin(linkId).win:length("+
-            		numberOfArchiveStreams+") group by linkId HAVING count(*) = "
-                  + numberOfArchiveStreams);
+            .createEPL("select  count(*) as countRec, avg(volume) as avgVolume, avg(speed) as "
+                  + "avgSpeed, linkId, timeStamp.getMinutes() as mins from "
+                  + "mcomp.dissertation.database.streamer.beans.HistoryBean.std:groupwin(linkId)"
+                  + ".win:time_length_batch(1 sec,6) group by linkId");
       cepStatementAggregate.addListener(new AggregateListener(cepRT));
       cepRTAggregate = cepAggregate.getEPRuntime();
 
+      ConcurrentLinkedQueue<HistoryBean>[] buffer = new ConcurrentLinkedQueue[numberOfArchiveStreams];
+
+      // Create a shared buffer between the thread retrieving records from
+      // the database and the the thread streaming those records.
+
       for (int count = 0; count < numberOfArchiveStreams; count++) {
+         buffer[count] = new ConcurrentLinkedQueue<HistoryBean>();
 
-         // Create a shared buffer between the thread retrieving records from
-         // the database and the the thread streaming those records.
-         ConcurrentLinkedQueue<HistoryBean> buffer = new ConcurrentLinkedQueue<HistoryBean>();
+      }
 
-         // The most critical section of the program launching all the threads
-         // which are needed;
-         RecordLoader loader = new RecordLoader(buffer, startTime,
-               connectionProperties);
-         RecordStreamer streamer = new RecordStreamer(buffer, streamRate,
-               cepRTAggregate, monitor);
-         loader.setName("LOADER_"+count);
+      // The most critical section of the program launching all the threads
+      // which are needed. I also need to ensure all the archive streamer
+      // threads are waiting on the last loader thread.
+
+      for (int count = 1; count <= numberOfArchiveStreams; count++) {
+
+         RecordStreamer streamer = new RecordStreamer(buffer[count - 1],
+               streamRate, cepRTAggregate, monitor);
          streamer.setName("STREAMER_" + count);
-         streamer.setDaemon(true);
-         loader.setDaemon(true);
-         loader.start();
          streamer.start();
-         
-         //Start the next archive stream for the records exactly a day after
+      }
+
+      for (int count = 1; count <= numberOfArchiveStreams; count++) {
+         RecordLoader loader = new RecordLoader(buffer[count - 1], startTime,
+               connectionProperties, monitor, count, numberOfArchiveStreams);
+         loader.setName("LOADER_" + count);
+         loader.start();
+         // Start the next archive stream for the records exactly a day after
          startTime = startTime + 24 * 3600 * 1000;
 
       }
