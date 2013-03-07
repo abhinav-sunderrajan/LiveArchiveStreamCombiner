@@ -13,20 +13,19 @@ import com.mysql.jdbc.PreparedStatement;
 
 /**
  * The class responsible for handling database operations.
- * 
  */
 public class DBConnect {
 
-   private  Connection connect = null;
+   private Connection connect = null;
    private static final Logger LOGGER = Logger.getLogger(DBConnect.class);
    private static final String TABLE_NAME = "DataArchive";
-   private static final String queryString = "SELECT LINKID,SPEED,VOLUME,TIME_STAMP FROM "
+   private static final String QUERY_STRING = "SELECT LINKID,SPEED,VOLUME,TIME_STAMP FROM "
          + TABLE_NAME + " WHERE TIME_STAMP >= ? AND TIME_STAMP< ?";
 
    /**
     * @param connectionProperties
     */
-   public  void openDBConnection(Properties connectionProperties) {
+   public void openDBConnection(final Properties connectionProperties) {
       if (connectionProperties.getProperty("database.vendor").equalsIgnoreCase(
             "MySQL")) {
 
@@ -43,7 +42,6 @@ public class DBConnect {
                   userName, password);
             LOGGER.info("Connected to "
                   + connectionProperties.getProperty("database.vendor"));
-            
 
          } catch (Exception e) {
             LOGGER.error(
@@ -57,17 +55,18 @@ public class DBConnect {
     * @param start
     * @param end
     * @return ResultSet
-    * @throws SQLException 
+    * @throws SQLException
     */
-   public ResultSet retrieveWithinTimeStamp(Timestamp start,
-         Timestamp end) throws SQLException {
+   public ResultSet retrieveWithinTimeStamp(final Timestamp start,
+         final Timestamp end) throws SQLException {
       ResultSet rs = null;
       PreparedStatement preparedStatement = (PreparedStatement) connect
-            .prepareStatement(queryString);
+            .prepareStatement(QUERY_STRING);
       try {
          preparedStatement.setTimestamp(1, start);
          preparedStatement.setTimestamp(2, end);
          rs = preparedStatement.executeQuery();
+         LOGGER.info("Fetched records between " + start + " and " + end);
       } catch (SQLException e) {
          LOGGER.error("Unable to retreive records", e);
 

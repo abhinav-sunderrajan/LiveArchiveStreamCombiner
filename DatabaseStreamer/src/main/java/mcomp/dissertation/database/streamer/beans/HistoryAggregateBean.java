@@ -1,18 +1,16 @@
 package mcomp.dissertation.database.streamer.beans;
 
-import java.sql.Timestamp;
-
 /**
  * The bean class representing the aggregated stream of all the archived
  * sub-streams.
- * 
  */
 public class HistoryAggregateBean {
 
    private double aggregateSpeed;
    private double aggregateVolume;
    private long linkId;
-   private Timestamp timeStamp;
+   private int hrs;
+   private int mins;
 
    /**
     * @return the aggregateSpeed
@@ -24,7 +22,7 @@ public class HistoryAggregateBean {
    /**
     * @param aggregateSpeed the aggregateSpeed to set
     */
-   public void setAggregateSpeed(double aggregateSpeed) {
+   public void setAggregateSpeed(final double aggregateSpeed) {
       this.aggregateSpeed = aggregateSpeed;
    }
 
@@ -38,7 +36,7 @@ public class HistoryAggregateBean {
    /**
     * @param aggregateVolume the aggregateVolume to set
     */
-   public void setAggregateVolume(double aggregateVolume) {
+   public void setAggregateVolume(final double aggregateVolume) {
       this.aggregateVolume = aggregateVolume;
    }
 
@@ -52,16 +50,24 @@ public class HistoryAggregateBean {
    /**
     * @param linkId the linkId to set
     */
-   public void setLinkId(long linkId) {
+   public void setLinkId(final long linkId) {
       this.linkId = linkId;
    }
 
-   public Timestamp getTimeStamp() {
-      return timeStamp;
+   public int getHrs() {
+      return hrs;
    }
 
-   public void setTimeStamp(Timestamp timeStamp) {
-      this.timeStamp = timeStamp;
+   public void setHrs(final int hrs) {
+      this.hrs = hrs;
+   }
+
+   public int getMins() {
+      return mins;
+   }
+
+   public void setMins(final int mins) {
+      this.mins = mins;
    }
 
 }

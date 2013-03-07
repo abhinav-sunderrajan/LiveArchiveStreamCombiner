@@ -7,7 +7,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import mcomp.dissertation.database.streamer.beans.LiveBean;
 
@@ -17,7 +20,6 @@ import com.espertech.esper.client.EPRuntime;
 
 /**
  * This thread is responsible for streaming live data from a CSV file.
- * 
  */
 public class LiveStreamer extends Thread {
 
@@ -26,9 +28,10 @@ public class LiveStreamer extends Thread {
    private File file;
    private BufferedReader br;
    private EPRuntime cepRT;
-   private int streamRate;
+   private AtomicInteger streamRate;
    private DateFormat df;
    private Object monitor;
+   private DateFormat dfLocal;
 
    /**
     * Initialize and start file streaming.
@@ -36,12 +39,13 @@ public class LiveStreamer extends Thread {
     * @param streamRate
     * @param monitor
     */
-   public LiveStreamer(final EPRuntime cepRT, final int streamRate,
+   public LiveStreamer(final EPRuntime cepRT, final AtomicInteger streamRate,
          final DateFormat df, final Object monitor) {
       try {
          this.cepRT = cepRT;
          this.streamRate = streamRate;
          this.df = df;
+         this.dfLocal = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
          this.file = readLTALinkData();
          this.monitor = monitor;
          this.br = new BufferedReader(new FileReader(file));
@@ -58,14 +62,16 @@ public class LiveStreamer extends Thread {
 
          // Release the lock on the monitor lock to release all waiting threads.
          synchronized (monitor) {
+            LOGGER.info("Wait for the initial data base load before streaming..");
             monitor.wait();
-            LOGGER.info("Awake!! Start streaming now");
+            LOGGER.info("Awake!! Starting to streaming now");
          }
          while (br.ready()) {
             LiveBean bean;
             bean = parseLine(br.readLine());
+            bean.setEventTime(dfLocal.format(Calendar.getInstance().getTime()));
             cepRT.sendEvent(bean);
-            Thread.sleep(streamRate);
+            Thread.sleep(streamRate.get());
          }
       } catch (IOException e) {
          LOGGER.error("Unable to read record from CSV file..", e);
@@ -87,7 +93,7 @@ public class LiveStreamer extends Thread {
       LOGGER.info("Reading live data from " + dir.getAbsolutePath());
       File[] files = dir.listFiles(new FileFilter() {
 
-         public boolean accept(File pathname) {
+         public boolean accept(final File pathname) {
             String n = pathname.getName();
 
             if (n.startsWith(".") || (!n.endsWith(".csv"))) {
@@ -135,7 +141,7 @@ public class LiveStreamer extends Thread {
       }
    }
 
-   private LiveBean parseLine(String line) {
+   private LiveBean parseLine(final String line) {
       LiveBean bean = new LiveBean();
       try {
 

@@ -16,7 +16,7 @@ import org.apache.log4j.Logger;
  * This class is responsible for loading an optimal number of records to the
  * buffer for streaming.
  */
-public class RecordLoader extends Thread {
+public class RecordLoader implements Runnable {
    private Queue<HistoryBean> buffer;
    private Timestamp startTime;
    private Timestamp endTime;
@@ -25,7 +25,9 @@ public class RecordLoader extends Thread {
    private int numberOfArchiveStreams;
    private Object monitor;
    private static final Logger LOGGER = Logger.getLogger(RecordLoader.class);
-   private static final long REFRESH_INTERVAL = 240000L;
+   private static final long REFRESH_INTERVAL = 300000;
+
+   private static int flag = 0;
 
    /**
     * @param buffer
@@ -47,41 +49,35 @@ public class RecordLoader extends Thread {
 
    }
 
-   @Override
    public void run() {
-      while (true) {
-         try {
-            ResultSet rs = dbconnect
-                  .retrieveWithinTimeStamp(startTime, endTime);
-            if (loopCount == numberOfArchiveStreams) {
-               synchronized (monitor) {
-                  System.out.println("Waking the streamer threads..");
-                  monitor.notifyAll();
-               }
+      try {
+         ResultSet rs = dbconnect.retrieveWithinTimeStamp(startTime, endTime);
+         if (loopCount == numberOfArchiveStreams && flag == 0) {
+            synchronized (monitor) {
+               LOGGER.info("Waking the streamer threads..");
+               monitor.notifyAll();
             }
-
-            while (rs.next()) {
-               long linkID = rs.getInt(1);
-               float speed = rs.getFloat(2);
-               int volume = rs.getInt(3);
-               Timestamp ts = rs.getTimestamp(4);
-               buffer.add(new HistoryBean(volume, speed, linkID, ts));
-            }
-
-            // Update the time stamps for the next fetch.
-            long start = startTime.getTime() + REFRESH_INTERVAL;
-            long end = endTime.getTime() + REFRESH_INTERVAL;
-            startTime = new Timestamp(start);
-            endTime = new Timestamp(end);
-            Thread.sleep(REFRESH_INTERVAL);
-         } catch (SQLException e) {
-            LOGGER.error(
-                  "Error accessing the database to retrieve archived data", e);
-         } catch (InterruptedException e) {
-            LOGGER.error("Interrupted exception", e);
          }
 
+         while (rs.next()) {
+            long linkID = rs.getInt(1);
+            float speed = rs.getFloat(2);
+            int volume = rs.getInt(3);
+            Timestamp ts = rs.getTimestamp(4);
+            buffer.add(new HistoryBean(volume, speed, linkID, ts));
+         }
+
+         // Update the time stamps for the next fetch.
+         long start = startTime.getTime() + REFRESH_INTERVAL;
+         long end = endTime.getTime() + REFRESH_INTERVAL;
+         startTime = new Timestamp(start);
+         endTime = new Timestamp(end);
+         flag++;
+      } catch (SQLException e) {
+         LOGGER.error("Error accessing the database to retrieve archived data",
+               e);
       }
 
    }
+
 }

@@ -4,13 +4,14 @@ import java.sql.Timestamp;
 
 /**
  * Bean class for the traffic data records.
- * 
  */
 public class HistoryBean {
    private int volume;
    private float speed;
    private long linkId;
-   private Timestamp timeStamp;
+   private int readingMinutes;
+   private int readingSeconds;
+   private int readingHours;
 
    /**
     * @param volume
@@ -18,12 +19,15 @@ public class HistoryBean {
     * @param linkId
     * @param timeStamp
     */
-   public HistoryBean(int volume, float speed, long linkId, Timestamp timeStamp) {
+   @SuppressWarnings("deprecation")
+   public HistoryBean(final int volume, final float speed, final long linkId,
+         final Timestamp timeStamp) {
       this.volume = volume;
       this.speed = speed;
       this.linkId = linkId;
-      this.timeStamp = timeStamp;
-
+      this.readingMinutes = timeStamp.getMinutes();
+      this.readingSeconds = timeStamp.getSeconds();
+      this.readingHours = timeStamp.getHours();
    }
 
    /**
@@ -36,7 +40,7 @@ public class HistoryBean {
    /**
     * @param volume the volume to set
     */
-   public void setVolume(int volume) {
+   public void setVolume(final int volume) {
       this.volume = volume;
    }
 
@@ -50,7 +54,7 @@ public class HistoryBean {
    /**
     * @param speed the speed to set
     */
-   public void setSpeed(float speed) {
+   public void setSpeed(final float speed) {
       this.speed = speed;
    }
 
@@ -64,22 +68,32 @@ public class HistoryBean {
    /**
     * @param linkId the linkId to set
     */
-   public void setLinkId(long linkId) {
+   public void setLinkId(final long linkId) {
       this.linkId = linkId;
    }
 
-   /**
-    * @return the timeStamp
-    */
-   public Timestamp getTimeStamp() {
-      return timeStamp;
+   public int getReadingMinutes() {
+      return readingMinutes;
    }
 
-   /**
-    * @param timeStamp the timeStamp to set
-    */
-   public void setTimeStamp(Timestamp timeStamp) {
-      this.timeStamp = timeStamp;
+   public void setReadingMinutes(final int readingMinutes) {
+      this.readingMinutes = readingMinutes;
+   }
+
+   public int getReadingSeconds() {
+      return readingSeconds;
+   }
+
+   public void setReadingSeconds(final int readingSeconds) {
+      this.readingSeconds = readingSeconds;
+   }
+
+   public int getReadingHours() {
+      return readingHours;
+   }
+
+   public void setReadingHours(final int readingHours) {
+      this.readingHours = readingHours;
    }
 
 }

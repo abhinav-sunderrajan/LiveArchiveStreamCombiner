@@ -8,6 +8,11 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import mcomp.dissertation.database.streamer.beans.HistoryBean;
 import mcomp.dissertation.database.streamer.beans.LiveBean;
@@ -27,23 +32,80 @@ import com.espertech.esper.client.EPStatement;
  * The main class which sets the ball rolling for the simulated live stream and
  * the archived streams.
  */
-public class StreamerCore {
-
-   private static final String CONFIG_FILE_PATH = "src/main/resources/config.properties";
-   private static final String CONNECTION_FILE_PATH = "src/main/resources/connection.properties";
-   private static final int ARCHIVE_STREAM_COUNT = 6;
-   private static final Logger LOGGER = Logger.getLogger(StreamerCore.class);
-   private static DateFormat df;
+public final class StreamerCore {
    private EPServiceProvider cep;
    private static EPRuntime cepRT;
    private EPAdministrator cepAdm;
    private Configuration cepConfig;
-   private static int streamRate;
+   private static ScheduledExecutorService executor;
    private long startTime;
+   private static RecordStreamer[] streamers;
+   private static ScheduledFuture<?>[] futures;
    private static Properties connectionProperties;
+   private static DateFormat df;
+   private static AtomicInteger streamRate;
    private static Properties configProperties;
    private static int numberOfArchiveStreams;
    private static Object monitor;
+   private static final String CONFIG_FILE_PATH = "src/main/resources/config.properties";
+   private static final String CONNECTION_FILE_PATH = "src/main/resources/connection.properties";
+   private static final int ARCHIVE_STREAM_COUNT = 6;
+   private static final Logger LOGGER = Logger.getLogger(StreamerCore.class);
+
+   /**
+    * @param configFilePath
+    * @param connectionFilePath Instantiate all the required settings and start
+    * the archive data stream threads.
+    */
+   private StreamerCore(final String configFilePath,
+         final String connectionFilePath) {
+      try {
+
+         connectionProperties = new Properties();
+         configProperties = new Properties();
+         configProperties.load(new FileInputStream(configFilePath));
+         monitor = new Object();
+         connectionProperties.load(new FileInputStream(connectionFilePath));
+         executor = Executors
+               .newScheduledThreadPool(3 * numberOfArchiveStreams);
+         cepConfig = new Configuration();
+         cep = EPServiceProviderManager.getProvider("PROVIDER", cepConfig);
+         cepConfig.addEventType("LTALINKBEAN", LiveBean.class.getName());
+         cepConfig.addEventType("ARCHIVEAGGREGATEBEAN",
+               HistoryBean.class.getName());
+         cepRT = cep.getEPRuntime();
+         cepAdm = cep.getEPAdministrator();
+         streamRate = new AtomicInteger(Integer.parseInt(configProperties
+               .getProperty("live.stream.rate.in.ms")));
+         df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
+         EPStatement cepStatement = cepAdm
+               .createEPL("select live.linkId,live.avgSpeed,live.timeStamp,live.eventTime,"
+                     + "historyAgg.aggregateSpeed,historyAgg.linkId, historyAgg.aggregateVolume from "
+                     + " mcomp.dissertation.database.streamer.beans.LiveBean.std:unique(linkId,timeStamp.getMinutes()) as "
+                     + "live left outer join mcomp.dissertation.database.streamer.beans.HistoryAggregateBean.std:unique(linkId,mins)"
+                     + "as historyAgg on historyAgg.linkId=live.linkId "
+                     + "where (historyAgg.mins=live.timeStamp.getMinutes() "
+                     + " and historyAgg.hrs=live.timeStamp.getHours())");
+         cepStatement.addListener(new FinalListener());
+         startTime = df.parse(
+               configProperties.getProperty("archive.stream.start.time"))
+               .getTime();
+         streamers = new RecordStreamer[numberOfArchiveStreams];
+         futures = new ScheduledFuture[numberOfArchiveStreams];
+
+      } catch (ParseException e) {
+         LOGGER.error(
+               "Unable to determine the start date/stream rate from config file. Please check it",
+               e);
+
+      } catch (FileNotFoundException e) {
+         LOGGER.error("Unable to find the config/connection properties files",
+               e);
+      } catch (IOException e) {
+         LOGGER.error("Properties file contains non unicode values ", e);
+      }
+
+   }
 
    /**
     * @param args
@@ -60,7 +122,7 @@ public class StreamerCore {
       } else {
          configFilePath = args[0];
          connectionFilePath = args[1];
-         numberOfArchiveStreams = Integer.parseInt(args[3]);
+         numberOfArchiveStreams = Integer.parseInt(args[2]);
 
       }
       try {
@@ -70,61 +132,12 @@ public class StreamerCore {
          LiveStreamer live = new LiveStreamer(cepRT, streamRate, df, monitor);
          live.setName("live");
          live.start();
+         StreamRateChanger change = new StreamRateChanger(streamRate,
+               streamers, futures, executor);
+         executor.scheduleAtFixedRate(change, 20, 20, TimeUnit.SECONDS);
       } catch (InterruptedException ex) {
          LOGGER.error("The live streamer thread interrupted", ex);
 
-      }
-
-   }
-
-   /**
-    * @param configFilePath
-    * @param connectionFilePath Instantiate all the required settings and start
-    * the archive data stream threads.
-    */
-   public StreamerCore(final String configFilePath,
-         final String connectionFilePath) {
-      try {
-
-         connectionProperties = new Properties();
-         configProperties = new Properties();
-         configProperties.load(new FileInputStream(configFilePath));
-         monitor = new Object();
-         connectionProperties.load(new FileInputStream(connectionFilePath));
-
-         cepConfig = new Configuration();
-         cep = EPServiceProviderManager.getProvider("PROVIDER", cepConfig);
-         cepConfig.addEventType("LTALINKBEAN", LiveBean.class.getName());
-         cepConfig.addEventType("ARCHIVEAGGREGATEBEAN",
-               HistoryBean.class.getName());
-         cepRT = cep.getEPRuntime();
-         cepAdm = cep.getEPAdministrator();
-         df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
-         EPStatement cepStatement = cepAdm
-               .createEPL("select live.linkId,live.avgSpeed,live.timeStamp,"
-                     + "historyAgg.aggregateSpeed,historyAgg.linkId, historyAgg.aggregateVolume,historyAgg.timeStamp "
-                     + "from mcomp.dissertation.database.streamer.beans.LiveBean.std:unique(linkId) as "
-                     + "live, mcomp.dissertation.database.streamer.beans.HistoryAggregateBean.std:unique(linkId) "
-                     + "as historyAgg where historyAgg.linkId=live.linkId and historyAgg.timeStamp.getHours()=live.timeStamp.getHours()"
-                     + " and historyAgg.timeStamp.getMinutes()=live.timeStamp.getMinutes()"
-                     + " and historyAgg.timeStamp.getSeconds()=live.timeStamp.getSeconds()");
-         cepStatement.addListener(new FinalListener());
-         startTime = df.parse(
-               configProperties.getProperty("archive.stream.start.time"))
-               .getTime();
-         streamRate = Integer.parseInt(configProperties
-               .getProperty("live.stream.rate.in.ms"));
-
-      } catch (ParseException e) {
-         LOGGER.error(
-               "Unable to determine the start date/stream rate from config file. Please check it",
-               e);
-
-      } catch (FileNotFoundException e) {
-         LOGGER.error("Unable to find the config/connection properties files",
-               e);
-      } catch (IOException e) {
-         LOGGER.error("Properties file contains non unicode values ", e);
       }
 
    }
@@ -149,13 +162,13 @@ public class StreamerCore {
             HistoryBean.class.getName());
       cepAdmAggregate = cepAggregate.getEPAdministrator();
       EPStatement cepStatementAggregate = cepAdmAggregate
-            .createEPL("select  count(*) as countRec, avg(volume) as avgVolume, avg(speed) as "
-                  + "avgSpeed, linkId, timeStamp.getMinutes() as mins from "
-                  + "mcomp.dissertation.database.streamer.beans.HistoryBean.std:groupwin(linkId)"
-                  + ".win:time_length_batch(1 sec,6) group by linkId");
+            .createEPL("select  count(*) as countRec, avg(volume) as avgVolume, avg(speed) as avgSpeed, linkId,readingMinutes as mins, "
+                  + "readingHours as hrs from mcomp.dissertation.database.streamer.beans.HistoryBean.std:groupwin(linkId,readingMinutes,readingHours)"
+                  + ".win:time_length_batch(120 sec,6) group by linkId,readingMinutes,readingHours having count(*) <6");
       cepStatementAggregate.addListener(new AggregateListener(cepRT));
       cepRTAggregate = cepAggregate.getEPRuntime();
 
+      @SuppressWarnings("unchecked")
       ConcurrentLinkedQueue<HistoryBean>[] buffer = new ConcurrentLinkedQueue[numberOfArchiveStreams];
 
       // Create a shared buffer between the thread retrieving records from
@@ -171,23 +184,19 @@ public class StreamerCore {
       // threads are waiting on the last loader thread.
 
       for (int count = 1; count <= numberOfArchiveStreams; count++) {
-
-         RecordStreamer streamer = new RecordStreamer(buffer[count - 1],
-               streamRate, cepRTAggregate, monitor);
-         streamer.setName("STREAMER_" + count);
-         streamer.start();
-      }
-
-      for (int count = 1; count <= numberOfArchiveStreams; count++) {
          RecordLoader loader = new RecordLoader(buffer[count - 1], startTime,
                connectionProperties, monitor, count, numberOfArchiveStreams);
-         loader.setName("LOADER_" + count);
-         loader.start();
+         executor.scheduleWithFixedDelay(loader, 0, 4, TimeUnit.MINUTES);
          // Start the next archive stream for the records exactly a day after
          startTime = startTime + 24 * 3600 * 1000;
 
       }
 
-   }
+      for (int count = 0; count < numberOfArchiveStreams; count++) {
+         streamers[count] = new RecordStreamer(buffer[count], cepRTAggregate);
+         futures[count] = executor.scheduleWithFixedDelay(streamers[count], 0,
+               streamRate.get() / 2, TimeUnit.MILLISECONDS);
+      }
 
+   }
 }
