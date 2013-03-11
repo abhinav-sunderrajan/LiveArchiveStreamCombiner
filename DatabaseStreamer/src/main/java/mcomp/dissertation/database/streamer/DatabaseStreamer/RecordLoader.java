@@ -26,7 +26,6 @@ public class RecordLoader implements Runnable {
    private Object monitor;
    private static final Logger LOGGER = Logger.getLogger(RecordLoader.class);
    private static final long REFRESH_INTERVAL = 300000;
-
    private static int flag = 0;
 
    /**

@@ -50,6 +50,7 @@ public final class StreamerCore {
    private static final String CONFIG_FILE_PATH = "src/main/resources/config.properties";
    private static final String CONNECTION_FILE_PATH = "src/main/resources/connection.properties";
    private static final int ARCHIVE_STREAM_COUNT = 6;
+   private static final int NUMBER_OF_AGGREGATORS = 4;
    private static final Logger LOGGER = Logger.getLogger(StreamerCore.class);
 
    /**
@@ -76,7 +77,7 @@ public final class StreamerCore {
          cepRT = cep.getEPRuntime();
          cepAdm = cep.getEPAdministrator();
          streamRate = new AtomicInteger(Integer.parseInt(configProperties
-               .getProperty("live.stream.rate.in.ms")));
+               .getProperty("live.stream.rate.in.microsecs")));
          df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
          EPStatement cepStatement = cepAdm
                .createEPL("select live.linkId,live.avgSpeed,live.timeStamp,live.eventTime,"
@@ -129,12 +130,12 @@ public final class StreamerCore {
          StreamerCore streamerCore;
          streamerCore = new StreamerCore(configFilePath, connectionFilePath);
          streamerCore.setUpArchiveStreams();
-         LiveStreamer live = new LiveStreamer(cepRT, streamRate, df, monitor);
-         live.setName("live");
-         live.start();
-         StreamRateChanger change = new StreamRateChanger(streamRate,
-               streamers, futures, executor);
-         executor.scheduleAtFixedRate(change, 20, 20, TimeUnit.SECONDS);
+         LiveStreamer live = new LiveStreamer(cepRT, streamRate, df, monitor,
+               executor);
+         ScheduledFuture<?> liveFuture = live.startStreaming();
+         // StreamRateChanger change = new StreamRateChanger(streamRate,
+         // streamers, futures, executor, liveFuture, live.getRunnable());
+         // executor.scheduleAtFixedRate(change, 0, 20, TimeUnit.SECONDS);
       } catch (InterruptedException ex) {
          LOGGER.error("The live streamer thread interrupted", ex);
 
@@ -151,22 +152,27 @@ public final class StreamerCore {
     */
 
    private void setUpArchiveStreams() throws InterruptedException {
-      EPServiceProvider cepAggregate;
-      EPRuntime cepRTAggregate;
-      EPAdministrator cepAdmAggregate;
-      Configuration cepConfigAggregate;
-      cepConfigAggregate = new Configuration();
-      cepAggregate = EPServiceProviderManager
-            .getProvider("PROVIDER", cepConfig);
-      cepConfigAggregate.addEventType("ARCHIVESUBBEAN",
-            HistoryBean.class.getName());
-      cepAdmAggregate = cepAggregate.getEPAdministrator();
-      EPStatement cepStatementAggregate = cepAdmAggregate
-            .createEPL("select  count(*) as countRec, avg(volume) as avgVolume, avg(speed) as avgSpeed, linkId,readingMinutes as mins, "
-                  + "readingHours as hrs from mcomp.dissertation.database.streamer.beans.HistoryBean.std:groupwin(linkId,readingMinutes,readingHours)"
-                  + ".win:time_length_batch(120 sec,6) group by linkId,readingMinutes,readingHours having count(*) <6");
-      cepStatementAggregate.addListener(new AggregateListener(cepRT));
-      cepRTAggregate = cepAggregate.getEPRuntime();
+      EPServiceProvider[] cepAggregateArray = new EPServiceProvider[NUMBER_OF_AGGREGATORS];
+      EPRuntime[] cepRTAggregateArray = new EPRuntime[NUMBER_OF_AGGREGATORS];
+      EPAdministrator[] cepAdmAggregateArray = new EPAdministrator[NUMBER_OF_AGGREGATORS];
+      Configuration[] cepConfigAggregateArray = new Configuration[NUMBER_OF_AGGREGATORS];
+
+      for (int count = 0; count < NUMBER_OF_AGGREGATORS; count++) {
+         cepConfigAggregateArray[count] = new Configuration();
+         cepAggregateArray[count] = EPServiceProviderManager.getProvider(
+               "PROVIDER_" + count, cepConfigAggregateArray[count]);
+         cepConfigAggregateArray[count].addEventType("ARCHIVESUBBEAN_" + count,
+               HistoryBean.class.getName());
+         cepAdmAggregateArray[count] = cepAggregateArray[count]
+               .getEPAdministrator();
+         EPStatement cepStatementAggregate = cepAdmAggregateArray[count]
+               .createEPL("select  COUNT(*) as countRec, avg(volume) as avgVolume, avg(speed) as avgSpeed, linkId,readingMinutes as mins, "
+                     + "readingHours as hrs from mcomp.dissertation.database.streamer.beans.HistoryBean.std:groupwin(linkId,readingMinutes,readingHours)"
+                     + ".win:time_length_batch(40 sec,6) group by linkId,readingMinutes,readingHours having count(*)<6");
+         cepStatementAggregate.addListener(new AggregateListener(cepRT));
+         cepRTAggregateArray[count] = cepAggregateArray[count].getEPRuntime();
+
+      }
 
       @SuppressWarnings("unchecked")
       ConcurrentLinkedQueue<HistoryBean>[] buffer = new ConcurrentLinkedQueue[numberOfArchiveStreams];
@@ -183,19 +189,19 @@ public final class StreamerCore {
       // which are needed. I also need to ensure all the archive streamer
       // threads are waiting on the last loader thread.
 
+      for (int count = 0; count < numberOfArchiveStreams; count++) {
+         streamers[count] = new RecordStreamer(buffer[count],
+               cepRTAggregateArray, monitor, executor, streamRate);
+         futures[count] = streamers[count].startStreaming();
+      }
+
       for (int count = 1; count <= numberOfArchiveStreams; count++) {
          RecordLoader loader = new RecordLoader(buffer[count - 1], startTime,
                connectionProperties, monitor, count, numberOfArchiveStreams);
-         executor.scheduleWithFixedDelay(loader, 0, 4, TimeUnit.MINUTES);
+         executor.scheduleWithFixedDelay(loader, 0, 80, TimeUnit.SECONDS);
          // Start the next archive stream for the records exactly a day after
          startTime = startTime + 24 * 3600 * 1000;
 
-      }
-
-      for (int count = 0; count < numberOfArchiveStreams; count++) {
-         streamers[count] = new RecordStreamer(buffer[count], cepRTAggregate);
-         futures[count] = executor.scheduleWithFixedDelay(streamers[count], 0,
-               streamRate.get() / 2, TimeUnit.MILLISECONDS);
       }
 
    }

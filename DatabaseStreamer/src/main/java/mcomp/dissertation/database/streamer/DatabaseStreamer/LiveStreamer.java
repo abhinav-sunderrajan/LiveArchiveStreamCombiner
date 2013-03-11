@@ -10,45 +10,92 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import mcomp.dissertation.database.streamer.beans.LiveBean;
 
 import org.apache.log4j.Logger;
 
+import com.espertech.esper.client.EPException;
 import com.espertech.esper.client.EPRuntime;
 
 /**
  * This thread is responsible for streaming live data from a CSV file.
  */
-public class LiveStreamer extends Thread {
+public class LiveStreamer {
 
    private static final Logger LOGGER = Logger.getLogger(LiveStreamer.class);
 
    private File file;
    private BufferedReader br;
-   private EPRuntime cepRT;
    private AtomicInteger streamRate;
    private DateFormat df;
-   private Object monitor;
    private DateFormat dfLocal;
+   private ScheduledExecutorService executor;
+   private Runnable runnable;
 
    /**
     * Initialize and start file streaming.
     * @param cepRT
     * @param streamRate
     * @param monitor
+    * @param executor
     */
    public LiveStreamer(final EPRuntime cepRT, final AtomicInteger streamRate,
-         final DateFormat df, final Object monitor) {
+         final DateFormat df, final Object monitor,
+         final ScheduledExecutorService executor) {
       try {
-         this.cepRT = cepRT;
          this.streamRate = streamRate;
          this.df = df;
          this.dfLocal = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
          this.file = readLTALinkData();
-         this.monitor = monitor;
          this.br = new BufferedReader(new FileReader(file));
+         this.executor = executor;
+         this.runnable = new Runnable() {
+            private int count = 0;
+
+            public void run() {
+               try {
+                  // Release the lock on the monitor lock to release all waiting
+                  // threads.Applicable only for the first time.
+                  if (count == 0) {
+                     synchronized (monitor) {
+                        LOGGER.info("Wait for the initial data base load before streaming..");
+                        monitor.wait();
+                        count++;
+                        LOGGER.info("Awake!! Starting to streaming now");
+                     }
+                  }
+                  if (br.ready()) {
+                     LiveBean bean;
+                     bean = parseLine(br.readLine());
+                     bean.setEventTime(dfLocal.format(Calendar.getInstance()
+                           .getTime()));
+                     cepRT.sendEvent(bean);
+                     count++;
+                     // print for evaluation purposes only..
+                     // if (count % 1000 == 0) {
+                     // LOGGER.info(count
+                     // + " "
+                     // + streamRate.get()
+                     // + " "
+                     // + dfLocal
+                     // .format(Calendar.getInstance().getTime()));
+                     // }
+                  }
+               } catch (EPException e) {
+                  LOGGER.error("Error sending event to listener", e);
+               } catch (IOException e) {
+                  LOGGER.error("Error reading CSV file", e);
+               } catch (InterruptedException e) {
+                  e.printStackTrace();
+               }
+
+            }
+         };
       } catch (Exception e) {
          LOGGER.error(e.getMessage(), e);
 
@@ -56,29 +103,11 @@ public class LiveStreamer extends Thread {
 
    }
 
-   @Override
-   public void run() {
-      try {
-
-         // Release the lock on the monitor lock to release all waiting threads.
-         synchronized (monitor) {
-            LOGGER.info("Wait for the initial data base load before streaming..");
-            monitor.wait();
-            LOGGER.info("Awake!! Starting to streaming now");
-         }
-         while (br.ready()) {
-            LiveBean bean;
-            bean = parseLine(br.readLine());
-            bean.setEventTime(dfLocal.format(Calendar.getInstance().getTime()));
-            cepRT.sendEvent(bean);
-            Thread.sleep(streamRate.get());
-         }
-      } catch (IOException e) {
-         LOGGER.error("Unable to read record from CSV file..", e);
-
-      } catch (InterruptedException e) {
-         LOGGER.error("Live streamer thread interrupted", e);
-      }
+   public ScheduledFuture<?> startStreaming() {
+      ScheduledFuture<?> liveFuture = null;
+      liveFuture = executor.scheduleWithFixedDelay(runnable, 0,
+            streamRate.get(), TimeUnit.MICROSECONDS);
+      return liveFuture;
 
    }
 
@@ -171,6 +200,13 @@ public class LiveStreamer extends Thread {
 
       return bean;
 
+   }
+
+   /**
+    * @return the runnable
+    */
+   public Runnable getRunnable() {
+      return runnable;
    }
 
 }

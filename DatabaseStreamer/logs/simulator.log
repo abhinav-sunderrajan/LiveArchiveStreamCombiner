@@ -1,362 +1,607 @@
-2013-03-06 17:02:47.451 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 17:03:06.784 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 17:03:06.916 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 17:03:07.050 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 17:03:07.226 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 17:03:08.003 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 17:03:08.144 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 17:03:08.347 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:93 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
-2013-03-06 17:03:08.893 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:65 - Wait for the initial data base load before streaming..
-2013-03-06 17:03:21.909 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
-2013-03-06 17:03:23.998 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
-2013-03-06 17:03:24.405 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
-2013-03-06 17:03:24.421 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:57 - Waking the streamer threads..
-2013-03-06 17:03:24.452 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:67 - Awake!! Starting to streaming now
-2013-03-06 17:03:25.325 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
-2013-03-06 17:03:28.552 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
-2013-03-06 17:03:28.598 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
-2013-03-06 17:19:53.774 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 17:19:57.877 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 17:19:57.925 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 17:19:57.988 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 17:19:58.112 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 17:19:58.518 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 17:19:58.814 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
-2013-03-06 17:19:59.033 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 17:19:59.034 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:93 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
-2013-03-06 17:19:59.034 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
-2013-03-06 17:19:59.970 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:65 - Wait for the initial data base load before streaming..
-2013-03-06 17:20:01.484 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
-2013-03-06 17:20:01.890 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
-2013-03-06 17:20:01.937 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
-2013-03-06 17:20:02.608 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
-2013-03-06 17:28:12.031 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
-2013-03-06 17:28:12.187 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
-2013-03-06 17:28:12.771 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
-2013-03-06 17:28:12.808 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
-2013-03-06 17:28:13.179 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
-2013-03-06 17:28:13.704 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
-2013-03-06 18:07:24.278 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 18:13:59.886 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 18:14:05.797 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 18:14:05.828 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 18:14:05.902 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 18:14:06.057 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 18:14:06.225 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 18:14:06.452 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 18:14:06.488 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:93 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
-2013-03-06 18:14:06.897 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:65 - Wait for the initial data base load before streaming..
-2013-03-06 18:14:08.025 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
-2013-03-06 18:14:08.642 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
-2013-03-06 18:14:09.391 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
-2013-03-06 18:14:09.628 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
-2013-03-06 18:14:09.961 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
-2013-03-06 18:14:09.961 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
-2013-03-06 18:14:09.961 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:57 - Waking the streamer threads..
-2013-03-06 18:14:10.280 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:67 - Awake!! Starting to streaming now
-2013-03-06 18:22:24.613 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
-2013-03-06 18:22:25.748 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
-2013-03-06 18:22:26.066 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
-2013-03-06 18:22:26.129 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
-2013-03-06 18:22:26.464 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
-2013-03-06 18:22:26.575 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
-2013-03-06 18:31:22.953 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 18:31:26.444 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 18:31:26.488 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 18:31:26.521 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 18:31:26.676 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 18:31:26.888 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 18:31:26.971 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 18:31:27.045 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:93 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
-2013-03-06 18:31:27.463 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:65 - Wait for the initial data base load before streaming..
-2013-03-06 18:31:36.252 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
-2013-03-06 18:31:36.386 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
-2013-03-06 18:31:37.002 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
-2013-03-06 18:31:37.903 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
-2013-03-06 18:31:38.323 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
-2013-03-06 18:31:38.324 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:57 - Waking the streamer threads..
-2013-03-06 18:31:38.354 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:67 - Awake!! Starting to streaming now
-2013-03-06 18:31:38.363 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
-2013-03-06 18:35:39.972 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
-2013-03-06 18:35:39.992 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
-2013-03-06 18:35:41.578 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
-2013-03-06 18:35:42.458 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
-2013-03-06 18:35:42.864 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
-2013-03-06 18:35:42.903 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
-2013-03-06 18:40:00.260 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:10:00.0 and 2011-04-11 00:15:00.0
-2013-03-06 18:40:02.767 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:10:00.0 and 2011-04-15 00:15:00.0
-2013-03-06 18:40:03.467 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:10:00.0 and 2011-04-16 00:15:00.0
-2013-03-06 18:40:05.747 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:10:00.0 and 2011-04-14 00:15:00.0
-2013-03-06 18:40:11.417 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:10:00.0 and 2011-04-12 00:15:00.0
-2013-03-06 18:40:13.664 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:10:00.0 and 2011-04-13 00:15:00.0
-2013-03-06 20:22:05.182 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 20:22:15.167 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 20:22:15.312 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 20:22:15.375 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 20:22:15.500 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 20:22:15.578 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 20:22:15.624 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 20:22:15.843 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:93 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
-2013-03-06 20:22:16.358 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:65 - Wait for the initial data base load before streaming..
-2013-03-06 20:22:21.663 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
-2013-03-06 20:22:22.319 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
-2013-03-06 20:22:22.756 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
-2013-03-06 20:22:23.479 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
-2013-03-06 20:22:23.666 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
-2013-03-06 20:22:23.666 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:57 - Waking the streamer threads..
-2013-03-06 20:22:23.713 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
-2013-03-06 20:22:23.963 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:67 - Awake!! Starting to streaming now
-2013-03-06 20:26:26.289 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
-2013-03-06 20:26:26.741 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
-2013-03-06 20:26:27.196 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
-2013-03-06 20:26:27.196 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
-2013-03-06 20:26:27.243 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
-2013-03-06 20:26:27.769 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
-2013-03-06 20:30:40.716 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:10:00.0 and 2011-04-15 00:15:00.0
-2013-03-06 20:30:41.457 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:10:00.0 and 2011-04-11 00:15:00.0
-2013-03-06 20:30:41.658 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:10:00.0 and 2011-04-16 00:15:00.0
-2013-03-06 20:30:41.989 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:10:00.0 and 2011-04-14 00:15:00.0
-2013-03-06 20:30:42.965 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:10:00.0 and 2011-04-13 00:15:00.0
-2013-03-06 20:30:43.022 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:10:00.0 and 2011-04-12 00:15:00.0
-2013-03-06 20:35:07.433 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:15:00.0 and 2011-04-11 00:20:00.0
-2013-03-06 20:35:16.876 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:15:00.0 and 2011-04-12 00:20:00.0
-2013-03-06 20:35:19.810 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:15:00.0 and 2011-04-15 00:20:00.0
-2013-03-06 20:35:19.924 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:15:00.0 and 2011-04-13 00:20:00.0
-2013-03-06 20:35:20.751 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:15:00.0 and 2011-04-14 00:20:00.0
-2013-03-06 20:35:23.169 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:15:00.0 and 2011-04-16 00:20:00.0
-2013-03-06 20:39:14.191 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:20:00.0 and 2011-04-11 00:25:00.0
-2013-03-06 20:39:20.971 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:20:00.0 and 2011-04-12 00:25:00.0
-2013-03-06 20:39:27.649 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:20:00.0 and 2011-04-15 00:25:00.0
-2013-03-06 20:39:29.286 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:20:00.0 and 2011-04-13 00:25:00.0
-2013-03-06 20:39:33.116 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:20:00.0 and 2011-04-16 00:25:00.0
-2013-03-06 20:39:36.088 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:20:00.0 and 2011-04-14 00:25:00.0
-2013-03-06 20:43:20.978 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:25:00.0 and 2011-04-11 00:30:00.0
-2013-03-06 20:43:24.443 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:25:00.0 and 2011-04-12 00:30:00.0
-2013-03-06 20:43:34.433 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:25:00.0 and 2011-04-13 00:30:00.0
-2013-03-06 20:43:39.680 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:25:00.0 and 2011-04-15 00:30:00.0
-2013-03-06 20:43:44.044 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:25:00.0 and 2011-04-16 00:30:00.0
-2013-03-06 20:43:46.722 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:25:00.0 and 2011-04-14 00:30:00.0
-2013-03-06 20:47:23.138 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:30:00.0 and 2011-04-11 00:35:00.0
-2013-03-06 20:47:27.879 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:30:00.0 and 2011-04-12 00:35:00.0
-2013-03-06 20:47:43.199 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:30:00.0 and 2011-04-13 00:35:00.0
-2013-03-06 20:47:43.916 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:30:00.0 and 2011-04-15 00:35:00.0
-2013-03-06 20:47:46.427 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:30:00.0 and 2011-04-16 00:35:00.0
-2013-03-06 20:47:49.665 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:30:00.0 and 2011-04-14 00:35:00.0
-2013-03-06 20:51:25.757 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:35:00.0 and 2011-04-11 00:40:00.0
-2013-03-06 20:51:34.153 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:35:00.0 and 2011-04-12 00:40:00.0
-2013-03-06 20:51:46.235 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:35:00.0 and 2011-04-13 00:40:00.0
-2013-03-06 20:51:47.468 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:35:00.0 and 2011-04-15 00:40:00.0
-2013-03-06 20:51:49.910 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:35:00.0 and 2011-04-16 00:40:00.0
-2013-03-06 20:51:51.525 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:35:00.0 and 2011-04-14 00:40:00.0
-2013-03-06 20:55:41.170 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:40:00.0 and 2011-04-11 00:45:00.0
-2013-03-06 20:55:42.496 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:40:00.0 and 2011-04-12 00:45:00.0
-2013-03-06 20:55:51.761 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:40:00.0 and 2011-04-13 00:45:00.0
-2013-03-06 20:55:53.097 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:40:00.0 and 2011-04-15 00:45:00.0
-2013-03-06 20:56:02.391 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:40:00.0 and 2011-04-16 00:45:00.0
-2013-03-06 20:56:02.453 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:40:00.0 and 2011-04-14 00:45:00.0
-2013-03-06 20:59:47.493 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:45:00.0 and 2011-04-11 00:50:00.0
-2013-03-06 20:59:50.162 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:45:00.0 and 2011-04-12 00:50:00.0
-2013-03-06 21:00:06.712 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:45:00.0 and 2011-04-13 00:50:00.0
-2013-03-06 21:00:09.528 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:45:00.0 and 2011-04-15 00:50:00.0
-2013-03-06 21:00:18.371 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:45:00.0 and 2011-04-14 00:50:00.0
-2013-03-06 21:00:18.798 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:45:00.0 and 2011-04-16 00:50:00.0
-2013-03-06 21:29:27.352 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 21:29:46.429 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 21:29:46.506 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 21:29:46.618 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 21:29:46.714 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 21:29:46.834 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 21:29:47.094 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 21:29:47.142 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:93 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
-2013-03-06 21:29:47.580 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:65 - Wait for the initial data base load before streaming..
-2013-03-06 21:30:26.634 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
-2013-03-06 21:30:27.291 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
-2013-03-06 21:30:33.979 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
-2013-03-06 21:30:42.898 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 21:30:46.496 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 21:30:46.575 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 21:30:46.669 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 21:30:46.763 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 21:30:46.841 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 21:30:46.965 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 21:30:46.965 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:93 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
-2013-03-06 21:30:47.012 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:65 - Wait for the initial data base load before streaming..
-2013-03-06 21:30:48.534 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
-2013-03-06 21:30:50.001 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
-2013-03-06 21:30:50.142 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
-2013-03-06 21:30:52.373 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
-2013-03-06 21:30:52.405 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
-2013-03-06 21:30:52.717 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
-2013-03-06 21:30:52.717 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:57 - Waking the streamer threads..
-2013-03-06 21:30:52.764 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:67 - Awake!! Starting to streaming now
-2013-03-06 21:35:04.927 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
-2013-03-06 21:35:06.176 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
-2013-03-06 21:35:06.505 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
-2013-03-06 21:35:06.754 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
-2013-03-06 21:35:06.754 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
-2013-03-06 21:35:07.144 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
-2013-03-06 22:12:07.813 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 22:12:16.285 [ERROR] com.espertech.esper.view.ViewFactorySupport:188 - Invalid parameter expression 2: Property named 'FORCE_UPDATE' is not valid in any stream
-com.espertech.esper.epl.expression.ExprValidationPropertyException: Property named 'FORCE_UPDATE' is not valid in any stream
-	at com.espertech.esper.epl.expression.ExprIdentNodeUtil.getSuggestionException(ExprIdentNodeUtil.java:187)
-	at com.espertech.esper.epl.expression.ExprIdentNodeUtil.getTypeFromStream(ExprIdentNodeUtil.java:59)
-	at com.espertech.esper.epl.expression.ExprIdentNodeImpl.validate(ExprIdentNodeImpl.java:150)
-	at com.espertech.esper.epl.expression.ExprNodeUtility.getValidatedSubtreeInternal(ExprNodeUtility.java:94)
-	at com.espertech.esper.epl.expression.ExprNodeUtility.getValidatedSubtree(ExprNodeUtility.java:72)
-	at com.espertech.esper.view.ViewFactorySupport.validateExpr(ViewFactorySupport.java:179)
-	at com.espertech.esper.view.ViewFactorySupport.validateAndEvaluateExpr(ViewFactorySupport.java:152)
-	at com.espertech.esper.view.ViewFactorySupport.validateAndEvaluate(ViewFactorySupport.java:66)
-	at com.espertech.esper.view.window.TimeLengthBatchViewFactory.setViewParameters(TimeLengthBatchViewFactory.java:32)
-	at com.espertech.esper.view.ViewServiceHelper.instantiateFactories(ViewServiceHelper.java:339)
-	at com.espertech.esper.view.ViewServiceImpl.createFactories(ViewServiceImpl.java:53)
-	at com.espertech.esper.core.start.EPStatementStartMethodSelectUtil.prepare(EPStatementStartMethodSelectUtil.java:133)
-	at com.espertech.esper.core.start.EPStatementStartMethodSelect.startInternal(EPStatementStartMethodSelect.java:53)
-	at com.espertech.esper.core.start.EPStatementStartMethodBase.start(EPStatementStartMethodBase.java:59)
-	at com.espertech.esper.core.service.StatementLifecycleSvcImpl.startInternal(StatementLifecycleSvcImpl.java:628)
-	at com.espertech.esper.core.service.StatementLifecycleSvcImpl.start(StatementLifecycleSvcImpl.java:598)
-	at com.espertech.esper.core.service.StatementLifecycleSvcImpl.createAndStart(StatementLifecycleSvcImpl.java:132)
-	at com.espertech.esper.core.service.EPAdministratorImpl.createEPLStmt(EPAdministratorImpl.java:118)
-	at com.espertech.esper.core.service.EPAdministratorImpl.createEPL(EPAdministratorImpl.java:67)
-	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamerCore.setUpArchiveStreams(StreamerCore.java:165)
-	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamerCore.main(StreamerCore.java:131)
-2013-03-06 22:13:51.307 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 22:13:55.519 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:13:55.560 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:13:55.607 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:13:55.638 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:13:55.669 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:13:55.700 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:13:55.716 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:93 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
-2013-03-06 22:13:56.434 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:65 - Wait for the initial data base load before streaming..
-2013-03-06 22:13:59.465 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
-2013-03-06 22:14:00.152 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
-2013-03-06 22:14:00.152 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:57 - Waking the streamer threads..
-2013-03-06 22:14:00.152 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:67 - Awake!! Starting to streaming now
-2013-03-06 22:14:00.437 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
-2013-03-06 22:14:00.534 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
-2013-03-06 22:14:00.544 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
-2013-03-06 22:14:00.877 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
-2013-03-06 22:37:13.123 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 22:37:17.492 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:37:17.539 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:37:17.571 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:37:17.617 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:37:17.789 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:37:17.851 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:37:17.867 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:93 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
-2013-03-06 22:37:18.741 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:65 - Wait for the initial data base load before streaming..
-2013-03-06 22:37:21.210 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
-2013-03-06 22:37:21.711 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
-2013-03-06 22:37:22.491 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
-2013-03-06 22:37:23.160 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
-2013-03-06 22:37:23.456 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
-2013-03-06 22:37:23.566 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
-2013-03-06 22:37:23.566 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:57 - Waking the streamer threads..
-2013-03-06 22:37:23.612 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:67 - Awake!! Starting to streaming now
-2013-03-06 22:37:25.044 [INFO] com.espertech.esper.core.service.UpdateDispatchFutureSpin:79 - Spin wait timeout exceeded in listener dispatch for statement '791c2b65-8825-438a-b373-3b8827d3d32a'
-2013-03-06 22:38:27.396 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 22:38:30.735 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:38:30.776 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:38:30.916 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:38:31.026 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:38:31.213 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:38:31.462 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:38:31.478 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:93 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
-2013-03-06 22:38:31.806 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
-2013-03-06 22:38:31.821 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:65 - Wait for the initial data base load before streaming..
-2013-03-06 22:38:32.802 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
-2013-03-06 22:38:33.535 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
-2013-03-06 22:38:33.662 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
-2013-03-06 22:38:34.267 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
-2013-03-06 22:38:34.345 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
-2013-03-06 22:38:34.345 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:57 - Waking the streamer threads..
-2013-03-06 22:38:34.392 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:67 - Awake!! Starting to streaming now
-2013-03-06 22:42:44.267 [ERROR] com.espertech.esper.core.service.StatementResultServiceImpl:380 - Unexpected exception invoking listener update method on listener class 'AggregateListener' : NullPointerException : null
-java.lang.NullPointerException
-	at mcomp.dissertation.databse.streamer.listeners.AggregateListener.update(AggregateListener.java:29)
-	at com.espertech.esper.core.service.StatementResultServiceImpl.dispatchInternal(StatementResultServiceImpl.java:374)
-	at com.espertech.esper.core.service.StatementResultServiceImpl.processDispatch(StatementResultServiceImpl.java:249)
-	at com.espertech.esper.core.service.StatementResultServiceImpl.execute(StatementResultServiceImpl.java:235)
-	at com.espertech.esper.core.service.UpdateDispatchViewBase.execute(UpdateDispatchViewBase.java:75)
-	at com.espertech.esper.core.service.UpdateDispatchFutureSpin.execute(UpdateDispatchFutureSpin.java:85)
-	at com.espertech.esper.dispatch.DispatchServiceImpl.dispatchFromQueue(DispatchServiceImpl.java:52)
-	at com.espertech.esper.dispatch.DispatchServiceImpl.dispatch(DispatchServiceImpl.java:31)
-	at com.espertech.esper.core.service.EPRuntimeImpl.dispatch(EPRuntimeImpl.java:1278)
-	at com.espertech.esper.core.service.EPRuntimeImpl.processTimeEvent(EPRuntimeImpl.java:572)
-	at com.espertech.esper.core.service.EPRuntimeImpl.processEvent(EPRuntimeImpl.java:466)
-	at com.espertech.esper.core.service.EPRuntimeImpl.sendEvent(EPRuntimeImpl.java:240)
-	at com.espertech.esper.core.service.EPRuntimeImpl.timerCallback(EPRuntimeImpl.java:214)
-	at com.espertech.esper.timer.EPLTimerTask.run(EPLTimerTask.java:61)
-	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
-	at java.util.concurrent.FutureTask$Sync.innerRunAndReset(Unknown Source)
-	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$101(Unknown Source)
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.runPeriodic(Unknown Source)
-	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
-	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
-	at java.lang.Thread.run(Unknown Source)
-2013-03-06 22:42:45.908 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
-2013-03-06 22:42:46.835 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
-2013-03-06 22:42:48.221 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
-2013-03-06 22:42:48.286 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
-2013-03-06 22:42:48.411 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
-2013-03-06 22:42:48.895 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
-2013-03-06 22:50:52.599 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 22:50:56.141 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:50:56.189 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:50:56.251 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:50:56.329 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:50:56.532 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:50:56.688 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 22:50:56.860 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:93 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
-2013-03-06 22:50:57.203 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:65 - Wait for the initial data base load before streaming..
-2013-03-06 22:50:57.596 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
-2013-03-06 22:50:58.282 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
-2013-03-06 22:50:58.282 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:57 - Waking the streamer threads..
-2013-03-06 22:50:58.329 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
-2013-03-06 22:50:58.376 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:67 - Awake!! Starting to streaming now
-2013-03-06 22:50:59.071 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
-2013-03-06 22:50:59.211 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
-2013-03-06 22:50:59.534 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
-2013-03-06 22:55:23.196 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
-2013-03-06 22:55:24.063 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
-2013-03-06 22:55:24.664 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
-2013-03-06 22:55:26.493 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
-2013-03-06 22:55:26.731 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
-2013-03-06 22:55:27.702 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
-2013-03-06 22:59:26.614 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:10:00.0 and 2011-04-11 00:15:00.0
-2013-03-06 22:59:27.726 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:10:00.0 and 2011-04-13 00:15:00.0
-2013-03-06 22:59:28.183 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:10:00.0 and 2011-04-15 00:15:00.0
-2013-03-06 22:59:29.914 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:10:00.0 and 2011-04-16 00:15:00.0
-2013-03-06 22:59:30.215 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:10:00.0 and 2011-04-12 00:15:00.0
-2013-03-06 22:59:30.818 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:10:00.0 and 2011-04-14 00:15:00.0
-2013-03-06 23:03:29.370 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:15:00.0 and 2011-04-11 00:20:00.0
-2013-03-06 23:03:29.671 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:15:00.0 and 2011-04-13 00:20:00.0
-2013-03-06 23:03:30.899 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:15:00.0 and 2011-04-15 00:20:00.0
-2013-03-06 23:03:34.621 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:15:00.0 and 2011-04-16 00:20:00.0
-2013-03-06 23:03:36.857 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:15:00.0 and 2011-04-14 00:20:00.0
-2013-03-06 23:03:38.492 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:15:00.0 and 2011-04-12 00:20:00.0
-2013-03-06 23:44:41.835 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
-2013-03-06 23:44:49.556 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 23:44:49.610 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 23:44:49.823 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 23:44:49.928 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 23:44:50.023 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 23:44:50.459 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
-2013-03-06 23:44:50.519 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:93 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
-2013-03-06 23:44:51.130 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:65 - Wait for the initial data base load before streaming..
-2013-03-06 23:44:51.294 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
-2013-03-06 23:44:51.892 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
-2013-03-06 23:44:53.439 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
-2013-03-06 23:44:53.480 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
-2013-03-06 23:44:53.495 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
-2013-03-06 23:44:54.623 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
-2013-03-06 23:44:54.623 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:57 - Waking the streamer threads..
-2013-03-06 23:44:54.647 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:67 - Awake!! Starting to streaming now
-2013-03-06 23:49:07.278 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
-2013-03-06 23:49:08.054 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
-2013-03-06 23:49:08.832 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
-2013-03-06 23:49:09.542 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
-2013-03-06 23:49:09.620 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
-2013-03-06 23:49:09.677 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
+2013-03-11 00:05:29.664 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 00:05:43.267 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 00:05:44.212 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 00:05:44.418 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 00:05:44.422 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 00:05:44.423 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 00:05:44.424 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 00:05:44.425 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 00:05:44.426 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 00:05:51.226 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 00:05:51.683 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 00:05:51.781 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 00:05:51.858 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 00:05:52.080 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 00:05:52.246 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 00:05:52.568 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 00:05:52.577 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:121 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 00:05:52.725 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 00:05:53.696 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 00:05:53.745 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 00:05:54.302 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 00:05:54.303 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 00:05:54.574 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 00:07:00.951 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 00:07:05.448 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 00:07:05.720 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 00:07:05.856 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 00:07:05.870 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 00:07:05.872 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 00:07:05.874 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 00:07:05.875 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 00:07:05.876 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 00:07:06.697 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 00:07:06.760 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 00:07:06.865 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 00:07:06.948 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 00:07:07.282 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 00:07:07.507 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 00:07:07.673 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:121 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 00:07:08.083 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 00:07:08.255 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 00:07:08.497 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 00:07:08.890 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 00:07:10.293 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 00:07:10.518 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 00:07:10.583 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 00:07:10.584 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 00:07:10.671 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 00:07:10.716 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 00:07:10.718 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 00:07:10.909 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 00:07:10.910 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 00:07:11.103 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 00:07:11.547 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 00:13:54.195 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
+2013-03-11 00:13:55.166 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
+2013-03-11 00:13:56.460 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
+2013-03-11 00:13:57.191 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
+2013-03-11 00:13:57.597 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
+2013-03-11 00:13:57.652 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
+2013-03-11 00:20:51.415 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:10:00.0 and 2011-04-11 00:15:00.0
+2013-03-11 00:20:51.859 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:10:00.0 and 2011-04-13 00:15:00.0
+2013-03-11 00:20:52.027 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:10:00.0 and 2011-04-15 00:15:00.0
+2013-03-11 00:20:52.324 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:10:00.0 and 2011-04-12 00:15:00.0
+2013-03-11 00:20:52.541 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:10:00.0 and 2011-04-16 00:15:00.0
+2013-03-11 00:20:53.215 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:10:00.0 and 2011-04-14 00:15:00.0
+2013-03-11 11:11:56.699 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 11:12:00.624 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 11:12:00.839 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 11:13:00.753 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 11:13:03.328 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 11:13:03.536 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 11:13:03.684 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 11:13:03.816 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:03.818 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:03.819 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:03.820 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:03.821 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:03.821 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:06.269 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:13:06.346 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:13:06.411 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:13:06.443 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:13:06.488 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:13:06.563 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:13:06.570 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:121 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 11:13:06.881 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:41.457 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 11:13:44.503 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 11:13:44.732 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 11:13:44.864 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 11:13:44.983 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:44.986 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:44.990 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:44.994 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:44.994 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:44.998 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:45.630 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:13:45.675 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:13:45.733 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:13:45.813 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:13:45.961 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:13:46.117 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:13:46.123 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:121 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 11:13:46.260 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 11:13:46.777 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 11:13:47.331 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 11:13:47.948 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 11:13:48.190 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 11:13:48.190 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 11:13:48.227 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 11:13:48.229 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 11:13:48.255 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 11:13:48.264 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 11:13:48.266 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 11:13:48.619 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 11:13:48.620 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 11:13:48.650 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 11:13:48.842 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 11:15:13.707 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
+2013-03-11 11:15:15.193 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
+2013-03-11 11:15:15.554 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
+2013-03-11 11:15:15.709 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
+2013-03-11 11:15:15.736 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
+2013-03-11 11:15:16.938 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
+2013-03-11 11:16:42.657 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:10:00.0 and 2011-04-13 00:15:00.0
+2013-03-11 11:16:43.389 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:10:00.0 and 2011-04-16 00:15:00.0
+2013-03-11 11:16:49.185 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:10:00.0 and 2011-04-11 00:15:00.0
+2013-03-11 11:16:50.123 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:10:00.0 and 2011-04-15 00:15:00.0
+2013-03-11 11:16:51.868 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:10:00.0 and 2011-04-12 00:15:00.0
+2013-03-11 11:16:54.397 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:10:00.0 and 2011-04-14 00:15:00.0
+2013-03-11 11:23:07.035 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 11:23:09.816 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 11:23:10.122 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 11:23:10.249 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 11:23:10.369 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 11:23:10.372 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 11:23:10.373 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 11:23:10.374 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 11:23:10.375 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 11:23:10.383 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 11:23:11.503 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:23:11.551 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:23:11.584 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:23:11.626 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:23:11.768 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:23:11.847 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 11:23:11.854 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:122 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 11:23:11.867 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 11:23:12.865 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 11:23:13.228 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 11:23:13.610 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 11:23:13.868 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 11:23:13.868 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 11:23:13.903 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 11:23:13.903 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 11:23:13.911 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 11:23:13.948 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 11:23:14.213 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 11:23:14.236 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 11:23:14.237 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 11:23:14.238 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 11:23:14.441 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 11:29:58.086 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
+2013-03-11 11:29:58.652 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
+2013-03-11 11:29:58.808 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
+2013-03-11 11:29:59.256 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
+2013-03-11 11:29:59.849 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
+2013-03-11 11:29:59.849 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
+2013-03-11 11:36:41.727 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:10:00.0 and 2011-04-11 00:15:00.0
+2013-03-11 11:36:43.309 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:10:00.0 and 2011-04-15 00:15:00.0
+2013-03-11 11:36:43.665 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:10:00.0 and 2011-04-13 00:15:00.0
+2013-03-11 11:36:45.490 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:10:00.0 and 2011-04-12 00:15:00.0
+2013-03-11 11:36:45.635 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:10:00.0 and 2011-04-16 00:15:00.0
+2013-03-11 11:36:45.885 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:10:00.0 and 2011-04-14 00:15:00.0
+2013-03-11 12:09:13.189 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 12:09:19.310 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 12:09:19.590 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 12:09:19.726 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 12:09:19.846 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:09:19.847 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:09:19.850 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:09:19.851 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:09:19.852 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:09:19.859 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:09:21.309 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:09:21.364 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:09:21.398 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:09:21.629 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:09:21.685 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:09:21.872 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:09:21.881 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:122 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 12:09:22.899 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 12:09:28.511 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 12:09:28.643 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 12:09:29.212 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 12:09:30.335 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 12:09:30.581 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 12:09:30.681 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 12:09:59.532 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 12:10:02.389 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 12:10:02.652 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 12:10:02.780 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 12:10:02.903 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:10:02.905 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:10:02.907 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:10:02.908 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:10:02.910 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:10:02.919 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:10:03.585 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:10:03.639 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:10:03.708 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:10:03.755 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:10:03.900 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:10:04.040 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:10:04.047 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:122 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 12:10:04.109 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 12:10:05.209 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 12:10:05.503 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 12:10:06.139 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 12:10:06.156 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 12:10:06.676 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 12:10:07.129 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 12:10:07.129 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 12:10:07.159 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 12:10:07.197 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:10:07.214 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:10:07.290 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:10:07.290 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:10:07.292 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:10:07.294 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:11:29.775 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
+2013-03-11 12:11:30.574 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
+2013-03-11 12:11:30.659 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
+2013-03-11 12:11:33.004 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
+2013-03-11 12:11:33.025 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
+2013-03-11 12:11:33.461 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
+2013-03-11 12:13:24.605 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 12:13:28.013 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 12:13:28.300 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 12:13:28.430 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 12:13:28.569 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_3' version 4.6.0
+2013-03-11 12:13:28.705 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:13:28.707 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:13:28.711 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:13:28.713 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:13:28.718 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:13:28.719 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:13:29.422 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:13:29.471 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:13:29.555 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:13:29.639 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:13:29.778 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:13:30.239 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:13:30.261 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:122 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 12:13:30.299 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 12:13:31.296 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 12:13:31.513 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 12:13:31.924 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 12:13:32.143 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 12:13:32.252 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 12:13:33.022 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 12:13:33.022 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 12:13:33.023 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 12:13:33.024 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:13:33.047 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:13:33.049 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:13:33.050 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:13:33.051 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:13:33.151 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:14:55.888 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
+2013-03-11 12:14:56.888 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
+2013-03-11 12:14:56.954 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
+2013-03-11 12:14:57.517 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
+2013-03-11 12:14:57.908 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
+2013-03-11 12:15:00.406 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
+2013-03-11 12:16:11.954 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 12:16:15.131 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 12:16:15.421 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 12:16:15.574 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 12:16:15.706 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_3' version 4.6.0
+2013-03-11 12:16:15.848 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_4' version 4.6.0
+2013-03-11 12:16:15.974 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_5' version 4.6.0
+2013-03-11 12:16:16.156 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:16:16.157 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:16:16.159 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:16:16.160 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:16:16.161 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:16:16.162 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:16:16.957 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:16:17.063 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:16:17.111 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:16:17.313 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:16:17.620 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:16:17.742 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:16:18.054 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:122 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 12:16:18.183 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 12:16:18.668 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 12:16:18.912 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 12:16:18.967 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 12:16:20.193 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 12:16:20.342 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 12:16:20.343 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 12:16:20.344 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 12:16:20.345 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:16:20.613 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:16:20.614 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:16:20.654 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:16:20.662 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:16:20.666 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 12:16:20.677 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:17:43.508 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
+2013-03-11 12:17:45.652 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
+2013-03-11 12:17:46.660 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
+2013-03-11 12:17:46.936 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
+2013-03-11 12:17:46.997 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
+2013-03-11 12:17:47.194 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
+2013-03-11 12:20:12.516 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 12:20:15.514 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 12:20:15.784 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 12:20:15.917 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 12:20:16.053 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:20:16.056 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:20:16.057 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:20:16.058 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:20:16.066 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:20:16.067 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:30:03.204 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 12:30:07.790 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 12:30:08.114 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 12:30:08.249 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 12:30:08.402 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:30:08.407 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:30:08.407 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:30:08.408 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:30:08.409 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:30:08.417 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:30:09.200 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:30:09.246 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:30:09.313 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:30:09.367 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:30:09.399 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:30:09.453 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:30:09.518 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:122 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 12:30:09.595 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 12:30:10.935 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 12:30:12.115 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 12:30:12.227 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 12:30:12.375 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 12:30:12.807 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 12:30:12.808 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 12:30:12.809 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 12:30:12.810 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:30:12.820 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:30:13.158 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 12:30:13.275 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:30:13.276 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:30:13.278 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:30:13.278 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:32:48.901 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 12:32:52.064 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 12:32:52.349 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 12:32:52.496 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 12:32:52.631 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:32:52.637 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:32:52.651 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:32:52.654 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:32:52.684 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:32:52.718 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:32:53.336 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:32:53.390 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:32:53.466 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:32:53.530 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:32:53.586 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:32:53.628 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:32:53.634 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:122 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 12:32:53.652 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 12:32:54.181 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 12:32:54.783 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 12:32:55.968 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 12:32:55.969 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 12:32:55.996 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 12:32:55.999 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:32:56.044 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:32:56.059 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:32:56.170 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:32:56.595 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:32:56.638 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:32:56.961 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 12:32:56.961 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 12:32:57.503 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 12:34:19.368 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
+2013-03-11 12:34:20.293 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
+2013-03-11 12:34:20.535 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
+2013-03-11 12:34:21.629 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
+2013-03-11 12:34:22.890 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
+2013-03-11 12:34:23.015 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
+2013-03-11 12:41:38.277 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 12:41:40.945 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 12:41:41.153 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 12:41:41.280 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 12:41:41.403 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_3' version 4.6.0
+2013-03-11 12:41:41.519 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:41:41.521 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:41:41.522 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:41:41.523 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:41:41.524 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:41:41.525 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 12:41:42.166 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:41:42.224 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:41:42.255 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:41:42.377 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:41:42.593 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:41:42.694 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 12:41:42.849 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:122 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 12:41:43.161 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 12:41:43.597 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 12:41:44.302 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 12:41:44.426 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 12:41:44.611 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 12:41:44.674 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 12:41:44.917 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 12:41:44.917 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 12:41:44.989 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 12:41:45.040 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:41:45.041 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:41:45.047 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:41:45.086 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:41:45.088 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:41:45.102 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 12:43:09.660 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
+2013-03-11 12:43:10.915 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
+2013-03-11 12:43:10.919 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
+2013-03-11 12:43:10.945 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
+2013-03-11 12:43:11.090 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
+2013-03-11 12:43:11.471 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
+2013-03-11 12:43:15.360 [INFO] com.espertech.esper.core.service.UpdateDispatchFutureSpin:79 - Spin wait timeout exceeded in listener dispatch for statement '21a2401d-1e1e-4256-a499-990930401e87'
+2013-03-11 12:43:15.934 [INFO] com.espertech.esper.core.service.UpdateDispatchFutureSpin:79 - Spin wait timeout exceeded in listener dispatch for statement 'd33e5cda-e24c-4fe8-af27-fdb5bdded2bd'
+2013-03-11 12:44:47.284 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:10:00.0 and 2011-04-15 00:15:00.0
+2013-03-11 12:44:47.839 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:10:00.0 and 2011-04-16 00:15:00.0
+2013-03-11 12:44:47.934 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:10:00.0 and 2011-04-11 00:15:00.0
+2013-03-11 12:44:49.003 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:10:00.0 and 2011-04-13 00:15:00.0
+2013-03-11 12:44:49.531 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:10:00.0 and 2011-04-12 00:15:00.0
+2013-03-11 12:44:50.148 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:10:00.0 and 2011-04-14 00:15:00.0
+2013-03-11 13:02:58.700 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 13:03:07.355 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 13:03:07.715 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 13:03:07.851 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 13:03:07.988 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_3' version 4.6.0
+2013-03-11 13:03:08.130 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 13:03:08.140 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 13:03:08.140 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 13:03:08.141 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 13:03:08.142 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 13:03:08.143 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 13:03:11.179 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:03:11.239 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:03:11.292 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:03:11.337 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:03:11.373 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:03:11.469 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:03:11.475 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:122 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 13:03:12.055 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 13:03:13.672 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 13:03:13.834 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 13:03:13.840 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 13:03:13.844 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 13:03:13.869 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 13:03:13.873 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 13:03:13.938 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 13:03:13.939 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 13:03:13.961 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 13:03:14.229 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 13:03:14.235 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 13:03:14.236 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 13:03:14.464 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 13:03:15.112 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 13:04:37.254 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 13:04:39.985 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 13:04:40.274 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 13:04:40.403 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 13:04:40.528 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_3' version 4.6.0
+2013-03-11 13:04:40.654 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 13:04:40.655 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 13:04:40.655 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 13:04:40.656 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 13:04:40.657 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 13:04:40.657 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:48 - Wait for the initial data base load before streaming..
+2013-03-11 13:04:41.258 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:04:41.287 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:04:41.323 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:04:41.370 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:04:41.526 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:04:41.838 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:04:41.846 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:122 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 13:04:41.932 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 13:04:42.380 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 13:04:42.771 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 13:04:43.444 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 13:04:43.694 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 13:04:44.090 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 13:04:44.396 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 13:04:44.396 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 13:04:44.415 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 13:04:44.448 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 13:04:44.449 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 13:04:44.457 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 13:04:44.460 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 13:04:44.463 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 13:04:44.467 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:51 - Awake!! Starting to streaming now
+2013-03-11 13:06:07.884 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
+2013-03-11 13:07:29.639 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 13:07:32.365 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 13:07:32.618 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 13:07:32.745 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 13:07:32.870 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_3' version 4.6.0
+2013-03-11 13:07:32.996 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 13:07:32.998 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 13:07:32.999 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 13:07:33.000 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 13:07:33.001 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 13:07:33.002 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 13:07:33.592 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:07:33.636 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:07:33.673 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:07:33.756 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:07:33.949 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:07:34.043 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:07:34.054 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:122 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 13:07:34.130 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 13:07:34.935 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 13:07:35.181 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 13:07:35.303 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 13:07:35.829 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 13:07:36.480 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 13:07:36.480 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 13:07:36.481 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 13:07:36.536 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 13:07:36.576 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 13:07:36.742 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 13:07:36.854 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 13:07:36.855 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 13:07:36.859 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 13:07:36.859 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 13:09:04.594 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER' version 4.6.0
+2013-03-11 13:09:07.265 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.6.0
+2013-03-11 13:09:07.530 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.6.0
+2013-03-11 13:09:07.662 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.6.0
+2013-03-11 13:09:07.787 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_3' version 4.6.0
+2013-03-11 13:09:07.913 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 13:09:07.915 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 13:09:07.915 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 13:09:07.916 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 13:09:07.917 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 13:09:07.918 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:47 - Wait for the initial data base load before streaming..
+2013-03-11 13:09:08.532 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:09:08.585 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:09:08.625 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:09:08.672 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:09:08.709 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:09:08.856 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:43 - Connected to MySQL
+2013-03-11 13:09:08.864 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:122 - Reading live data from C:\Users\Usha Sundarajan\Documents\ProjectData\dummy data
+2013-03-11 13:09:08.930 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:66 - Wait for the initial data base load before streaming..
+2013-03-11 13:09:10.061 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-03-11 13:09:10.226 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-03-11 13:09:11.041 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-03-11 13:09:11.138 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-03-11 13:09:11.595 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-03-11 13:09:11.636 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-03-11 13:09:11.636 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:56 - Waking the streamer threads..
+2013-03-11 13:09:11.664 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.LiveStreamer:69 - Awake!! Starting to streaming now
+2013-03-11 13:09:11.673 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 13:09:11.830 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 13:09:11.836 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 13:09:11.862 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 13:09:11.864 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 13:09:11.868 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordStreamer:50 - Awake!! Starting to streaming now
+2013-03-11 13:10:35.852 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:05:00.0 and 2011-04-12 00:10:00.0
+2013-03-11 13:10:36.271 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:05:00.0 and 2011-04-11 00:10:00.0
+2013-03-11 13:10:36.456 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:05:00.0 and 2011-04-13 00:10:00.0
+2013-03-11 13:10:36.883 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:05:00.0 and 2011-04-15 00:10:00.0
+2013-03-11 13:10:36.916 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:05:00.0 and 2011-04-16 00:10:00.0
+2013-03-11 13:10:37.294 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:05:00.0 and 2011-04-14 00:10:00.0
+2013-03-11 13:12:00.676 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:10:00.0 and 2011-04-11 00:15:00.0
+2013-03-11 13:12:01.820 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:10:00.0 and 2011-04-15 00:15:00.0
+2013-03-11 13:12:01.820 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:10:00.0 and 2011-04-12 00:15:00.0
+2013-03-11 13:12:02.207 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:10:00.0 and 2011-04-13 00:15:00.0
+2013-03-11 13:12:02.259 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:10:00.0 and 2011-04-16 00:15:00.0
+2013-03-11 13:12:02.298 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:10:00.0 and 2011-04-14 00:15:00.0
+2013-03-11 13:13:36.606 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:15:00.0 and 2011-04-11 00:20:00.0
+2013-03-11 13:13:42.590 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:15:00.0 and 2011-04-15 00:20:00.0
+2013-03-11 13:13:43.103 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:15:00.0 and 2011-04-13 00:20:00.0
+2013-03-11 13:13:43.772 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:15:00.0 and 2011-04-16 00:20:00.0
+2013-03-11 13:13:43.990 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:15:00.0 and 2011-04-12 00:20:00.0
+2013-03-11 13:13:45.683 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:15:00.0 and 2011-04-14 00:20:00.0
+2013-03-11 13:15:19.766 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:20:00.0 and 2011-04-15 00:25:00.0
+2013-03-11 13:15:19.881 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:20:00.0 and 2011-04-11 00:25:00.0
+2013-03-11 13:15:20.165 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:20:00.0 and 2011-04-12 00:25:00.0
+2013-03-11 13:15:22.159 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:20:00.0 and 2011-04-14 00:25:00.0
+2013-03-11 13:15:22.646 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:20:00.0 and 2011-04-16 00:25:00.0
+2013-03-11 13:15:23.093 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:20:00.0 and 2011-04-13 00:25:00.0
+2013-03-11 13:17:12.210 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-15 00:25:00.0 and 2011-04-15 00:30:00.0
+2013-03-11 13:17:12.765 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-13 00:25:00.0 and 2011-04-13 00:30:00.0
+2013-03-11 13:17:13.057 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-16 00:25:00.0 and 2011-04-16 00:30:00.0
+2013-03-11 13:17:51.022 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-12 00:25:00.0 and 2011-04-12 00:30:00.0
+2013-03-11 13:17:51.203 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-14 00:25:00.0 and 2011-04-14 00:30:00.0
+2013-03-11 13:17:59.807 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:69 - Fetched records between 2011-04-11 00:25:00.0 and 2011-04-11 00:30:00.0

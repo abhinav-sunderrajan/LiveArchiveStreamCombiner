@@ -1,5 +1,8 @@
 package mcomp.dissertation.databse.streamer.listeners;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import mcomp.dissertation.database.streamer.beans.HistoryAggregateBean;
@@ -14,6 +17,8 @@ import com.espertech.esper.client.UpdateListener;
 public class AggregateListener implements UpdateListener {
 
    private EPRuntime cepRT;
+   private int count = 0;
+   private DateFormat df;
 
    /**
     * @param cepRT -- Use this event processing run time service to send the
@@ -21,6 +26,7 @@ public class AggregateListener implements UpdateListener {
     */
    public AggregateListener(final EPRuntime cepRT) {
       this.cepRT = cepRT;
+      this.df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
 
    }
 
@@ -30,7 +36,6 @@ public class AggregateListener implements UpdateListener {
       if (obj instanceof HashMap) {
          HashMap<String, Object> msg = (HashMap<String, Object>) obj;
          if ((Long) msg.get("countRec") > 0) {
-            // System.out.println(msg);
             HistoryAggregateBean aggBean = new HistoryAggregateBean();
             aggBean.setAggregateSpeed((Double) msg.get("avgSpeed"));
             aggBean.setAggregateVolume((Double) msg.get("avgVolume"));
@@ -38,8 +43,14 @@ public class AggregateListener implements UpdateListener {
             aggBean.setMins((Integer) msg.get("mins"));
             aggBean.setHrs((Integer) msg.get("hrs"));
             cepRT.sendEvent(aggBean);
+            count++;
+            // print for evaluation purposes only..
+            // if (count % 1000 == 0) {
+            System.out.println(count + " : " + this.hashCode() + " : "
+                  + df.format(Calendar.getInstance().getTime()) + ":" + msg);
+            // }
+
          }
       }
    }
-
 }
