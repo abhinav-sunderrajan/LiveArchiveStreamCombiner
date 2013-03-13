@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fileset-config file-format-version="1.2.0" simple-config="true" sync-formatter="true">
+  <local-check-config name="LocalChecks" location="internal_config__1362013211159.xml" type="internal" description=""/>
+  <local-check-config name="New CheckStyle" location="internal_config__1362202350589.xml" type="internal" description=""/>
+  <fileset name="all" enabled="true" check-config-name="New CheckStyle" local="true">
+    <file-match-pattern match-pattern="." include-pattern="true"/>
+  </fileset>
+  <filter name="NonSrcDirs" enabled="false"/>
+</fileset-config>
