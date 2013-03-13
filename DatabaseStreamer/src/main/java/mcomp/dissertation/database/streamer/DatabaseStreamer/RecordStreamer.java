@@ -22,6 +22,8 @@ public class RecordStreamer {
    private Runnable runnable;
    private ScheduledExecutorService executor;
    private AtomicInteger streamRate;
+   private static SimpleDateFormat dfLocal = new SimpleDateFormat(
+         "dd-MMM-yyyy HH:mm:ss.SSS");
 
    /**
     * @param buffer
@@ -35,8 +37,6 @@ public class RecordStreamer {
       this.runnable = new Runnable() {
 
          private int count = 0;
-         SimpleDateFormat dfLocal = new SimpleDateFormat(
-               "dd-MMM-yyyy HH:mm:ss.SSS");
 
          public void run() {
 
@@ -54,7 +54,7 @@ public class RecordStreamer {
                }
             }
             while (buffer.isEmpty()) {
-               // Poll till the producer has filled the queue. bad approach will
+               // Poll till the producer has filled the queue. Bad approach will
                // optimize this.
             }
 
@@ -62,7 +62,7 @@ public class RecordStreamer {
             long bucket = history.getLinkId() % cepRTAggregateArray.length;
             cepRTAggregateArray[(int) bucket].sendEvent(history);
             count++;
-            // print for evaluation purposes only..
+            // // print for evaluation purposes only..
             // if (count % 1000 == 0) {
             // System.out.println(count + " " + streamRate.get() + " "
             // + dfLocal.format(Calendar.getInstance().getTime()));
@@ -75,7 +75,7 @@ public class RecordStreamer {
 
    public ScheduledFuture<?> startStreaming() {
       ScheduledFuture<?> archiveFuture = null;
-      archiveFuture = executor.scheduleWithFixedDelay(runnable, 0,
+      archiveFuture = executor.scheduleAtFixedRate(runnable, 0,
             streamRate.get(), TimeUnit.MICROSECONDS);
       return archiveFuture;
 

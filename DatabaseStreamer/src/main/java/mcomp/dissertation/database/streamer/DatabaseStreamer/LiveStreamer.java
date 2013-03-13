@@ -105,8 +105,8 @@ public class LiveStreamer {
 
    public ScheduledFuture<?> startStreaming() {
       ScheduledFuture<?> liveFuture = null;
-      liveFuture = executor.scheduleWithFixedDelay(runnable, 0,
-            streamRate.get(), TimeUnit.MICROSECONDS);
+      liveFuture = executor.scheduleAtFixedRate(runnable, 0, streamRate.get(),
+            TimeUnit.MICROSECONDS);
       return liveFuture;
 
    }

@@ -1,4 +1,4 @@
-package mcomp.dissertation.databse.streamer.listeners;
+package mcomp.dissertation.database.streamer.listenersandsubscribers;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -45,10 +45,10 @@ public class AggregateListener implements UpdateListener {
             cepRT.sendEvent(aggBean);
             count++;
             // print for evaluation purposes only..
-            // if (count % 1000 == 0) {
-            System.out.println(count + " : " + this.hashCode() + " : "
-                  + df.format(Calendar.getInstance().getTime()) + ":" + msg);
-            // }
+            if (count % 1000 == 0) {
+               System.out.println(count + " : " + this.hashCode() + " : "
+                     + df.format(Calendar.getInstance().getTime()) + ":" + msg);
+            }
 
          }
       }

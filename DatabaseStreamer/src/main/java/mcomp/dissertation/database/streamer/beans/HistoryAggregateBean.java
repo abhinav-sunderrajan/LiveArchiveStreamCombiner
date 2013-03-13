@@ -54,20 +54,42 @@ public class HistoryAggregateBean {
       this.linkId = linkId;
    }
 
+   /**
+    * @return the hrs
+    */
+
    public int getHrs() {
       return hrs;
    }
+
+   /**
+    * @param hrs the hrs to set
+    */
 
    public void setHrs(final int hrs) {
       this.hrs = hrs;
    }
 
+   /**
+    * @return the mins
+    */
    public int getMins() {
       return mins;
    }
 
+   /**
+    * @param mins the mins to set
+    */
    public void setMins(final int mins) {
       this.mins = mins;
+   }
+
+   @Override
+   public String toString() {
+
+      return "Speed: " + aggregateSpeed + " Volume: " + aggregateVolume
+            + " at time" + hrs + ":" + mins + " on link " + linkId;
+
    }
 
 }
