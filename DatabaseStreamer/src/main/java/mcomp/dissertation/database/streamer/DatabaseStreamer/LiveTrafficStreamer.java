@@ -79,14 +79,14 @@ public class LiveTrafficStreamer {
                      cepRTJoinArray[(int) bucket].sendEvent(bean);
                      count++;
                      // print for evaluation purposes only..
-                     if (count % 1000 == 0) {
-                        LOGGER.info(count
-                              + " "
-                              + bean.getLinkId()
-                              + " "
-                              + dfLocal
-                                    .format(Calendar.getInstance().getTime()));
-                     }
+                     // if (count % 1000 == 0) {
+                     // LOGGER.info(count
+                     // + " "
+                     // + bean.getLinkId()
+                     // + " "
+                     // + dfLocal
+                     // .format(Calendar.getInstance().getTime()));
+                     // }
                   }
                } catch (EPException e) {
                   LOGGER.error("Error sending event to listener", e);

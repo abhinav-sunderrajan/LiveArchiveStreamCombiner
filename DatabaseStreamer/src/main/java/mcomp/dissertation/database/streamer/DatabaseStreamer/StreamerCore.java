@@ -151,7 +151,12 @@ public final class StreamerCore {
       }
       try {
          StreamerCore streamerCore;
+         SigarSystemMonitor sysMonitor = SigarSystemMonitor.getInstance();
          streamerCore = new StreamerCore(configFilePath, connectionFilePath);
+
+         // Start monitoring the system CPU, memory parameters
+         executor.scheduleAtFixedRate(sysMonitor, 0, 20, TimeUnit.SECONDS);
+
          streamerCore.setUpArchiveStreams();
          LiveTrafficStreamer live = new LiveTrafficStreamer(
                streamerCore.cepRTJoin, streamRate, df, monitor, executor);

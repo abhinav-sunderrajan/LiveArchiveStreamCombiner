@@ -74,6 +74,12 @@
             <artifactId>commons-pool</artifactId>
             <version>1.5.6</version>
         </dependency>
+        <dependency>
+			<groupId>org.fusesource</groupId>
+			<artifactId>sigar</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+            
         
         
         
