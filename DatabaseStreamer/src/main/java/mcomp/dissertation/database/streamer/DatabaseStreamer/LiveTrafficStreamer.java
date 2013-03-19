@@ -25,9 +25,10 @@ import com.espertech.esper.client.EPRuntime;
 /**
  * This thread is responsible for streaming live data from a CSV file.
  */
-public class LiveStreamer {
+public class LiveTrafficStreamer {
 
-   private static final Logger LOGGER = Logger.getLogger(LiveStreamer.class);
+   private static final Logger LOGGER = Logger
+         .getLogger(LiveTrafficStreamer.class);
 
    private File file;
    private BufferedReader br;
@@ -39,14 +40,14 @@ public class LiveStreamer {
 
    /**
     * Initialize and start file streaming.
-    * @param cepRT
+    * @param cepRTJoinArray
     * @param streamRate
     * @param monitor
     * @param executor
     */
-   public LiveStreamer(final EPRuntime cepRT, final AtomicInteger streamRate,
-         final DateFormat df, final Object monitor,
-         final ScheduledExecutorService executor) {
+   public LiveTrafficStreamer(final EPRuntime[] cepRTJoinArray,
+         final AtomicInteger streamRate, final DateFormat df,
+         final Object monitor, final ScheduledExecutorService executor) {
       try {
          this.streamRate = streamRate;
          this.df = df;
@@ -74,17 +75,18 @@ public class LiveStreamer {
                      bean = parseLine(br.readLine());
                      bean.setEventTime(dfLocal.format(Calendar.getInstance()
                            .getTime()));
-                     cepRT.sendEvent(bean);
+                     long bucket = bean.getLinkId() % cepRTJoinArray.length;
+                     cepRTJoinArray[(int) bucket].sendEvent(bean);
                      count++;
                      // print for evaluation purposes only..
-                     // if (count % 1000 == 0) {
-                     // LOGGER.info(count
-                     // + " "
-                     // + streamRate.get()
-                     // + " "
-                     // + dfLocal
-                     // .format(Calendar.getInstance().getTime()));
-                     // }
+                     if (count % 1000 == 0) {
+                        LOGGER.info(count
+                              + " "
+                              + bean.getLinkId()
+                              + " "
+                              + dfLocal
+                                    .format(Calendar.getInstance().getTime()));
+                     }
                   }
                } catch (EPException e) {
                   LOGGER.error("Error sending event to listener", e);

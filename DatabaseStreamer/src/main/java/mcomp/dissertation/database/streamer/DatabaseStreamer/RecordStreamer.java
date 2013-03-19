@@ -24,6 +24,7 @@ public class RecordStreamer {
    private AtomicInteger streamRate;
    private static SimpleDateFormat dfLocal = new SimpleDateFormat(
          "dd-MMM-yyyy HH:mm:ss.SSS");
+   private float streamRateParam;
 
    /**
     * @param buffer
@@ -31,9 +32,11 @@ public class RecordStreamer {
     */
    public RecordStreamer(final ConcurrentLinkedQueue<HistoryBean> buffer,
          final EPRuntime[] cepRTAggregateArray, final Object monitor,
-         final ScheduledExecutorService executor, final AtomicInteger streamRate) {
+         final ScheduledExecutorService executor,
+         final AtomicInteger streamRate, final float streamRateParam) {
       this.executor = executor;
       this.streamRate = streamRate;
+      this.streamRateParam = streamRateParam;
       this.runnable = new Runnable() {
 
          private int count = 0;
@@ -74,9 +77,12 @@ public class RecordStreamer {
    }
 
    public ScheduledFuture<?> startStreaming() {
-      ScheduledFuture<?> archiveFuture = null;
-      archiveFuture = executor.scheduleAtFixedRate(runnable, 0,
-            streamRate.get(), TimeUnit.MICROSECONDS);
+
+      // Drive the archive stream a bit faster than the live to compensate for
+      // the time required for aggregation.
+      ScheduledFuture<?> archiveFuture = executor.scheduleAtFixedRate(runnable,
+            0, (long) (streamRate.get() * streamRateParam),
+            TimeUnit.MICROSECONDS);
       return archiveFuture;
 
    }

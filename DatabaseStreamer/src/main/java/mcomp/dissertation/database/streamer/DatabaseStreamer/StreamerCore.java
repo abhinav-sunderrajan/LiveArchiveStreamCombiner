@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import mcomp.dissertation.database.streamer.beans.HistoryBean;
 import mcomp.dissertation.database.streamer.beans.LiveBean;
 import mcomp.dissertation.database.streamer.listenersandsubscribers.AggregateSubscriber;
-import mcomp.dissertation.database.streamer.listenersandsubscribers.FinalListener;
+import mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber;
 
 import org.apache.log4j.Logger;
 
@@ -33,24 +33,26 @@ import com.espertech.esper.client.EPStatement;
  * the archived streams.
  */
 public final class StreamerCore {
-   private EPServiceProvider cep;
-   private static EPRuntime cepRT;
-   private EPAdministrator cepAdm;
-   private Configuration cepConfig;
-   private static ScheduledExecutorService executor;
    private long startTime;
+   private EPServiceProvider[] cep;
+   private EPAdministrator[] cepAdmJoin;
+   private Configuration[] cepConfigJoin;
+   private EPRuntime[] cepRTJoin;
+   private static ScheduledExecutorService executor;
    private static RecordStreamer[] streamers;
    private static ScheduledFuture<?>[] futures;
    private static Properties connectionProperties;
    private static DateFormat df;
    private static AtomicInteger streamRate;
+   private static long dbLoadRate;
+   private static long windowSize;
    private static Properties configProperties;
    private static int numberOfArchiveStreams;
    private static Object monitor;
    private static final String CONFIG_FILE_PATH = "src/main/resources/config.properties";
    private static final String CONNECTION_FILE_PATH = "src/main/resources/connection.properties";
    private static final int ARCHIVE_STREAM_COUNT = 6;
-   private static final int NUMBER_OF_AGGREGATORS = 4;
+   private static int numberOfOperators;
    private static final Logger LOGGER = Logger.getLogger(StreamerCore.class);
 
    /**
@@ -69,36 +71,51 @@ public final class StreamerCore {
          connectionProperties.load(new FileInputStream(connectionFilePath));
          executor = Executors
                .newScheduledThreadPool(3 * numberOfArchiveStreams);
-         // Esper Configuration
-         cepConfig = new Configuration();
-         cepConfig.getEngineDefaults().getThreading()
-               .setListenerDispatchPreserveOrder(false);
-         cep = EPServiceProviderManager.getProvider("PROVIDER", cepConfig);
-         cepConfig.addEventType("LTALINKBEAN", LiveBean.class.getName());
-         cepConfig.addEventType("ARCHIVEAGGREGATEBEAN",
-               HistoryBean.class.getName());
-         cepConfig.getEngineDefaults().getViewResources().setShareViews(false);
-
-         // End of Esper configuration
-         cepRT = cep.getEPRuntime();
-         cepAdm = cep.getEPAdministrator();
          streamRate = new AtomicInteger(Integer.parseInt(configProperties
                .getProperty("live.stream.rate.in.microsecs")));
+         numberOfOperators = Integer.parseInt(configProperties
+               .getProperty("number.of.operators"));
+         dbLoadRate = (long) (streamRate.get() * 0.03);
+         windowSize = dbLoadRate / 3;
          df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
-         EPStatement cepStatement = cepAdm
-               .createEPL("select live.linkId,live.avgSpeed,live.timeStamp,live.eventTime,"
-                     + "historyAgg.aggregateSpeed,historyAgg.linkId, historyAgg.aggregateVolume from "
-                     + " mcomp.dissertation.database.streamer.beans.LiveBean.std:unique(linkId,timeStamp.getMinutes()) as "
-                     + "live left outer join mcomp.dissertation.database.streamer.beans.HistoryAggregateBean.std:unique(linkId,mins)"
-                     + "as historyAgg where (historyAgg.linkId=live.linkId and"
-                     + " historyAgg.mins=live.timeStamp.getMinutes() "
-                     + " and historyAgg.hrs=live.timeStamp.getHours())");
-         cepStatement.addListener(new FinalListener());
          startTime = df.parse(
                configProperties.getProperty("archive.stream.start.time"))
                .getTime();
          streamers = new RecordStreamer[numberOfArchiveStreams];
          futures = new ScheduledFuture[numberOfArchiveStreams];
+
+         // Instantiate the Esper parameter arrays
+
+         cep = new EPServiceProvider[numberOfOperators];
+         cepAdmJoin = new EPAdministrator[numberOfOperators];
+         cepConfigJoin = new Configuration[numberOfOperators];
+         cepRTJoin = new EPRuntime[numberOfOperators];
+
+         // Begin Esper Configuration for the join.
+         for (int count = 0; count < numberOfOperators; count++) {
+            cepConfigJoin[count] = new Configuration();
+            cepConfigJoin[count].getEngineDefaults().getThreading()
+                  .setListenerDispatchPreserveOrder(false);
+            cep[count] = EPServiceProviderManager.getProvider("JOINPROVIDER_"
+                  + count, cepConfigJoin[count]);
+            cepConfigJoin[count].addEventType("LTALINKBEAN_" + count,
+                  LiveBean.class.getName());
+            cepConfigJoin[count].addEventType("ARCHIVEAGGREGATEBEAN_" + count,
+                  HistoryBean.class.getName());
+            cepConfigJoin[count].getEngineDefaults().getViewResources()
+                  .setShareViews(false);
+            cepRTJoin[count] = cep[count].getEPRuntime();
+            cepAdmJoin[count] = cep[count].getEPAdministrator();
+            EPStatement cepStatement = cepAdmJoin[count]
+                  .createEPL("select live.linkId,live.avgSpeed,live.avgVolume,live.timeStamp,live.eventTime"
+                        + ",historyAgg.linkId,historyAgg.aggregateSpeed,historyAgg.aggregateVolume from "
+                        + " mcomp.dissertation.database.streamer.beans.LiveBean.win:length(20000) as live"
+                        + " , mcomp.dissertation.database.streamer.beans.HistoryAggregateBean.win:length(20000) as historyAgg"
+                        + " where historyAgg.linkId=live.linkId and historyAgg.mins=live.timeStamp.`minutes` and historyAgg.hrs=live.timeStamp.`hours`");
+            // cepStatement.addListener(new FinalListener());
+            cepStatement.setSubscriber(new FinalSubscriber());
+         }
+         // End of Esper configuration for the join
 
       } catch (ParseException e) {
          LOGGER.error(
@@ -136,8 +153,8 @@ public final class StreamerCore {
          StreamerCore streamerCore;
          streamerCore = new StreamerCore(configFilePath, connectionFilePath);
          streamerCore.setUpArchiveStreams();
-         LiveStreamer live = new LiveStreamer(cepRT, streamRate, df, monitor,
-               executor);
+         LiveTrafficStreamer live = new LiveTrafficStreamer(
+               streamerCore.cepRTJoin, streamRate, df, monitor, executor);
          ScheduledFuture<?> liveFuture = live.startStreaming();
          // StreamRateChanger change = new StreamRateChanger(streamRate,
          // streamers, futures, executor, liveFuture, live.getRunnable());
@@ -158,13 +175,13 @@ public final class StreamerCore {
     */
 
    private void setUpArchiveStreams() throws InterruptedException {
-      EPServiceProvider[] cepAggregateArray = new EPServiceProvider[NUMBER_OF_AGGREGATORS];
-      EPRuntime[] cepRTAggregateArray = new EPRuntime[NUMBER_OF_AGGREGATORS];
-      EPAdministrator[] cepAdmAggregateArray = new EPAdministrator[NUMBER_OF_AGGREGATORS];
-      Configuration[] cepConfigAggregateArray = new Configuration[NUMBER_OF_AGGREGATORS];
+      EPServiceProvider[] cepAggregateArray = new EPServiceProvider[numberOfOperators];
+      EPRuntime[] cepRTAggregateArray = new EPRuntime[numberOfOperators];
+      EPAdministrator[] cepAdmAggregateArray = new EPAdministrator[numberOfOperators];
+      Configuration[] cepConfigAggregateArray = new Configuration[numberOfOperators];
 
-      for (int count = 0; count < NUMBER_OF_AGGREGATORS; count++) {
-         // Configuration settings begin
+      // Configuration settings begin for Aggregation
+      for (int count = 0; count < numberOfOperators; count++) {
          cepConfigAggregateArray[count] = new Configuration();
          cepConfigAggregateArray[count].getEngineDefaults().getThreading()
                .setListenerDispatchPreserveOrder(false);
@@ -182,17 +199,21 @@ public final class StreamerCore {
 
          cepAdmAggregateArray[count] = cepAggregateArray[count]
                .getEPAdministrator();
-         // The statement is active on start to deactive call the stop method.
+         // The statement is active on start to deactivate call the stop method.
          EPStatement cepStatementAggregate = cepAdmAggregateArray[count]
                .createEPL("select  COUNT(*) as countRec, avg(volume) as avgVolume, avg(speed) as avgSpeed, linkId,readingMinutes as mins, "
                      + "readingHours as hrs from mcomp.dissertation.database.streamer.beans.HistoryBean.std:groupwin(linkId,readingMinutes,readingHours)"
-                     + ".win:time_length_batch(10 sec,6) group by linkId,readingMinutes,readingHours");
+                     + ".win:time_length_batch("
+                     + windowSize
+                     + "sec,6) group by linkId,readingMinutes,readingHours");
+
          // cepStatementAggregate.addListener(new AggregateListener(cepRT));
 
          // This is an interesting optimization technique listed in the API
          // which
          // directly associates the bean object to the subscriber.
-         cepStatementAggregate.setSubscriber(new AggregateSubscriber(cepRT));
+         cepStatementAggregate
+               .setSubscriber(new AggregateSubscriber(cepRTJoin));
          cepRTAggregateArray[count] = cepAggregateArray[count].getEPRuntime();
 
       }
@@ -214,14 +235,20 @@ public final class StreamerCore {
 
       for (int count = 0; count < numberOfArchiveStreams; count++) {
          streamers[count] = new RecordStreamer(buffer[count],
-               cepRTAggregateArray, monitor, executor, streamRate);
+               cepRTAggregateArray, monitor, executor, streamRate,
+               Float.parseFloat(configProperties
+                     .getProperty("archive.stream.rate.param")));
          futures[count] = streamers[count].startStreaming();
       }
 
       for (int count = 1; count <= numberOfArchiveStreams; count++) {
          RecordLoader loader = new RecordLoader(buffer[count - 1], startTime,
                connectionProperties, monitor, count, numberOfArchiveStreams);
-         executor.scheduleAtFixedRate(loader, 0, 30, TimeUnit.SECONDS);
+
+         // retrieve records from the database for every 30,000 records from the
+         // live stream. This really depends upon the nature of the live
+         // stream..
+         executor.scheduleAtFixedRate(loader, 0, dbLoadRate, TimeUnit.SECONDS);
          // Start the next archive stream for the records exactly a day after
          startTime = startTime + 24 * 3600 * 1000;
 

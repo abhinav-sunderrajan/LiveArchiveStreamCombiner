@@ -2,6 +2,7 @@ package mcomp.dissertation.database.streamer.listenersandsubscribers;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import mcomp.dissertation.database.streamer.beans.LiveBean;
@@ -27,8 +28,10 @@ public class FinalListener implements UpdateListener {
       if (obj instanceof HashMap) {
          HashMap<String, Object> msg = (HashMap<String, Object>) obj;
          count++;
-         // System.out.println(count + ":"
-         // + df.format(Calendar.getInstance().getTime()) + " : " + msg);
+         if (count % 10 == 0) {
+            System.out.println(this.hashCode() + ": " + count + ":"
+                  + df.format(Calendar.getInstance().getTime()) + " : " + msg);
+         }
 
       } else {
          LiveBean stockBean = (LiveBean) obj;

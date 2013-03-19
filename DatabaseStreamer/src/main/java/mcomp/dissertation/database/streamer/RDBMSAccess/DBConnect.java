@@ -20,7 +20,8 @@ public class DBConnect {
    private static final Logger LOGGER = Logger.getLogger(DBConnect.class);
    private static final String TABLE_NAME = "DataArchive";
    private static final String QUERY_STRING = "SELECT LINKID,SPEED,VOLUME,TIME_STAMP FROM "
-         + TABLE_NAME + " WHERE TIME_STAMP >= ? AND TIME_STAMP< ?";
+         + TABLE_NAME
+         + " WHERE TIME_STAMP >= ? AND TIME_STAMP< ? ORDER BY LINKID";
 
    /**
     * @param connectionProperties

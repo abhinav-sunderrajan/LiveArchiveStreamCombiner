@@ -7,7 +7,7 @@ import java.sql.Timestamp;
  */
 public class LiveBean {
 
-   private int linkId;
+   private long linkId;
    private Timestamp timeStamp;
    private float avgSpeed;
    private float avgVolume;
@@ -58,14 +58,14 @@ public class LiveBean {
    /**
     * @return the linkId
     */
-   public int getLinkId() {
+   public long getLinkId() {
       return linkId;
    }
 
    /**
     * @param linkId the linkId to set
     */
-   public void setLinkId(final int linkId) {
+   public void setLinkId(final long linkId) {
       this.linkId = linkId;
    }
 
