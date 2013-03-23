@@ -33,13 +33,10 @@ public class SigarSystemMonitor implements Runnable {
       // sigar.enableLogging(true);
       try {
          cpuinfo = sigar.getCpuInfoList();
-         cpu = sigar.getCpu();
-         mem = sigar.getMem();
          for (int i = 0; i < cpuinfo.length; i++) {
             Map map = cpuinfo[i].toMap();
             LOGGER.info("CPU " + i + ": " + map);
          }
-         LOGGER.info("System RAM available " + mem.getRam());
 
       } catch (SigarException e) {
          LOGGER.error("Error in getting system information from sigar..", e);
@@ -63,8 +60,17 @@ public class SigarSystemMonitor implements Runnable {
 
    public void run() {
 
+      try {
+         cpu = sigar.getCpu();
+         mem = sigar.getMem();
+      } catch (SigarException e) {
+         LOGGER.error("Error in getting system information from sigar..", e);
+      }
+      LOGGER.info("System RAM available " + mem.getRam());
       LOGGER.info("Information about the CPU " + cpu.toMap());
       LOGGER.info("Total memory free " + mem.getActualFree());
       LOGGER.info("Total memory used " + mem.getActualUsed());
+      LOGGER.info("JVM free memory " + Runtime.getRuntime().freeMemory());
+      LOGGER.info("JVM total memory " + Runtime.getRuntime().totalMemory());
    }
 }

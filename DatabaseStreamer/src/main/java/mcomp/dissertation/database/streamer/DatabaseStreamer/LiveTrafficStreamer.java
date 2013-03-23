@@ -71,8 +71,7 @@ public class LiveTrafficStreamer {
                      }
                   }
                   if (br.ready()) {
-                     LiveBean bean;
-                     bean = parseLine(br.readLine());
+                     LiveBean bean = parseLine(br.readLine());
                      bean.setEventTime(dfLocal.format(Calendar.getInstance()
                            .getTime()));
                      long bucket = bean.getLinkId() % cepRTJoinArray.length;

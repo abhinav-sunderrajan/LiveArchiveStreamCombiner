@@ -18,7 +18,6 @@ public class AggregateSubscriber {
 
    private EPRuntime[] cepRTJoinArray;
    private DateFormat df;
-   private HistoryAggregateBean aggBean;
    private int count;
 
    /**
@@ -28,7 +27,6 @@ public class AggregateSubscriber {
    public AggregateSubscriber(final EPRuntime[] cepRT) {
       this.cepRTJoinArray = cepRT;
       this.df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
-      aggBean = new HistoryAggregateBean();
       count = 0;
 
    }
@@ -48,6 +46,7 @@ public class AggregateSubscriber {
          long linkId, Integer mins, Integer hrs) {
 
       if (!(avgVolume == null || avgSpeed == null)) {
+         HistoryAggregateBean aggBean = new HistoryAggregateBean();
          aggBean.setAggregateSpeed(avgSpeed);
          aggBean.setAggregateVolume(avgVolume);
          aggBean.setLinkId(linkId);

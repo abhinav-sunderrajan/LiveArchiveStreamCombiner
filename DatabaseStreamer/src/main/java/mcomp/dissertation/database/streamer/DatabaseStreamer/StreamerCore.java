@@ -34,7 +34,7 @@ import com.espertech.esper.client.EPStatement;
  */
 public final class StreamerCore {
    private long startTime;
-   private EPServiceProvider[] cep;
+   private EPServiceProvider[] cepJoin;
    private EPAdministrator[] cepAdmJoin;
    private Configuration[] cepConfigJoin;
    private EPRuntime[] cepRTJoin;
@@ -86,7 +86,7 @@ public final class StreamerCore {
 
          // Instantiate the Esper parameter arrays
 
-         cep = new EPServiceProvider[numberOfOperators];
+         cepJoin = new EPServiceProvider[numberOfOperators];
          cepAdmJoin = new EPAdministrator[numberOfOperators];
          cepConfigJoin = new Configuration[numberOfOperators];
          cepRTJoin = new EPRuntime[numberOfOperators];
@@ -96,22 +96,22 @@ public final class StreamerCore {
             cepConfigJoin[count] = new Configuration();
             cepConfigJoin[count].getEngineDefaults().getThreading()
                   .setListenerDispatchPreserveOrder(false);
-            cep[count] = EPServiceProviderManager.getProvider("JOINPROVIDER_"
-                  + count, cepConfigJoin[count]);
+            cepJoin[count] = EPServiceProviderManager.getProvider(
+                  "JOINPROVIDER_" + count, cepConfigJoin[count]);
             cepConfigJoin[count].addEventType("LTALINKBEAN_" + count,
                   LiveBean.class.getName());
             cepConfigJoin[count].addEventType("ARCHIVEAGGREGATEBEAN_" + count,
                   HistoryBean.class.getName());
             cepConfigJoin[count].getEngineDefaults().getViewResources()
                   .setShareViews(false);
-            cepRTJoin[count] = cep[count].getEPRuntime();
-            cepAdmJoin[count] = cep[count].getEPAdministrator();
+            cepRTJoin[count] = cepJoin[count].getEPRuntime();
+            cepAdmJoin[count] = cepJoin[count].getEPAdministrator();
             EPStatement cepStatement = cepAdmJoin[count]
                   .createEPL("select live.linkId,live.avgSpeed,live.avgVolume,live.timeStamp,live.eventTime"
                         + ",historyAgg.linkId,historyAgg.aggregateSpeed,historyAgg.aggregateVolume from "
-                        + " mcomp.dissertation.database.streamer.beans.LiveBean.win:length(20000) as live"
-                        + " , mcomp.dissertation.database.streamer.beans.HistoryAggregateBean.win:length(20000) as historyAgg"
-                        + " where historyAgg.linkId=live.linkId and historyAgg.mins=live.timeStamp.`minutes` and historyAgg.hrs=live.timeStamp.`hours`");
+                        + " mcomp.dissertation.database.streamer.beans.LiveBean.std:unique(linkId,timeStamp.`minutes`).win:expr(current_count>1) as live"
+                        + " left outer join mcomp.dissertation.database.streamer.beans.HistoryAggregateBean.win:length(15000) as historyAgg"
+                        + "  on historyAgg.linkId=live.linkId and historyAgg.mins=live.timeStamp.`minutes` and historyAgg.hrs=live.timeStamp.`hours`");
             // cepStatement.addListener(new FinalListener());
             cepStatement.setSubscriber(new FinalSubscriber());
          }
