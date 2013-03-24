@@ -19,7 +19,7 @@ public class DBConnect {
    private Connection connect = null;
    private static final Logger LOGGER = Logger.getLogger(DBConnect.class);
    private static final String TABLE_NAME = "DataArchive";
-   private static final String QUERY_STRING = "SELECT LINKID,SPEED,VOLUME,TIME_STAMP FROM "
+   private static final String SELECT_QUERY = "SELECT LINKID,SPEED,VOLUME,TIME_STAMP FROM "
          + TABLE_NAME
          + " WHERE TIME_STAMP >= ? AND TIME_STAMP< ? ORDER BY LINKID";
 
@@ -62,7 +62,7 @@ public class DBConnect {
          final Timestamp end) throws SQLException {
       ResultSet rs = null;
       PreparedStatement preparedStatement = (PreparedStatement) connect
-            .prepareStatement(QUERY_STRING);
+            .prepareStatement(SELECT_QUERY);
       try {
          preparedStatement.setTimestamp(1, start);
          preparedStatement.setTimestamp(2, end);
@@ -73,5 +73,41 @@ public class DBConnect {
 
       }
       return rs;
+   }
+
+   /**
+    * 
+    * @param timestamps
+    * @return ResultSet
+    * @throws SQLException
+    */
+   public ResultSet retrieveAggregates(final Timestamp[] timestamps)
+         throws SQLException {
+      ResultSet rs = null;
+      StringBuffer temp = new StringBuffer("");
+      for (int count = 0; count < timestamps.length; count++) {
+         if (count == (timestamps.length - 1)) {
+            temp.append("?");
+         } else {
+            temp.append("?,");
+         }
+      }
+      String aggregateQuery = "SELECT LINKID,AVG(SPEED),AVG(VOLUME) FROM "
+            + TABLE_NAME + " WHERE TIME_STAMP IN(" + temp + ") GROUP BY LINKID";
+      PreparedStatement preparedStatement = (PreparedStatement) connect
+            .prepareStatement(aggregateQuery);
+      try {
+         for (int count = 0; count < timestamps.length; count++) {
+            preparedStatement.setTimestamp(count + 1, timestamps[count]);
+         }
+         rs = preparedStatement.executeQuery();
+         LOGGER.info("Fetched records between " + timestamps[0] + " and "
+               + timestamps[timestamps.length - 1]);
+      } catch (SQLException e) {
+         LOGGER.error("Unable to retreive records", e);
+
+      }
+      return rs;
+
    }
 }

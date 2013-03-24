@@ -82,6 +82,8 @@ public class LiveTrafficStreamer {
                      // LOGGER.info(count
                      // + " "
                      // + bean.getLinkId()
+                     // + " at "
+                     // + bean.getTimeStamp().getMinutes()
                      // + " "
                      // + dfLocal
                      // .format(Calendar.getInstance().getTime()));

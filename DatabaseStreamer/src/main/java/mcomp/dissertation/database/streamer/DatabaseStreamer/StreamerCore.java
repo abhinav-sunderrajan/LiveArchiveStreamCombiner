@@ -14,6 +14,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import mcomp.dissertation.database.streamer.beans.HistoryAggregateBean;
 import mcomp.dissertation.database.streamer.beans.HistoryBean;
 import mcomp.dissertation.database.streamer.beans.LiveBean;
 import mcomp.dissertation.database.streamer.listenersandsubscribers.AggregateSubscriber;
@@ -101,7 +102,7 @@ public final class StreamerCore {
             cepConfigJoin[count].addEventType("LTALINKBEAN_" + count,
                   LiveBean.class.getName());
             cepConfigJoin[count].addEventType("ARCHIVEAGGREGATEBEAN_" + count,
-                  HistoryBean.class.getName());
+                  HistoryAggregateBean.class.getName());
             cepConfigJoin[count].getEngineDefaults().getViewResources()
                   .setShareViews(false);
             cepRTJoin[count] = cepJoin[count].getEPRuntime();
@@ -109,7 +110,7 @@ public final class StreamerCore {
             EPStatement cepStatement = cepAdmJoin[count]
                   .createEPL("select live.linkId,live.avgSpeed,live.avgVolume,live.timeStamp,live.eventTime"
                         + ",historyAgg.linkId,historyAgg.aggregateSpeed,historyAgg.aggregateVolume from "
-                        + " mcomp.dissertation.database.streamer.beans.LiveBean.std:unique(linkId,timeStamp.`minutes`).win:expr(current_count>1) as live"
+                        + " mcomp.dissertation.database.streamer.beans.LiveBean.win:length(10000) as live"
                         + " left outer join mcomp.dissertation.database.streamer.beans.HistoryAggregateBean.win:length(15000) as historyAgg"
                         + "  on historyAgg.linkId=live.linkId and historyAgg.mins=live.timeStamp.`minutes` and historyAgg.hrs=live.timeStamp.`hours`");
             // cepStatement.addListener(new FinalListener());
