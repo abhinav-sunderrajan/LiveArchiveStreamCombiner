@@ -4,10 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Properties;
-import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect;
 import mcomp.dissertation.database.streamer.beans.HistoryBean;
 
 import org.apache.log4j.Logger;
@@ -16,44 +14,39 @@ import org.apache.log4j.Logger;
  * This class is responsible for loading an optimal number of records to the
  * buffer for streaming.
  */
-public class RecordLoader implements Runnable {
-   private Queue<HistoryBean> buffer;
+public class RecordLoader<T> extends AbstractLoader<T> {
    private Timestamp startTime;
    private Timestamp endTime;
-   private DBConnect dbconnect;
    private int loopCount;
    private int numberOfArchiveStreams;
-   private Object monitor;
    private static final Logger LOGGER = Logger.getLogger(RecordLoader.class);
-   private static final long REFRESH_INTERVAL = 300000;
-   private static int flag = 0;
 
    /**
     * @param buffer
     * @param startTime
     * @param connectionProperties
     */
-   public RecordLoader(final ConcurrentLinkedQueue<HistoryBean> buffer,
+   public RecordLoader(final ConcurrentLinkedQueue<T> buffer,
          final long startTime, final Properties connectionProperties,
          final Object monitor, final int loopCount,
          final int numberofArchiveStreams) {
-      this.buffer = buffer;
+      super(buffer, connectionProperties, monitor);
       this.startTime = new Timestamp(startTime);
       this.endTime = new Timestamp(startTime + REFRESH_INTERVAL);
-      dbconnect = new DBConnect();
-      dbconnect.openDBConnection(connectionProperties);
-      this.monitor = monitor;
       this.loopCount = loopCount;
       this.numberOfArchiveStreams = numberofArchiveStreams;
 
    }
 
+   @SuppressWarnings("unchecked")
    public void run() {
       try {
-         ResultSet rs = dbconnect.retrieveWithinTimeStamp(startTime, endTime);
-         if (loopCount == numberOfArchiveStreams && flag == 0) {
+         ResultSet rs = getDBConnection().retrieveWithinTimeStamp(startTime,
+               endTime);
+         if (loopCount == numberOfArchiveStreams && wakeFlag) {
             synchronized (monitor) {
                LOGGER.info("Waking the streamer threads..");
+               Thread.sleep(1000);
                monitor.notifyAll();
             }
          }
@@ -63,7 +56,7 @@ public class RecordLoader implements Runnable {
             float speed = rs.getFloat(2);
             int volume = rs.getInt(3);
             Timestamp ts = rs.getTimestamp(4);
-            buffer.add(new HistoryBean(volume, speed, linkID, ts));
+            getBuffer().add((T) new HistoryBean(volume, speed, linkID, ts));
          }
 
          // Update the time stamps for the next fetch.
@@ -71,10 +64,12 @@ public class RecordLoader implements Runnable {
          long end = endTime.getTime() + REFRESH_INTERVAL;
          startTime = new Timestamp(start);
          endTime = new Timestamp(end);
-         flag++;
+         wakeFlag = false;
       } catch (SQLException e) {
          LOGGER.error("Error accessing the database to retrieve archived data",
                e);
+      } catch (InterruptedException e) {
+         LOGGER.error("Error waking the sleeping threads", e);
       }
 
    }

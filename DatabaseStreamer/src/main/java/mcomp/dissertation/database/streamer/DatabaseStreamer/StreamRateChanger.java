@@ -10,14 +10,15 @@ public class StreamRateChanger implements Runnable {
 
    private AtomicInteger streamRate;
    private Random random;
-   private RecordStreamer[] streamers;
+   private GenericArchiveStreamer[] streamers;
    private ScheduledFuture<?>[] futures;
    private ScheduledExecutorService executor;
    private ScheduledFuture<?> liveFuture;
    private Runnable liveRunnable;
 
    public StreamRateChanger(final AtomicInteger streamRate,
-         final RecordStreamer[] streamers, final ScheduledFuture<?>[] futures,
+         final GenericArchiveStreamer[] streamers,
+         final ScheduledFuture<?>[] futures,
          final ScheduledExecutorService executor,
          final ScheduledFuture<?> liveFuture, final Runnable liveRunnable) {
       this.streamRate = streamRate;
@@ -43,9 +44,8 @@ public class StreamRateChanger implements Runnable {
 
       for (int count = 0; count < streamers.length; count++) {
          futures[count].cancel(true);
-         futures[count] = executor.scheduleWithFixedDelay(
-               streamers[count].getRunnable(), 0, streamRate.get() / 2,
-               TimeUnit.MICROSECONDS);
+         futures[count] = executor.scheduleWithFixedDelay(streamers[count], 0,
+               streamRate.get() / 2, TimeUnit.MICROSECONDS);
 
       }
    }

@@ -30,7 +30,7 @@ public class DBConnect {
       if (connectionProperties.getProperty("database.vendor").equalsIgnoreCase(
             "MySQL")) {
 
-         String url = "jdbc:mysql://localhost:3306/";
+         String url = connectionProperties.getProperty("database.url");
          String dbName = connectionProperties.getProperty("database.name");
          String driver = "com.mysql.jdbc.Driver";
          String userName = connectionProperties
@@ -93,7 +93,8 @@ public class DBConnect {
          }
       }
       String aggregateQuery = "SELECT LINKID,AVG(SPEED),AVG(VOLUME) FROM "
-            + TABLE_NAME + " WHERE TIME_STAMP IN(" + temp + ") GROUP BY LINKID";
+            + TABLE_NAME + " WHERE TIME_STAMP IN(" + temp
+            + ") GROUP BY LINKID ORDER BY LINKID";
       PreparedStatement preparedStatement = (PreparedStatement) connect
             .prepareStatement(aggregateQuery);
       try {

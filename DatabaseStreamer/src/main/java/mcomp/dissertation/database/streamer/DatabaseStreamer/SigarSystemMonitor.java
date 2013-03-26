@@ -24,13 +24,14 @@ public class SigarSystemMonitor implements Runnable {
    private static SigarSystemMonitor instance;
    private static final Logger LOGGER = Logger
          .getLogger(SigarSystemMonitor.class);
+   private SysInfoDisplay display;
 
    /**
     * private constructor singleton pattern
     */
    private SigarSystemMonitor() {
       sigar = new Sigar();
-      // sigar.enableLogging(true);
+      display = new SysInfoDisplay("System Parameters");
       try {
          cpuinfo = sigar.getCpuInfoList();
          for (int i = 0; i < cpuinfo.length; i++) {
@@ -66,11 +67,17 @@ public class SigarSystemMonitor implements Runnable {
       } catch (SigarException e) {
          LOGGER.error("Error in getting system information from sigar..", e);
       }
+      long actualFree = mem.getActualFree();
+      long actualUsed = mem.getActualUsed();
+      long jvmFree = Runtime.getRuntime().freeMemory();
+      long jvmTotal = Runtime.getRuntime().totalMemory();
+      display.refreshDisplayValues(mem.getFreePercent(),
+            ((jvmFree * 100.0) / jvmTotal), (cpu.getSys() / 100000.0));
       LOGGER.info("System RAM available " + mem.getRam());
       LOGGER.info("Information about the CPU " + cpu.toMap());
-      LOGGER.info("Total memory free " + mem.getActualFree());
-      LOGGER.info("Total memory used " + mem.getActualUsed());
-      LOGGER.info("JVM free memory " + Runtime.getRuntime().freeMemory());
-      LOGGER.info("JVM total memory " + Runtime.getRuntime().totalMemory());
+      LOGGER.info("Total memory free " + actualFree);
+      LOGGER.info("Total memory used " + actualUsed);
+      LOGGER.info("JVM free memory " + jvmFree);
+      LOGGER.info("JVM total memory " + jvmTotal);
    }
 }

@@ -4,23 +4,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Properties;
-import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect;
 import mcomp.dissertation.database.streamer.beans.HistoryAggregateBean;
 
 import org.apache.log4j.Logger;
 
-public class RecordLoader2 implements Runnable {
+public class RecordLoaderAggregate<T> extends AbstractLoader<T> {
 
-   private Queue<HistoryAggregateBean> buffer;
    private Timestamp[] startTimes;
-   private DBConnect dbconnect;
-   private Object monitor;
-   private boolean wakeFlag;
    private static final Logger LOGGER = Logger.getLogger(RecordLoader.class);
-   private static final long REFRESH_INTERVAL = 300000;
 
    /**
     * 
@@ -29,29 +22,25 @@ public class RecordLoader2 implements Runnable {
     * @param connectionProperties
     * @param monitor
     */
-   public RecordLoader2(
-         final ConcurrentLinkedQueue<HistoryAggregateBean> buffer,
+   public RecordLoaderAggregate(final ConcurrentLinkedQueue<T> buffer,
          final Timestamp[] startTimes, final Properties connectionProperties,
          final Object monitor) {
-      this.buffer = buffer;
+      super(buffer, connectionProperties, monitor);
       this.startTimes = startTimes;
-      dbconnect = new DBConnect();
-      dbconnect.openDBConnection(connectionProperties);
-      this.monitor = monitor;
-      this.wakeFlag = true;
 
    }
 
    @SuppressWarnings("deprecation")
    public void run() {
       try {
-         ResultSet rs = dbconnect.retrieveAggregates(startTimes);
+         ResultSet rs = getDBConnection().retrieveAggregates(startTimes);
 
          // The stream threads need to woken up only for the first database
          // load..
          if (wakeFlag) {
             synchronized (monitor) {
                LOGGER.info("Waking the streamer threads..");
+               Thread.sleep(1000);
                monitor.notifyAll();
             }
          }
@@ -63,7 +52,7 @@ public class RecordLoader2 implements Runnable {
             bean.setAggregateVolume(rs.getInt(3));
             bean.setMins(startTimes[0].getMinutes());
             bean.setHrs(startTimes[0].getHours());
-            buffer.add(bean);
+            getBuffer().add((T) bean);
          }
 
          // Update the time stamps for the next fetch.
@@ -75,6 +64,8 @@ public class RecordLoader2 implements Runnable {
       } catch (SQLException e) {
          LOGGER.error("Error accessing the database to retrieve archived data",
                e);
+      } catch (InterruptedException e) {
+         LOGGER.error("Error while waiting for initial database load..", e);
       }
 
    }

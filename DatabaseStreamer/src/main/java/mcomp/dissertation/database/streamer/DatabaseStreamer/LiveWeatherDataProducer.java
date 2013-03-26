@@ -47,7 +47,7 @@ public class LiveWeatherDataProducer {
 
    /**
     * 
-    * @param buffer
+    * @param buffer1
     * @param cepRTAggregateArray
     * @param monitor
     * @param executor

@@ -3,6 +3,7 @@ package mcomp.dissertation.database.streamer.DatabaseStreamer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -40,7 +41,7 @@ public final class StreamerCore {
    private Configuration[] cepConfigJoin;
    private EPRuntime[] cepRTJoin;
    private static ScheduledExecutorService executor;
-   private static RecordStreamer[] streamers;
+   private GenericArchiveStreamer[] streamers;
    private static ScheduledFuture<?>[] futures;
    private static Properties connectionProperties;
    private static DateFormat df;
@@ -82,7 +83,7 @@ public final class StreamerCore {
          startTime = df.parse(
                configProperties.getProperty("archive.stream.start.time"))
                .getTime();
-         streamers = new RecordStreamer[numberOfArchiveStreams];
+         streamers = new GenericArchiveStreamer[numberOfArchiveStreams];
          futures = new ScheduledFuture[numberOfArchiveStreams];
 
          // Instantiate the Esper parameter arrays
@@ -108,10 +109,8 @@ public final class StreamerCore {
             cepRTJoin[count] = cepJoin[count].getEPRuntime();
             cepAdmJoin[count] = cepJoin[count].getEPAdministrator();
             EPStatement cepStatement = cepAdmJoin[count]
-                  .createEPL("select live.linkId,live.avgSpeed,live.avgVolume,live.timeStamp,live.eventTime"
-                        + ",historyAgg.linkId,historyAgg.aggregateSpeed,historyAgg.aggregateVolume from "
-                        + " mcomp.dissertation.database.streamer.beans.LiveBean.win:length(10000) as live"
-                        + " left outer join mcomp.dissertation.database.streamer.beans.HistoryAggregateBean.win:length(15000) as historyAgg"
+                  .createEPL("select * from  mcomp.dissertation.database.streamer.beans.LiveBean.win:length(10000) as live"
+                        + " left outer join mcomp.dissertation.database.streamer.beans.HistoryAggregateBean.win:length(25000) as historyAgg"
                         + "  on historyAgg.linkId=live.linkId and historyAgg.mins=live.timeStamp.`minutes` and historyAgg.hrs=live.timeStamp.`hours`");
             // cepStatement.addListener(new FinalListener());
             cepStatement.setSubscriber(new FinalSubscriber());
@@ -156,11 +155,19 @@ public final class StreamerCore {
          streamerCore = new StreamerCore(configFilePath, connectionFilePath);
 
          // Start monitoring the system CPU, memory parameters
-         executor.scheduleAtFixedRate(sysMonitor, 0, 20, TimeUnit.SECONDS);
+         executor.scheduleAtFixedRate(sysMonitor, 0, 60, TimeUnit.SECONDS);
+         if (Integer.parseInt(configProperties
+               .getProperty("archive.data.option")) == 1) {
+            LOGGER.info("Creating esper aggregating operator array. MODE 1");
+            streamerCore.setUpArchiveSubStreams();
+         } else {
+            LOGGER.info("Aggregating archive data in the database itself. MODE 2");
+            streamerCore.setUpAggregatedArchiveStream();
+         }
 
-         streamerCore.setUpArchiveStreams();
          LiveTrafficStreamer live = new LiveTrafficStreamer(
-               streamerCore.cepRTJoin, streamRate, df, monitor, executor);
+               streamerCore.cepRTJoin, streamRate, df, monitor, executor,
+               configProperties.getProperty("traffic.live.data.folder"));
          ScheduledFuture<?> liveFuture = live.startStreaming();
          // StreamRateChanger change = new StreamRateChanger(streamRate,
          // streamers, futures, executor, liveFuture, live.getRunnable());
@@ -173,14 +180,14 @@ public final class StreamerCore {
    }
 
    /**
-    * This section is responsible for the settings to aggregate all the archived
-    * sub data streams to create a single stream consisting of the average of
-    * all.Create separate Esper aggregate listener for all archive sub streams
-    * streams. This is not be confused with the instance variable settings which
-    * finally combines the live stream with the the aggregate stream.
+    * 
+    * @throws InterruptedException There are tow modes of running the program as
+    * configured in the properties file. This option creates an array of
+    * operators to aggregate all the archive sub-streams to produce a single
+    * archive stream to be joined with the live stream.
     */
 
-   private void setUpArchiveStreams() throws InterruptedException {
+   private void setUpArchiveSubStreams() throws InterruptedException {
       EPServiceProvider[] cepAggregateArray = new EPServiceProvider[numberOfOperators];
       EPRuntime[] cepRTAggregateArray = new EPRuntime[numberOfOperators];
       EPAdministrator[] cepAdmAggregateArray = new EPAdministrator[numberOfOperators];
@@ -214,10 +221,6 @@ public final class StreamerCore {
                      + "sec,6) group by linkId,readingMinutes,readingHours");
 
          // cepStatementAggregate.addListener(new AggregateListener(cepRT));
-
-         // This is an interesting optimization technique listed in the API
-         // which
-         // directly associates the bean object to the subscriber.
          cepStatementAggregate
                .setSubscriber(new AggregateSubscriber(cepRTJoin));
          cepRTAggregateArray[count] = cepAggregateArray[count].getEPRuntime();
@@ -240,16 +243,17 @@ public final class StreamerCore {
       // threads are waiting on the last loader thread.
 
       for (int count = 0; count < numberOfArchiveStreams; count++) {
-         streamers[count] = new RecordStreamer(buffer[count],
-               cepRTAggregateArray, monitor, executor, streamRate,
-               Float.parseFloat(configProperties
+         streamers[count] = new GenericArchiveStreamer<HistoryBean>(
+               buffer[count], cepRTAggregateArray, monitor, executor,
+               streamRate, Float.parseFloat(configProperties
                      .getProperty("archive.stream.rate.param")));
          futures[count] = streamers[count].startStreaming();
       }
 
       for (int count = 1; count <= numberOfArchiveStreams; count++) {
-         RecordLoader loader = new RecordLoader(buffer[count - 1], startTime,
-               connectionProperties, monitor, count, numberOfArchiveStreams);
+         AbstractLoader<HistoryBean> loader = new RecordLoader<HistoryBean>(
+               buffer[count - 1], startTime, connectionProperties, monitor,
+               count, numberOfArchiveStreams);
 
          // retrieve records from the database for every 30,000 records from the
          // live stream. This really depends upon the nature of the live
@@ -261,4 +265,39 @@ public final class StreamerCore {
       }
 
    }
+
+   /**
+    * This section contains the code for running the program in the second mode
+    * where the burden of aggregating the archive data is pushed to the
+    * database. Hence there are no aggregating Esper operators. The main
+    * aggregated archive data stream is directly joined with the live stream.
+    * @throws InterruptedException
+    */
+
+   @SuppressWarnings("rawtypes")
+   private void setUpAggregatedArchiveStream() throws InterruptedException {
+      ConcurrentLinkedQueue<HistoryAggregateBean> buffer = new ConcurrentLinkedQueue<HistoryAggregateBean>();
+      GenericArchiveStreamer streamer;
+      ScheduledFuture<?> future;
+      Timestamp[] ts = new Timestamp[numberOfArchiveStreams];
+      for (int count = 0; count < numberOfArchiveStreams; count++) {
+         ts[count] = new Timestamp(startTime);
+         startTime = startTime + 24 * 3600 * 1000;
+      }
+
+      streamer = new GenericArchiveStreamer<HistoryAggregateBean>(buffer,
+            cepRTJoin, monitor, executor, streamRate,
+            Float.parseFloat(configProperties
+                  .getProperty("archive.stream.rate.param")));
+      future = streamer.startStreaming();
+
+      // retrieve records from the database for every 25,000 records from the
+      // live stream. This really depends upon the nature of the live
+      // stream..
+      AbstractLoader<HistoryAggregateBean> loader = new RecordLoaderAggregate<HistoryAggregateBean>(
+            buffer, ts, connectionProperties, monitor);
+      executor.scheduleAtFixedRate(loader, 0, dbLoadRate, TimeUnit.SECONDS);
+
+   }
+
 }

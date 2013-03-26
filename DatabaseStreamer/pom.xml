@@ -79,12 +79,11 @@
 			<artifactId>sigar</artifactId>
 			<version>1.6.4</version>
 		</dependency>
-            
-        
-        
-        
-        
-        
+       <dependency>
+		<groupId>org.jfree</groupId>
+		<artifactId>jfreechart</artifactId>
+		<version>1.0.14</version>
+	</dependency>
     </dependencies>
     
     <name>Database Streamer</name>

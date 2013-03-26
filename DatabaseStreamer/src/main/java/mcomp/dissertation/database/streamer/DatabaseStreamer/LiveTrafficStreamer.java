@@ -37,20 +37,25 @@ public class LiveTrafficStreamer {
    private DateFormat dfLocal;
    private ScheduledExecutorService executor;
    private Runnable runnable;
+   private String folderLocation;
 
    /**
-    * Initialize and start file streaming.
+    * 
     * @param cepRTJoinArray
     * @param streamRate
+    * @param df
     * @param monitor
     * @param executor
+    * @param folderLocation
     */
    public LiveTrafficStreamer(final EPRuntime[] cepRTJoinArray,
          final AtomicInteger streamRate, final DateFormat df,
-         final Object monitor, final ScheduledExecutorService executor) {
+         final Object monitor, final ScheduledExecutorService executor,
+         final String folderLocation) {
       try {
          this.streamRate = streamRate;
          this.df = df;
+         this.folderLocation = folderLocation;
          this.dfLocal = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
          this.file = readLTALinkData();
          this.br = new BufferedReader(new FileReader(file));
@@ -120,8 +125,7 @@ public class LiveTrafficStreamer {
     * @throws Exception
     */
    private File readLTALinkData() throws Exception {
-      File dir = new File(
-            "C:\\Users\\Usha Sundarajan\\Documents\\ProjectData\\dummy data\\");
+      File dir = new File(folderLocation);
       LOGGER.info("Reading live data from " + dir.getAbsolutePath());
       File[] files = dir.listFiles(new FileFilter() {
 
