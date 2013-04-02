@@ -1,6 +1,5 @@
 package mcomp.dissertation.database.streamer.DatabaseStreamer;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -27,7 +26,6 @@ public class GenericArchiveStreamer<T> implements Runnable {
          .getLogger(GenericArchiveStreamer.class);
    private Queue<T> buffer;
    private EPRuntime[] cepRTArray;
-   private DateFormat dfLocal;
 
    /**
     * 
@@ -47,7 +45,7 @@ public class GenericArchiveStreamer<T> implements Runnable {
       this.executor = executor;
       this.streamRate = streamRate;
       this.streamRateSpeedUp = streamRateSpeedUp;
-      this.dfLocal = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
+      new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
 
    }
 
@@ -80,18 +78,12 @@ public class GenericArchiveStreamer<T> implements Runnable {
       }
 
       if (obj instanceof HistoryAggregateBean) {
-         long bucket = ((HistoryAggregateBean) obj).getLinkId()
-               % cepRTArray.length;
+         HistoryAggregateBean bean = (HistoryAggregateBean) obj;
+         long linkId = bean.getLinkId();
+         long bucket = linkId % cepRTArray.length;
          cepRTArray[(int) bucket].sendEvent(obj);
          count++;
-
       }
-
-      // print for evaluation purposes only..
-      // if (count % 1000 == 0) {
-      // System.out.println(count + " "
-      // + dfLocal.format(Calendar.getInstance().getTime()));
-      // }
 
    }
 

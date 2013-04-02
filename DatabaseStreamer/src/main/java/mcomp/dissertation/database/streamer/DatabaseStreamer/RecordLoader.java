@@ -22,15 +22,20 @@ public class RecordLoader<T> extends AbstractLoader<T> {
    private static final Logger LOGGER = Logger.getLogger(RecordLoader.class);
 
    /**
+    * 
     * @param buffer
     * @param startTime
     * @param connectionProperties
+    * @param monitor
+    * @param loopCount
+    * @param numberofArchiveStreams
+    * @param streamOption
     */
    public RecordLoader(final ConcurrentLinkedQueue<T> buffer,
          final long startTime, final Properties connectionProperties,
          final Object monitor, final int loopCount,
-         final int numberofArchiveStreams) {
-      super(buffer, connectionProperties, monitor);
+         final int numberofArchiveStreams, final int streamOption) {
+      super(buffer, connectionProperties, monitor, streamOption);
       this.startTime = new Timestamp(startTime);
       this.endTime = new Timestamp(startTime + REFRESH_INTERVAL);
       this.loopCount = loopCount;
@@ -41,8 +46,7 @@ public class RecordLoader<T> extends AbstractLoader<T> {
    @SuppressWarnings("unchecked")
    public void run() {
       try {
-         ResultSet rs = getDBConnection().retrieveWithinTimeStamp(startTime,
-               endTime);
+         ResultSet rs = dbconnect.retrieveWithinTimeStamp(startTime, endTime);
          if (loopCount == numberOfArchiveStreams && wakeFlag) {
             synchronized (monitor) {
                LOGGER.info("Waking the streamer threads..");

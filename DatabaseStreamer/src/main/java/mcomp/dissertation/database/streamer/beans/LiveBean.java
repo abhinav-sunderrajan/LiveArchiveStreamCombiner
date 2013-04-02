@@ -1,12 +1,17 @@
 package mcomp.dissertation.database.streamer.beans;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Bean class representing the LTA link data.
  */
-public class LiveBean {
+public class LiveBean implements Serializable {
 
+   /**
+    * 
+    */
+   private static final long serialVersionUID = -4587597987898786283L;
    private long linkId;
    private Timestamp timeStamp;
    private float avgSpeed;

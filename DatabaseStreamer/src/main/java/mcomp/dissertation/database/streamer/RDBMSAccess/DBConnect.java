@@ -17,16 +17,29 @@ import com.mysql.jdbc.PreparedStatement;
 public class DBConnect {
 
    private Connection connect = null;
+   private Object lock;
    private static final Logger LOGGER = Logger.getLogger(DBConnect.class);
-   private static final String TABLE_NAME = "DataArchive";
+   private static final String TABLE_NAME = "dataarchive";
    private static final String SELECT_QUERY = "SELECT LINKID,SPEED,VOLUME,TIME_STAMP FROM "
          + TABLE_NAME
          + " WHERE TIME_STAMP >= ? AND TIME_STAMP< ? ORDER BY LINKID";
 
    /**
-    * @param connectionProperties
+    * The lock for synchronization of ping and retrieve and records
+    * @param lock
     */
-   public void openDBConnection(final Properties connectionProperties) {
+   public DBConnect(Object lock) {
+      this.lock = lock;
+   }
+
+   /**
+    * 
+    * @param connectionProperties
+    * @param streamOption
+    * @return
+    */
+   public Connection openDBConnection(final Properties connectionProperties,
+         final int streamOption) {
       if (connectionProperties.getProperty("database.vendor").equalsIgnoreCase(
             "MySQL")) {
 
@@ -39,8 +52,12 @@ public class DBConnect {
                .getProperty("database.password");
          try {
             Class.forName(driver).newInstance();
-            connect = (Connection) DriverManager.getConnection(url + dbName,
-                  userName, password);
+
+            // Option returns many more rows in comparison to option 2
+            // necessitating the below optimization.
+            connect = (Connection) DriverManager.getConnection(url + dbName
+                  + "?defaultFetchSize=10000&useCursorFetch=true", userName,
+                  password);
             LOGGER.info("Connected to "
                   + connectionProperties.getProperty("database.vendor"));
 
@@ -50,6 +67,7 @@ public class DBConnect {
          }
 
       }
+      return connect;
    }
 
    /**
@@ -63,6 +81,7 @@ public class DBConnect {
       ResultSet rs = null;
       PreparedStatement preparedStatement = (PreparedStatement) connect
             .prepareStatement(SELECT_QUERY);
+      preparedStatement.setFetchSize(Integer.MIN_VALUE);
       try {
          preparedStatement.setTimestamp(1, start);
          preparedStatement.setTimestamp(2, end);
@@ -84,29 +103,32 @@ public class DBConnect {
    public ResultSet retrieveAggregates(final Timestamp[] timestamps)
          throws SQLException {
       ResultSet rs = null;
-      StringBuffer temp = new StringBuffer("");
-      for (int count = 0; count < timestamps.length; count++) {
-         if (count == (timestamps.length - 1)) {
-            temp.append("?");
-         } else {
-            temp.append("?,");
-         }
-      }
-      String aggregateQuery = "SELECT LINKID,AVG(SPEED),AVG(VOLUME) FROM "
-            + TABLE_NAME + " WHERE TIME_STAMP IN(" + temp
-            + ") GROUP BY LINKID ORDER BY LINKID";
-      PreparedStatement preparedStatement = (PreparedStatement) connect
-            .prepareStatement(aggregateQuery);
-      try {
+      synchronized (lock) {
+         StringBuffer temp = new StringBuffer("");
          for (int count = 0; count < timestamps.length; count++) {
-            preparedStatement.setTimestamp(count + 1, timestamps[count]);
+            if (count == (timestamps.length - 1)) {
+               temp.append("?");
+            } else {
+               temp.append("?,");
+            }
          }
-         rs = preparedStatement.executeQuery();
-         LOGGER.info("Fetched records between " + timestamps[0] + " and "
-               + timestamps[timestamps.length - 1]);
-      } catch (SQLException e) {
-         LOGGER.error("Unable to retreive records", e);
+         String aggregateQuery = "SELECT LINKID,AVG(SPEED),AVG(VOLUME) FROM "
+               + TABLE_NAME + " WHERE TIME_STAMP IN(" + temp
+               + ") GROUP BY LINKID ORDER BY LINKID";
+         PreparedStatement preparedStatement = (PreparedStatement) connect
+               .prepareStatement(aggregateQuery);
+         preparedStatement.setFetchSize(Integer.MIN_VALUE);
+         try {
+            for (int count = 0; count < timestamps.length; count++) {
+               preparedStatement.setTimestamp(count + 1, timestamps[count]);
+            }
+            rs = preparedStatement.executeQuery();
+            LOGGER.info("Fetched records between " + timestamps[0] + " and "
+                  + timestamps[timestamps.length - 1]);
+         } catch (SQLException e) {
+            LOGGER.error("Unable to retreive records", e);
 
+         }
       }
       return rs;
 

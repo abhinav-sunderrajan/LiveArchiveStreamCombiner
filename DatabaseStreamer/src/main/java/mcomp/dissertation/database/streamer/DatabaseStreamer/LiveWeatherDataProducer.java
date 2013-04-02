@@ -148,7 +148,7 @@ public class LiveWeatherDataProducer {
          }
       }
 
-      executor.scheduleAtFixedRate(runnableProducer, 0, 30, TimeUnit.MINUTES);
+      executor.scheduleAtFixedRate(runnableProducer, 0, 1800, TimeUnit.SECONDS);
    }
 
    /**

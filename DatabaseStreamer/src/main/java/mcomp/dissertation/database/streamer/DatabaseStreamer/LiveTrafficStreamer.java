@@ -71,7 +71,6 @@ public class LiveTrafficStreamer {
                      synchronized (monitor) {
                         LOGGER.info("Wait for the initial data base load before streaming..");
                         monitor.wait();
-                        count++;
                         LOGGER.info("Awake!! Starting to streaming now");
                      }
                   }
@@ -82,17 +81,6 @@ public class LiveTrafficStreamer {
                      long bucket = bean.getLinkId() % cepRTJoinArray.length;
                      cepRTJoinArray[(int) bucket].sendEvent(bean);
                      count++;
-                     // print for evaluation purposes only..
-                     // if (count % 1000 == 0) {
-                     // LOGGER.info(count
-                     // + " "
-                     // + bean.getLinkId()
-                     // + " at "
-                     // + bean.getTimeStamp().getMinutes()
-                     // + " "
-                     // + dfLocal
-                     // .format(Calendar.getInstance().getTime()));
-                     // }
                   }
                } catch (EPException e) {
                   LOGGER.error("Error sending event to listener", e);

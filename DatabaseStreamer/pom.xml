@@ -55,11 +55,6 @@
 			<version>5.1.6</version>
         </dependency>
         <dependency>
-            <groupId>postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.1-901.jdbc4</version>
-        </dependency>
-        <dependency>
             <groupId>com.espertech</groupId>
             <artifactId>esper</artifactId>
             <version> 4.9.0 </version>
@@ -84,12 +79,17 @@
 		<artifactId>jfreechart</artifactId>
 		<version>1.0.14</version>
 	</dependency>
+	<dependency>
+		<groupId>io.netty</groupId>
+		<artifactId>netty</artifactId>
+		<version>3.6.3.Final</version>
+		</dependency>
     </dependencies>
     
     <name>Database Streamer</name>
-	<description>Tool that parses static data and loads it to a databse as chosen by the user.</description>
+	<description>Tool for combining live stream data with archive data stored in a MySQL database.</description>
 	<organization>
 		<name>NUS, School of Computing</name>
-		<url>http://comp.nus,edu.sg</url>
+		<url>http://comp.nus.edu.sg</url>
 	</organization>
 </project>

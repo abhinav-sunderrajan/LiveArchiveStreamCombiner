@@ -24,8 +24,8 @@ public class RecordLoaderAggregate<T> extends AbstractLoader<T> {
     */
    public RecordLoaderAggregate(final ConcurrentLinkedQueue<T> buffer,
          final Timestamp[] startTimes, final Properties connectionProperties,
-         final Object monitor) {
-      super(buffer, connectionProperties, monitor);
+         final Object monitor, final int streamOption) {
+      super(buffer, connectionProperties, monitor, streamOption);
       this.startTimes = startTimes;
 
    }
@@ -33,7 +33,7 @@ public class RecordLoaderAggregate<T> extends AbstractLoader<T> {
    @SuppressWarnings("deprecation")
    public void run() {
       try {
-         ResultSet rs = getDBConnection().retrieveAggregates(startTimes);
+         ResultSet rs = dbconnect.retrieveAggregates(startTimes);
 
          // The stream threads need to woken up only for the first database
          // load..

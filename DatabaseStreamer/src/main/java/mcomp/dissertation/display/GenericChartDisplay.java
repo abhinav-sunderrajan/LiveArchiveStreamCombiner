@@ -1,8 +1,12 @@
-package mcomp.dissertation.database.streamer.DatabaseStreamer;
+package mcomp.dissertation.display;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -21,44 +25,38 @@ import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RectangleInsets;
 import org.jfree.ui.RefineryUtilities;
 
-@SuppressWarnings("deprecation")
-/**
- * 
- * This is class is responsible for rendering the time series chart for monitoring the main system parameyets.
- * The monitored parameters are CPU usage, system memory and the JVM memory.
- *
- */
-public class SysInfoDisplay extends ApplicationFrame {
-   private TimeSeries totalMemFree = new TimeSeries("Total Free Memory %",
-         Minute.class);
-   private TimeSeries jvmMemoryFree = new TimeSeries("JVM Free Memory %",
-         Minute.class);
-   private TimeSeries cpuKernelTime = new TimeSeries("CPU kernel time/100000",
-         Minute.class);
-   private TimeSeriesCollection dataset;
+@SuppressWarnings("serial")
+public class GenericChartDisplay extends ApplicationFrame {
+
+   protected TimeSeriesCollection dataset;
    private JFreeChart chart;
    private XYPlot plot;
    private ValueAxis axis;
    private ChartPanel chartPanel;
    private XYItemRenderer r;
+   private Map<Integer, TimeSeries> timeSeriesMap;
+   private String title;
 
    /**
     * 
-    * @param title
+    * @param timeseriesList
     */
-   public SysInfoDisplay(String title) {
+   public GenericChartDisplay(String title) {
       super(title);
+      this.title = title;
       dataset = new TimeSeriesCollection();
-      dataset.addSeries(cpuKernelTime);
-      dataset.addSeries(totalMemFree);
-      dataset.addSeries(jvmMemoryFree);
+      timeSeriesMap = new HashMap<Integer, TimeSeries>();
       settings();
 
    }
 
-   private void settings() {
-      chart = ChartFactory.createTimeSeriesChart("System Parameters", "Time",
-            "Value", dataset, true, true, false);
+   /**
+    * Creates the settings for the time-series display can be overridden if the
+    * sub class deems necessary.
+    */
+   protected void settings() {
+      chart = ChartFactory.createTimeSeriesChart(title, "Time", "Value",
+            dataset, true, true, false);
       chartPanel = new ChartPanel(chart);
       chartPanel.setPreferredSize(new java.awt.Dimension(1000, 500));
       chartPanel.setMouseZoomable(true, false);
@@ -88,7 +86,6 @@ public class SysInfoDisplay extends ApplicationFrame {
             format);
       r.setBaseItemLabelGenerator(generator);
       r.setBaseItemLabelsVisible(true);
-
       axis = plot.getDomainAxis();
       axis.setAutoRange(true);
       axis.setFixedAutoRange(600000.0);
@@ -98,16 +95,26 @@ public class SysInfoDisplay extends ApplicationFrame {
    }
 
    /**
-    * 
-    * @param memFreePercent
-    * @param jvmFreePercent
-    * @param cpuKernel
+    * Override to refresh all the time series values
+    * @param values
     */
-   public void refreshDisplayValues(double memFreePercent,
-         double jvmFreePercent, double cpuKernel) {
-      totalMemFree.addOrUpdate(new Minute(), memFreePercent);
-      jvmMemoryFree.addOrUpdate(new Minute(), jvmFreePercent);
-      cpuKernelTime.addOrUpdate(new Minute(), cpuKernel);
-
+   public synchronized void refreshDisplayValues(Map<Integer, Double> values) {
+      Iterator<Entry<Integer, Double>> it = values.entrySet().iterator();
+      while (it.hasNext()) {
+         Map.Entry pairs = (Map.Entry) it.next();
+         timeSeriesMap.get(pairs.getKey()).addOrUpdate(new Minute(),
+               (Double) pairs.getValue());
+      }
    }
+
+   /**
+    * 
+    * @param series
+    * @param key
+    */
+   public synchronized void addToDataSeries(TimeSeries series, int key) {
+      dataset.addSeries(series);
+      timeSeriesMap.put(key, series);
+   }
+
 }
