@@ -15,7 +15,7 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import mcomp.dissertation.database.streamer.beans.LiveBean;
+import mcomp.dissertation.beans.LiveTrafficBean;
 
 import org.apache.log4j.Logger;
 
@@ -75,7 +75,7 @@ public class LiveTrafficStreamer {
                      }
                   }
                   if (br.ready()) {
-                     LiveBean bean = parseLine(br.readLine());
+                     LiveTrafficBean bean = parseLine(br.readLine());
                      bean.setEventTime(dfLocal.format(Calendar.getInstance()
                            .getTime()));
                      long bucket = bean.getLinkId() % cepRTJoinArray.length;
@@ -165,8 +165,8 @@ public class LiveTrafficStreamer {
       }
    }
 
-   private LiveBean parseLine(final String line) {
-      LiveBean bean = new LiveBean();
+   private LiveTrafficBean parseLine(final String line) {
+      LiveTrafficBean bean = new LiveTrafficBean();
       try {
 
          String[] items = line.split("\\|");

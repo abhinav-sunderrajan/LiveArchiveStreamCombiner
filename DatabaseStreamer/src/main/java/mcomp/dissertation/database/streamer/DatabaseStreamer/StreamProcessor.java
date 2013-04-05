@@ -3,10 +3,12 @@ package mcomp.dissertation.database.streamer.DatabaseStreamer;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executors;
@@ -15,14 +17,18 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import mcomp.dissertation.database.streamer.beans.HistoryAggregateBean;
-import mcomp.dissertation.database.streamer.beans.HistoryBean;
-import mcomp.dissertation.database.streamer.beans.LiveBean;
+import mcomp.dissertation.beans.HistoryAggregateBean;
+import mcomp.dissertation.beans.HistoryBean;
+import mcomp.dissertation.beans.LiveTrafficBean;
 import mcomp.dissertation.database.streamer.listenersandsubscribers.AggregateSubscriber;
 import mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber;
 import mcomp.dissertation.helper.CommonHelper;
 
 import org.apache.log4j.Logger;
+import org.dom4j.Document;
+import org.dom4j.DocumentException;
+import org.dom4j.Element;
+import org.dom4j.io.SAXReader;
 
 import com.espertech.esper.client.Configuration;
 import com.espertech.esper.client.EPAdministrator;
@@ -35,7 +41,7 @@ import com.espertech.esper.client.EPStatement;
  * The main class which sets the ball rolling for the simulated live stream and
  * the archived streams.
  */
-public final class StreamerCore {
+public final class StreamProcessor {
    private long startTime;
    private EPServiceProvider[] cepJoin;
    private EPAdministrator[] cepAdmJoin;
@@ -50,19 +56,21 @@ public final class StreamerCore {
    private static Properties configProperties;
    private static int numberOfArchiveStreams;
    private static Object monitor;
-   private static final String CONFIG_FILE_PATH = "src/main/resources/config.properties";
-   private static final String CONNECTION_FILE_PATH = "src/main/resources/connection.properties";
-   private static final int ARCHIVE_STREAM_COUNT = 6;
    private static int numberOfOperators;
    private static int streamOption;
-   private static final Logger LOGGER = Logger.getLogger(StreamerCore.class);
+   private static SAXReader reader;
+   private static final String CONFIG_FILE_PATH = "src/main/resources/config.properties";
+   private static final String CONNECTION_FILE_PATH = "src/main/resources/connection.properties";
+   private static final String XML_FILE_PATH = "src/main/resources/livestreams.xml";
+   private static final int ARCHIVE_STREAM_COUNT = 6;
+   private static final Logger LOGGER = Logger.getLogger(StreamProcessor.class);
 
    /**
     * @param configFilePath
     * @param connectionFilePath Instantiate all the required settings and start
     * the archive data stream threads.
     */
-   private StreamerCore(final String configFilePath,
+   private StreamProcessor(final String configFilePath,
          final String connectionFilePath) {
       try {
 
@@ -79,7 +87,7 @@ public final class StreamerCore {
                .getProperty("number.of.operators"));
          streamOption = Integer.parseInt(configProperties
                .getProperty("archive.data.option"));
-
+         reader = new SAXReader();
          dbLoadRate = (long) (streamRate.get() * Float
                .parseFloat(configProperties.getProperty("db.prefetch.rate")));
          windowSize = dbLoadRate / 2;
@@ -103,7 +111,7 @@ public final class StreamerCore {
             cepJoin[count] = EPServiceProviderManager.getProvider(
                   "JOINPROVIDER_" + count, cepConfigJoin[count]);
             cepConfigJoin[count].addEventType("LTALINKBEAN_" + count,
-                  LiveBean.class.getName());
+                  LiveTrafficBean.class.getName());
             cepConfigJoin[count].addEventType("ARCHIVEAGGREGATEBEAN_" + count,
                   HistoryAggregateBean.class.getName());
             cepConfigJoin[count].getEngineDefaults().getViewResources()
@@ -135,24 +143,28 @@ public final class StreamerCore {
    /**
     * @param args
     */
+   @SuppressWarnings("unchecked")
    public static void main(final String[] args) {
 
       String configFilePath;
       String connectionFilePath;
-      if (args.length < 3) {
+      String xmlFilePath;
+      if (args.length < 4) {
          configFilePath = CONFIG_FILE_PATH;
          connectionFilePath = CONNECTION_FILE_PATH;
          numberOfArchiveStreams = ARCHIVE_STREAM_COUNT;
+         xmlFilePath = XML_FILE_PATH;
 
       } else {
          configFilePath = args[0];
          connectionFilePath = args[1];
          numberOfArchiveStreams = Integer.parseInt(args[2]);
+         xmlFilePath = args[3];
 
       }
       try {
-         StreamerCore streamerCore;
-         streamerCore = new StreamerCore(configFilePath, connectionFilePath);
+         StreamProcessor streamerCore;
+         streamerCore = new StreamProcessor(configFilePath, connectionFilePath);
 
          // Start monitoring the system CPU, memory parameters
          SigarSystemMonitor sysMonitor = SigarSystemMonitor.getInstance();
@@ -171,17 +183,44 @@ public final class StreamerCore {
          }
 
          // Start streaming the live data.
+         reader = new SAXReader();
+         InputStream streamxml = new FileInputStream(xmlFilePath);
+         reader = new SAXReader();
+         Document doc = reader.read(streamxml);
+         Element docRoot = doc.getRootElement();
+         List<Element> streams = docRoot.elements();
+         for (Element stream : streams) {
+            int serverPort = Integer.parseInt(stream.attribute(1).getText());
+            String streamName = stream.attribute(0).getText();
+            if (streamName.equalsIgnoreCase("traffic")) {
+               ConcurrentLinkedQueue<LiveTrafficBean> buffer = new ConcurrentLinkedQueue<LiveTrafficBean>();
+               GenericLiveStreamer<LiveTrafficBean> streamer = new GenericLiveStreamer<LiveTrafficBean>(
+                     buffer, streamerCore.cepRTJoin, monitor, executor,
+                     streamRate, df, serverPort);
+               streamer.startStreaming();
+            } else {
+               // ConcurrentLinkedQueue<LiveTrafficBean> buffer = new
+               // ConcurrentLinkedQueue<LiveTrafficBean>();
+               // GenericLiveStreamer<LiveTrafficBean> streamer = new
+               // GenericLiveStreamer<LiveTrafficBean>(
+               // null, streamerCore.cepRTJoin, monitor, executor,
+               // streamRate, df, serverPort);
 
-         LiveTrafficStreamer live = new LiveTrafficStreamer(
-               streamerCore.cepRTJoin, streamRate, df, monitor, executor,
-               configProperties.getProperty("traffic.live.data.folder"));
-         ScheduledFuture<?> liveFuture = live.startStreaming();
+            }
+
+         }
+
          // StreamRateChanger change = new StreamRateChanger(streamRate,
          // streamers, futures, executor, liveFuture, live.getRunnable());
          // executor.scheduleAtFixedRate(change, 0, 20, TimeUnit.SECONDS);
       } catch (InterruptedException ex) {
          LOGGER.error("The live streamer thread interrupted", ex);
 
+      } catch (FileNotFoundException e) {
+         LOGGER.error("Unable to find xml file containing stream info", e);
+         e.printStackTrace();
+      } catch (DocumentException e) {
+         LOGGER.error("Erroneous stream info xml file. Please check", e);
       }
 
    }
@@ -229,7 +268,7 @@ public final class StreamerCore {
                .createEPL("@Hint('reclaim_group_aged="
                      + dbLoadRate
                      + ",') select  COUNT(*) as countRec, avg(volume) as avgVolume, avg(speed) as avgSpeed, linkId,readingMinutes as mins, "
-                     + "readingHours as hrs from mcomp.dissertation.database.streamer.beans.HistoryBean.std:groupwin(linkId,readingMinutes,readingHours)"
+                     + "readingHours as hrs from mcomp.dissertation.beans.HistoryBean.std:groupwin(linkId,readingMinutes,readingHours)"
                      + ".win:time_length_batch(" + windowSize
                      + "sec,6) group by linkId,readingMinutes,readingHours");
 

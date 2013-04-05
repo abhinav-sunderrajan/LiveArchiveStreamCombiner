@@ -1,15 +1,24 @@
 package mcomp.dissertation.display;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
+import org.apache.log4j.Logger;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.labels.StandardXYItemLabelGenerator;
@@ -26,6 +35,11 @@ import org.jfree.ui.RectangleInsets;
 import org.jfree.ui.RefineryUtilities;
 
 @SuppressWarnings("serial")
+/**
+ * 
+ * Creates the common settings for a time series JFree chart.
+ *
+ */
 public class GenericChartDisplay extends ApplicationFrame {
 
    protected TimeSeriesCollection dataset;
@@ -36,6 +50,11 @@ public class GenericChartDisplay extends ApplicationFrame {
    private XYItemRenderer r;
    private Map<Integer, TimeSeries> timeSeriesMap;
    private String title;
+   private ScheduledExecutorService executor;
+   private static final Logger LOGGER = Logger
+         .getLogger(GenericChartDisplay.class);
+   private static Object lock;
+   private static final String DIRECTORY = "/home/sadm/images/";
 
    /**
     * 
@@ -46,8 +65,9 @@ public class GenericChartDisplay extends ApplicationFrame {
       this.title = title;
       dataset = new TimeSeriesCollection();
       timeSeriesMap = new HashMap<Integer, TimeSeries>();
+      executor = Executors.newScheduledThreadPool(1);
       settings();
-
+      lock = new Object();
    }
 
    /**
@@ -92,6 +112,7 @@ public class GenericChartDisplay extends ApplicationFrame {
       this.pack();
       RefineryUtilities.centerFrameOnScreen(this);
       this.setVisible(true);
+      executor.scheduleAtFixedRate(new LazySave(), 8, 8, TimeUnit.MINUTES);
    }
 
    /**
@@ -115,6 +136,31 @@ public class GenericChartDisplay extends ApplicationFrame {
    public synchronized void addToDataSeries(TimeSeries series, int key) {
       dataset.addSeries(series);
       timeSeriesMap.put(key, series);
+   }
+
+   private class LazySave implements Runnable {
+      private File jpeg;
+      DateFormat df;
+
+      public LazySave() {
+         df = new SimpleDateFormat("MM-dd-yyyy HH-mm-ss");
+      }
+
+      @Override
+      public void run() {
+         try {
+            synchronized (lock) {
+               jpeg = new File(DIRECTORY + title + "_" + df.format(new Date())
+                     + ".jpg");
+               jpeg.createNewFile();
+               ChartUtilities.saveChartAsJPEG(jpeg, chart, 1024, 600);
+            }
+         } catch (IOException e) {
+            LOGGER.error("Unable to save the file at the given location", e);
+         }
+
+      }
+
    }
 
 }

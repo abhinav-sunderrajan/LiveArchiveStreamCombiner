@@ -1,6 +1,11 @@
 package mcomp.dissertation.display;
 
 @SuppressWarnings({ "serial" })
+/**
+ * 
+ * To create a Singleton instance for checking parameters like latency and throughput of the application.
+ *
+ */
 public class StreamJoinDisplay extends GenericChartDisplay {
    private static StreamJoinDisplay instance;
 

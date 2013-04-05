@@ -17,7 +17,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
-import mcomp.dissertation.database.streamer.beans.LiveWeatherBean;
+import mcomp.dissertation.beans.LiveWeatherBean;
 
 import org.apache.log4j.Logger;
 

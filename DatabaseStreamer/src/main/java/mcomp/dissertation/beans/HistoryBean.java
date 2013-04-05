@@ -1,4 +1,4 @@
-package mcomp.dissertation.database.streamer.beans;
+package mcomp.dissertation.beans;
 
 import java.sql.Timestamp;
 

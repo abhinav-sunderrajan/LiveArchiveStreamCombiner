@@ -6,13 +6,14 @@ import java.sql.Timestamp;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import mcomp.dissertation.database.streamer.beans.HistoryAggregateBean;
+import mcomp.dissertation.beans.HistoryAggregateBean;
 
 import org.apache.log4j.Logger;
 
 public class RecordLoaderAggregate<T> extends AbstractLoader<T> {
 
    private Timestamp[] startTimes;
+   private boolean wakeFlag;
    private static final Logger LOGGER = Logger.getLogger(RecordLoader.class);
 
    /**
@@ -27,24 +28,16 @@ public class RecordLoaderAggregate<T> extends AbstractLoader<T> {
          final Object monitor, final int streamOption) {
       super(buffer, connectionProperties, monitor, streamOption);
       this.startTimes = startTimes;
+      wakeFlag = true;
 
    }
 
    @SuppressWarnings("deprecation")
    public void run() {
       try {
+
+         // Initial load of data and wait for signal from live stream before st
          ResultSet rs = dbconnect.retrieveAggregates(startTimes);
-
-         // The stream threads need to woken up only for the first database
-         // load..
-         if (wakeFlag) {
-            synchronized (monitor) {
-               LOGGER.info("Waking the streamer threads..");
-               Thread.sleep(1000);
-               monitor.notifyAll();
-            }
-         }
-
          while (rs.next()) {
             HistoryAggregateBean bean = new HistoryAggregateBean();
             bean.setLinkId(rs.getInt(1));
@@ -53,6 +46,14 @@ public class RecordLoaderAggregate<T> extends AbstractLoader<T> {
             bean.setMins(startTimes[0].getMinutes());
             bean.setHrs(startTimes[0].getHours());
             getBuffer().add((T) bean);
+         }
+
+         if (wakeFlag) {
+            synchronized (monitor) {
+               LOGGER.info("Initial database load complete. Wait for live stream before further load..");
+               monitor.wait();
+               LOGGER.info("Start databse load normally");
+            }
          }
 
          // Update the time stamps for the next fetch.
@@ -65,7 +66,7 @@ public class RecordLoaderAggregate<T> extends AbstractLoader<T> {
          LOGGER.error("Error accessing the database to retrieve archived data",
                e);
       } catch (InterruptedException e) {
-         LOGGER.error("Error while waiting for initial database load..", e);
+         LOGGER.error("Error waiting on live stream", e);
       }
 
    }

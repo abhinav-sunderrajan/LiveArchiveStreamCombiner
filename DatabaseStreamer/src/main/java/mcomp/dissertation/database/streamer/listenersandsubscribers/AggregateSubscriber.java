@@ -3,7 +3,7 @@ package mcomp.dissertation.database.streamer.listenersandsubscribers;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-import mcomp.dissertation.database.streamer.beans.HistoryAggregateBean;
+import mcomp.dissertation.beans.HistoryAggregateBean;
 
 import com.espertech.esper.client.EPRuntime;
 

@@ -46,16 +46,16 @@ public class CommonHelper {
       if (streamOption != 1) {
          joinQuery = "@Hint('reclaim_group_aged="
                + dbLoadRate
-               + ", reclaim_group_freq=30') select * from  mcomp.dissertation.database.streamer.beans.LiveBean.std:unique(linkId,"
-               + "timeStamp.`hours`,timeStamp.`minutes`) as live inner join mcomp.dissertation.database.streamer"
+               + ", reclaim_group_freq=30') select * from  mcomp.dissertation.beans.LiveTrafficBean.std:unique(linkId,"
+               + "timeStamp.`hours`,timeStamp.`minutes`) as live inner join mcomp.dissertation"
                + ".beans.HistoryAggregateBean.std:unique(linkId,hrs,mins) as historyAgg on historyAgg.linkId"
                + "=live.linkId and historyAgg.mins=live.timeStamp.`minutes` and historyAgg.hrs=live.timeStamp.`hours`";
 
       } else {
          joinQuery = "@Hint('reclaim_group_aged="
                + dbLoadRate
-               + ",reclaim_group_freq=30') select * from  mcomp.dissertation.database.streamer.beans.LiveBean as live unidirectional "
-               + " inner join mcomp.dissertation.database.streamer.beans.HistoryAggregateBean.std:unique(linkId,hrs,mins) as historyAgg"
+               + ",reclaim_group_freq=30') select * from  mcomp.dissertation.beans.LiveTrafficBean as live unidirectional "
+               + " inner join mcomp.dissertation.beans.HistoryAggregateBean.std:unique(linkId,hrs,mins) as historyAgg"
                + "  on historyAgg.linkId=live.linkId and historyAgg.mins=live.timeStamp.`minutes` and historyAgg.hrs=live.timeStamp.`hours`";
       }
       return joinQuery;

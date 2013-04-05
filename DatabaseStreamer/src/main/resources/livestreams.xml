@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<livestreams>
+<stream name="traffic" port="8080">
+<bean>
+mcomp.dissertation.database.streamer.beans.LiveTrafficBean
+</bean>
+</stream>
+<stream name="weather" port="9090">
+mcomp.dissertation.database.streamer.beans.LiveWeatherBean
+</stream>
+</livestreams>

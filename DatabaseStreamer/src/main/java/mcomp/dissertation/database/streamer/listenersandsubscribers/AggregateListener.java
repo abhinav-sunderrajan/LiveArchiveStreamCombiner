@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-import mcomp.dissertation.database.streamer.beans.HistoryAggregateBean;
+import mcomp.dissertation.beans.HistoryAggregateBean;
 
 import com.espertech.esper.client.EPRuntime;
 import com.espertech.esper.client.EventBean;

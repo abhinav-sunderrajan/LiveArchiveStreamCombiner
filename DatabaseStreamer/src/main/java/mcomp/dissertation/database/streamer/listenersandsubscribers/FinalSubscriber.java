@@ -8,8 +8,8 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-import mcomp.dissertation.database.streamer.beans.HistoryAggregateBean;
-import mcomp.dissertation.database.streamer.beans.LiveBean;
+import mcomp.dissertation.beans.HistoryAggregateBean;
+import mcomp.dissertation.beans.LiveTrafficBean;
 import mcomp.dissertation.display.StreamJoinDisplay;
 
 import org.apache.log4j.Logger;
@@ -28,7 +28,7 @@ public class FinalSubscriber {
    @SuppressWarnings("deprecation")
    public FinalSubscriber() {
       this.df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
-      display = StreamJoinDisplay.getInstance("Latency (measured in secs)");
+      display = StreamJoinDisplay.getInstance("Latency in secs");
       display.addToDataSeries(
             new TimeSeries("Latency in Subscriber# " + this.hashCode(),
                   Minute.class), this.hashCode());
@@ -54,7 +54,7 @@ public class FinalSubscriber {
 
    }
 
-   public void update(LiveBean live, HistoryAggregateBean history) {
+   public void update(LiveTrafficBean live, HistoryAggregateBean history) {
       count++;
 
       if (count % 1000 == 0) {

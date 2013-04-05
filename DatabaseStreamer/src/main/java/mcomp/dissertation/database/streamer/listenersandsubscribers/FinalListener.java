@@ -5,7 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
-import mcomp.dissertation.database.streamer.beans.LiveBean;
+import mcomp.dissertation.beans.LiveTrafficBean;
 
 import org.apache.log4j.Logger;
 
@@ -37,7 +37,7 @@ public class FinalListener implements UpdateListener {
          }
 
       } else {
-         LiveBean stockBean = (LiveBean) obj;
+         LiveTrafficBean stockBean = (LiveTrafficBean) obj;
       }
 
    }

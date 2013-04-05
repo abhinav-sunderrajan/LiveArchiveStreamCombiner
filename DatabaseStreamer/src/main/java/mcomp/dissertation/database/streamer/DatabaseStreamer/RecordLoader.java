@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.util.Properties;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-import mcomp.dissertation.database.streamer.beans.HistoryBean;
+import mcomp.dissertation.beans.HistoryBean;
 
 import org.apache.log4j.Logger;
 
@@ -19,6 +19,7 @@ public class RecordLoader<T> extends AbstractLoader<T> {
    private Timestamp endTime;
    private int loopCount;
    private int numberOfArchiveStreams;
+   private boolean wakeFlag;
    private static final Logger LOGGER = Logger.getLogger(RecordLoader.class);
 
    /**
@@ -47,20 +48,20 @@ public class RecordLoader<T> extends AbstractLoader<T> {
    public void run() {
       try {
          ResultSet rs = dbconnect.retrieveWithinTimeStamp(startTime, endTime);
-         if (loopCount == numberOfArchiveStreams && wakeFlag) {
-            synchronized (monitor) {
-               LOGGER.info("Waking the streamer threads..");
-               Thread.sleep(1000);
-               monitor.notifyAll();
-            }
-         }
-
          while (rs.next()) {
             long linkID = rs.getInt(1);
             float speed = rs.getFloat(2);
             int volume = rs.getInt(3);
             Timestamp ts = rs.getTimestamp(4);
             getBuffer().add((T) new HistoryBean(volume, speed, linkID, ts));
+         }
+
+         if (loopCount == numberOfArchiveStreams && wakeFlag) {
+            synchronized (monitor) {
+               LOGGER.info("Wait for live streams before further databse loading");
+               monitor.wait();
+               LOGGER.info("Receiving live streams. Start database load normally");
+            }
          }
 
          // Update the time stamps for the next fetch.

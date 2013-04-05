@@ -1,6 +1,5 @@
 package mcomp.dissertation.database.streamer.DatabaseStreamer;
 
-import java.text.SimpleDateFormat;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ScheduledExecutorService;
@@ -8,8 +7,8 @@ import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import mcomp.dissertation.database.streamer.beans.HistoryAggregateBean;
-import mcomp.dissertation.database.streamer.beans.HistoryBean;
+import mcomp.dissertation.beans.HistoryAggregateBean;
+import mcomp.dissertation.beans.HistoryBean;
 
 import org.apache.log4j.Logger;
 
@@ -45,8 +44,6 @@ public class GenericArchiveStreamer<T> implements Runnable {
       this.executor = executor;
       this.streamRate = streamRate;
       this.streamRateSpeedUp = streamRateSpeedUp;
-      new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
-
    }
 
    public void run() {

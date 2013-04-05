@@ -1,4 +1,4 @@
-package mcomp.dissertation.database.streamer.beans;
+package mcomp.dissertation.beans;
 
 /**
  * The bean class representing the aggregated stream of all the archived
