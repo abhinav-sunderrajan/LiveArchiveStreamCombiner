@@ -116,7 +116,7 @@ public class GenericChartDisplay extends ApplicationFrame {
    }
 
    /**
-    * Override to refresh all the time series values
+    * Refresh all the time series values
     * @param values
     */
    public synchronized void refreshDisplayValues(Map<Integer, Double> values) {
@@ -129,7 +129,7 @@ public class GenericChartDisplay extends ApplicationFrame {
    }
 
    /**
-    * 
+    * Add a time series to the display with a unique key.
     * @param series
     * @param key
     */

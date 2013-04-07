@@ -39,14 +39,20 @@ public class CommonHelper {
 
    public String getJoinQuery(final int streamOption, long dbLoadRate) {
       String joinQuery;
+      long reclaimFrequency = 2 * dbLoadRate;
       if (dbLoadRate < 60) {
          dbLoadRate = 60;
+         reclaimFrequency = 200;
       }
 
       if (streamOption != 1) {
          joinQuery = "@Hint('reclaim_group_aged="
                + dbLoadRate
-               + ", reclaim_group_freq=30') select * from  mcomp.dissertation.beans.LiveTrafficBean.std:unique(linkId,"
+               + ", reclaim_group_freq="
+               + reclaimFrequency
+               + "') select live.linkId,live.avgSpeed,live.avgVolume,"
+               + "historyAgg.linkId, historyAgg.aggregateSpeed,historyAgg.aggregateVolume,live.timeStamp,current_timestamp "
+               + "from  mcomp.dissertation.beans.LiveTrafficBean.std:unique(linkId,"
                + "timeStamp.`hours`,timeStamp.`minutes`) as live inner join mcomp.dissertation"
                + ".beans.HistoryAggregateBean.std:unique(linkId,hrs,mins) as historyAgg on historyAgg.linkId"
                + "=live.linkId and historyAgg.mins=live.timeStamp.`minutes` and historyAgg.hrs=live.timeStamp.`hours`";
@@ -54,7 +60,11 @@ public class CommonHelper {
       } else {
          joinQuery = "@Hint('reclaim_group_aged="
                + dbLoadRate
-               + ",reclaim_group_freq=30') select * from  mcomp.dissertation.beans.LiveTrafficBean as live unidirectional "
+               + ", reclaim_group_freq="
+               + reclaimFrequency
+               + "') select live.linkId,live.avgSpeed,live.avgVolume,"
+               + "historyAgg.linkId, historyAgg.aggregateSpeed,historyAgg.aggregateVolume,live.timeStamp, current_timestamp "
+               + "from  mcomp.dissertation.beans.LiveTrafficBean as live unidirectional "
                + " inner join mcomp.dissertation.beans.HistoryAggregateBean.std:unique(linkId,hrs,mins) as historyAgg"
                + "  on historyAgg.linkId=live.linkId and historyAgg.mins=live.timeStamp.`minutes` and historyAgg.hrs=live.timeStamp.`hours`";
       }

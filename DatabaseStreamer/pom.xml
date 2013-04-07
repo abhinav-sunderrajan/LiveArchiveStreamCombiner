@@ -83,7 +83,13 @@
 		<groupId>io.netty</groupId>
 		<artifactId>netty</artifactId>
 		<version>3.6.3.Final</version>
-		</dependency>
+	</dependency>
+	<dependency>
+		<groupId>com.googlecode.json-simple</groupId>
+		<artifactId>json-simple</artifactId>
+		<version>1.1.1</version>
+    </dependency>
+            
     </dependencies>
     
     <name>Database Streamer</name>

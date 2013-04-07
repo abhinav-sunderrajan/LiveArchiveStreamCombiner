@@ -55,7 +55,7 @@ public class GenericArchiveStreamer<T> implements Runnable {
             LOGGER.info("Wait for the initial data base load before streaming..");
             try {
                monitor.wait();
-               LOGGER.info("Awake!! Starting to streaming now");
+               LOGGER.info("Awake!! Starting to stream now");
             } catch (InterruptedException e) {
                e.printStackTrace();
             }

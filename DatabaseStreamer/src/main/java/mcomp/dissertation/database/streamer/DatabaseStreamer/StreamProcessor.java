@@ -56,7 +56,8 @@ public final class StreamProcessor {
    private static Properties configProperties;
    private static int numberOfArchiveStreams;
    private static Object monitor;
-   private static int numberOfOperators;
+   private static int numberOfAggregateOperators;
+   private static int numberOfJoinOperators;
    private static int streamOption;
    private static SAXReader reader;
    private static final String CONFIG_FILE_PATH = "src/main/resources/config.properties";
@@ -83,8 +84,10 @@ public final class StreamProcessor {
                .newScheduledThreadPool(3 * numberOfArchiveStreams);
          streamRate = new AtomicInteger(Integer.parseInt(configProperties
                .getProperty("live.stream.rate.in.microsecs")));
-         numberOfOperators = Integer.parseInt(configProperties
-               .getProperty("number.of.operators"));
+         numberOfAggregateOperators = Integer.parseInt(configProperties
+               .getProperty("number.of.aggregateoperators"));
+         numberOfJoinOperators = Integer.parseInt(configProperties
+               .getProperty("number.of.joinoperators"));
          streamOption = Integer.parseInt(configProperties
                .getProperty("archive.data.option"));
          reader = new SAXReader();
@@ -98,13 +101,13 @@ public final class StreamProcessor {
 
          // Instantiate the Esper parameter arrays
 
-         cepJoin = new EPServiceProvider[numberOfOperators];
-         cepAdmJoin = new EPAdministrator[numberOfOperators];
-         cepConfigJoin = new Configuration[numberOfOperators];
-         cepRTJoin = new EPRuntime[numberOfOperators];
+         cepJoin = new EPServiceProvider[numberOfJoinOperators];
+         cepAdmJoin = new EPAdministrator[numberOfJoinOperators];
+         cepConfigJoin = new Configuration[numberOfJoinOperators];
+         cepRTJoin = new EPRuntime[numberOfJoinOperators];
 
          // Begin Esper Configuration for the join.
-         for (int count = 0; count < numberOfOperators; count++) {
+         for (int count = 0; count < numberOfJoinOperators; count++) {
             cepConfigJoin[count] = new Configuration();
             cepConfigJoin[count].getEngineDefaults().getThreading()
                   .setListenerDispatchPreserveOrder(false);
@@ -199,12 +202,13 @@ public final class StreamProcessor {
                      streamRate, df, serverPort);
                streamer.startStreaming();
             } else {
-               // ConcurrentLinkedQueue<LiveTrafficBean> buffer = new
-               // ConcurrentLinkedQueue<LiveTrafficBean>();
-               // GenericLiveStreamer<LiveTrafficBean> streamer = new
-               // GenericLiveStreamer<LiveTrafficBean>(
-               // null, streamerCore.cepRTJoin, monitor, executor,
+               // ConcurrentLinkedQueue<LiveWeatherBean> buffer = new
+               // ConcurrentLinkedQueue<LiveWeatherBean>();
+               // GenericLiveStreamer<LiveWeatherBean> streamer = new
+               // GenericLiveStreamer<LiveWeatherBean>(
+               // buffer, streamerCore.cepRTJoin, monitor, executor,
                // streamRate, df, serverPort);
+               // streamer.startStreaming();
 
             }
 
@@ -237,15 +241,15 @@ public final class StreamProcessor {
    private void setUpArchiveSubStreams() throws InterruptedException {
 
       // Initialize the local variables
-      EPServiceProvider[] cepAggregateArray = new EPServiceProvider[numberOfOperators];
-      EPRuntime[] cepRTAggregateArray = new EPRuntime[numberOfOperators];
-      EPAdministrator[] cepAdmAggregateArray = new EPAdministrator[numberOfOperators];
-      Configuration[] cepConfigAggregateArray = new Configuration[numberOfOperators];
+      EPServiceProvider[] cepAggregateArray = new EPServiceProvider[numberOfAggregateOperators];
+      EPRuntime[] cepRTAggregateArray = new EPRuntime[numberOfAggregateOperators];
+      EPAdministrator[] cepAdmAggregateArray = new EPAdministrator[numberOfAggregateOperators];
+      Configuration[] cepConfigAggregateArray = new Configuration[numberOfAggregateOperators];
       GenericArchiveStreamer[] streamers = new GenericArchiveStreamer[numberOfArchiveStreams];
       ScheduledFuture<?>[] futures = new ScheduledFuture[numberOfArchiveStreams];
 
       // Configuration settings begin for Aggregation
-      for (int count = 0; count < numberOfOperators; count++) {
+      for (int count = 0; count < numberOfAggregateOperators; count++) {
          cepConfigAggregateArray[count] = new Configuration();
          cepConfigAggregateArray[count].getEngineDefaults().getThreading()
                .setListenerDispatchPreserveOrder(false);
@@ -305,7 +309,7 @@ public final class StreamProcessor {
       for (int count = 1; count <= numberOfArchiveStreams; count++) {
          AbstractLoader<HistoryBean> loader = new RecordLoader<HistoryBean>(
                buffer[count - 1], startTime, connectionProperties, monitor,
-               count, numberOfArchiveStreams, streamOption);
+               numberOfArchiveStreams, streamOption);
 
          // retrieve records from the database for every 30,000 records from the
          // live stream. This really depends upon the nature of the live

@@ -2,11 +2,11 @@ package mcomp.dissertation.database.streamer.listenersandsubscribers;
 
 import java.sql.Timestamp;
 import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
 import mcomp.dissertation.beans.HistoryAggregateBean;
 import mcomp.dissertation.beans.LiveTrafficBean;
@@ -16,6 +16,12 @@ import org.apache.log4j.Logger;
 import org.jfree.data.time.Minute;
 import org.jfree.data.time.TimeSeries;
 
+/**
+ * 
+ * Registered subscriber joining the aggregated historic stream with the live
+ * stream.
+ * 
+ */
 public class FinalSubscriber {
 
    private DateFormat df;
@@ -24,36 +30,75 @@ public class FinalSubscriber {
    private StreamJoinDisplay display;
    private long latency;
    private Map<Integer, Double> valueMap;
+   private AtomicLong timer;
+   private boolean throughputFlag;
 
    @SuppressWarnings("deprecation")
    public FinalSubscriber() {
       this.df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
-      display = StreamJoinDisplay.getInstance("Latency in secs");
+      display = StreamJoinDisplay.getInstance("Join Performance Measure");
+      timer = new AtomicLong(0);
+      throughputFlag = true;
       display.addToDataSeries(
-            new TimeSeries("Latency in Subscriber# " + this.hashCode(),
-                  Minute.class), this.hashCode());
+            new TimeSeries("Latency for Subscriber#" + this.hashCode()
+                  + " in msec", Minute.class), (1 + this.hashCode()));
+      display.addToDataSeries(new TimeSeries("Throughput/sec for Subscriber# "
+            + this.hashCode(), Minute.class), (2 + this.hashCode()));
       valueMap = new HashMap<Integer, Double>();
-      valueMap.put(this.hashCode(), 0.0);
-
+      valueMap.put((2 + this.hashCode()), 0.0);
+      valueMap.put((1 + this.hashCode()), 0.0);
+      System.out.println((1 + this.hashCode()));
    }
 
-   public void update(Long liveLinkId, Float liveSpeed, Float liveVolume,
-         Timestamp liveTimeStamp, String liveEventTime, Long historyLinkid,
-         Double historyAvgSpeed, Double historyAvgVolume) {
+   /**
+    * This method is called by Esper implicitly when registered the class is
+    * registered as a subscriber. Care needs to be taken to match the order and
+    * type of the parameters with that of the query.Failing which Esper throws
+    * an error.
+    * @param liveLinkId
+    * @param liveSpeed
+    * @param liveVolume
+    * @param historyLinkid
+    * @param historyAvgSpeed
+    * @param historyAvgVolume
+    * @param liveTimeStamp
+    * @param evalTime
+    */
+   public void update(final Long liveLinkId, final Float liveSpeed,
+         final Float liveVolume, final Long historyLinkid,
+         final Double historyAvgSpeed, final Double historyAvgVolume,
+         final Timestamp liveTimeStamp, final long evalTime) {
       count++;
+      if (throughputFlag) {
+         timer.set(Calendar.getInstance().getTimeInMillis());
+      }
+      throughputFlag = false;
       if (count % 1000 == 0) {
          LOGGER.info("hashCode:" + this.hashCode() + " " + count + ":"
                + df.format(Calendar.getInstance().getTime())
-               + " [Details(EventTime:" + liveEventTime
                + " Linkid live and history(" + liveLinkId + "--"
                + historyLinkid + "), speeds live and history(" + liveSpeed
                + "--" + historyAvgSpeed + "), volume live and history("
-               + liveVolume + "--" + historyAvgVolume + ") Live time stamp("
+               + liveVolume + "--" + historyAvgVolume + ") Live Time stamp("
                + liveTimeStamp + ")]");
+      }
+      if (count % 5000 == 0) {
+         double throughput = ((5000 * 1000) / (Calendar.getInstance()
+               .getTimeInMillis() - timer.get()));
+         latency = Calendar.getInstance().getTimeInMillis() - evalTime;
+         valueMap.put((1 + this.hashCode()), latency / 1.0);
+         valueMap.put((2 + this.hashCode()), throughput);
+         display.refreshDisplayValues(valueMap);
+         throughputFlag = true;
       }
 
    }
 
+   /**
+    * Overloaded equivalent of the above update method.
+    * @param live
+    * @param history
+    */
    public void update(LiveTrafficBean live, HistoryAggregateBean history) {
       count++;
 
@@ -79,17 +124,6 @@ public class FinalSubscriber {
                   + "-- null) Live time stamp(" + live.getTimeStamp() + ")]");
 
          }
-      }
-
-      if (count % 2000 == 0) {
-         try {
-            latency = Calendar.getInstance().getTimeInMillis()
-                  - df.parse(live.getEventTime()).getTime();
-         } catch (ParseException e) {
-            LOGGER.error("Error parsing date while sending to display", e);
-         }
-         valueMap.put(this.hashCode(), latency / 1000.0);
-         display.refreshDisplayValues(valueMap);
       }
 
    }

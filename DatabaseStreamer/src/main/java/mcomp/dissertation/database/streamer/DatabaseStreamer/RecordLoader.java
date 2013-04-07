@@ -17,7 +17,6 @@ import org.apache.log4j.Logger;
 public class RecordLoader<T> extends AbstractLoader<T> {
    private Timestamp startTime;
    private Timestamp endTime;
-   private int loopCount;
    private int numberOfArchiveStreams;
    private boolean wakeFlag;
    private static final Logger LOGGER = Logger.getLogger(RecordLoader.class);
@@ -28,19 +27,18 @@ public class RecordLoader<T> extends AbstractLoader<T> {
     * @param startTime
     * @param connectionProperties
     * @param monitor
-    * @param loopCount
     * @param numberofArchiveStreams
     * @param streamOption
     */
    public RecordLoader(final ConcurrentLinkedQueue<T> buffer,
          final long startTime, final Properties connectionProperties,
-         final Object monitor, final int loopCount,
-         final int numberofArchiveStreams, final int streamOption) {
+         final Object monitor, final int numberofArchiveStreams,
+         final int streamOption) {
       super(buffer, connectionProperties, monitor, streamOption);
       this.startTime = new Timestamp(startTime);
       this.endTime = new Timestamp(startTime + REFRESH_INTERVAL);
-      this.loopCount = loopCount;
       this.numberOfArchiveStreams = numberofArchiveStreams;
+      wakeFlag = true;
 
    }
 
@@ -56,7 +54,7 @@ public class RecordLoader<T> extends AbstractLoader<T> {
             getBuffer().add((T) new HistoryBean(volume, speed, linkID, ts));
          }
 
-         if (loopCount == numberOfArchiveStreams && wakeFlag) {
+         if (wakeFlag) {
             synchronized (monitor) {
                LOGGER.info("Wait for live streams before further databse loading");
                monitor.wait();
