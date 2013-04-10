@@ -201,6 +201,7 @@ public final class StreamProcessor {
                      buffer, streamerCore.cepRTJoin, monitor, executor,
                      streamRate, df, serverPort);
                streamer.startStreaming();
+
             } else {
                // ConcurrentLinkedQueue<LiveWeatherBean> buffer = new
                // ConcurrentLinkedQueue<LiveWeatherBean>();
@@ -214,9 +215,6 @@ public final class StreamProcessor {
 
          }
 
-         // StreamRateChanger change = new StreamRateChanger(streamRate,
-         // streamers, futures, executor, liveFuture, live.getRunnable());
-         // executor.scheduleAtFixedRate(change, 0, 20, TimeUnit.SECONDS);
       } catch (InterruptedException ex) {
          LOGGER.error("The live streamer thread interrupted", ex);
 
@@ -237,7 +235,7 @@ public final class StreamProcessor {
     * archive stream to be joined with the live stream.
     */
 
-   @SuppressWarnings("rawtypes")
+   @SuppressWarnings({ "rawtypes", "unchecked" })
    private void setUpArchiveSubStreams() throws InterruptedException {
 
       // Initialize the local variables
@@ -246,7 +244,9 @@ public final class StreamProcessor {
       EPAdministrator[] cepAdmAggregateArray = new EPAdministrator[numberOfAggregateOperators];
       Configuration[] cepConfigAggregateArray = new Configuration[numberOfAggregateOperators];
       GenericArchiveStreamer[] streamers = new GenericArchiveStreamer[numberOfArchiveStreams];
-      ScheduledFuture<?>[] futures = new ScheduledFuture[numberOfArchiveStreams];
+      ScheduledFuture<?>[] archiveStreamFutures = new ScheduledFuture[numberOfArchiveStreams];
+      AbstractLoader<HistoryBean>[] loaders = new AbstractLoader[numberOfArchiveStreams];
+      ScheduledFuture<?>[] dbLoadFutures = new ScheduledFuture[numberOfArchiveStreams];
 
       // Configuration settings begin for Aggregation
       for (int count = 0; count < numberOfAggregateOperators; count++) {
@@ -280,10 +280,8 @@ public final class StreamProcessor {
          cepStatementAggregate
                .setSubscriber(new AggregateSubscriber(cepRTJoin));
          cepRTAggregateArray[count] = cepAggregateArray[count].getEPRuntime();
-
       }
 
-      @SuppressWarnings("unchecked")
       ConcurrentLinkedQueue<HistoryBean>[] buffer = new ConcurrentLinkedQueue[numberOfArchiveStreams];
 
       // Create a shared buffer between the thread retrieving records from
@@ -303,22 +301,30 @@ public final class StreamProcessor {
                buffer[count], cepRTAggregateArray, monitor, executor,
                streamRate, Float.parseFloat(configProperties
                      .getProperty("archive.stream.rate.param")));
-         futures[count] = streamers[count].startStreaming();
+         archiveStreamFutures[count] = streamers[count].startStreaming();
       }
 
-      for (int count = 1; count <= numberOfArchiveStreams; count++) {
-         AbstractLoader<HistoryBean> loader = new RecordLoader<HistoryBean>(
-               buffer[count - 1], startTime, connectionProperties, monitor,
+      for (int count = 0; count <= numberOfArchiveStreams; count++) {
+         loaders[count] = new RecordLoader<HistoryBean>(buffer[count],
+               startTime, connectionProperties, monitor,
                numberOfArchiveStreams, streamOption);
 
          // retrieve records from the database for every 30,000 records from the
          // live stream. This really depends upon the nature of the live
          // stream..
-         executor.scheduleAtFixedRate(loader, 0, dbLoadRate, TimeUnit.SECONDS);
+         dbLoadFutures[count] = executor.scheduleAtFixedRate(loaders[count], 0,
+               dbLoadRate, TimeUnit.SECONDS);
          // Start the next archive stream for the records exactly a day after
          startTime = startTime + 24 * 3600 * 1000;
 
       }
+
+      // Change the rate at which data is fetched from the database and
+      // the rate at which records are fetched and streamed
+      StreamRateChanger change = new StreamRateChanger(streamRate, streamers,
+            loaders, archiveStreamFutures, dbLoadFutures, configProperties,
+            executor, monitor);
+      executor.scheduleAtFixedRate(change, 20, 20, TimeUnit.SECONDS);
 
    }
 
@@ -334,7 +340,7 @@ public final class StreamProcessor {
    private void setUpAggregatedArchiveStream() throws InterruptedException {
       ConcurrentLinkedQueue<HistoryAggregateBean> buffer = new ConcurrentLinkedQueue<HistoryAggregateBean>();
       GenericArchiveStreamer streamer;
-      ScheduledFuture<?> future;
+      ScheduledFuture<?> archiveStreamFuture;
       Timestamp[] ts = new Timestamp[numberOfArchiveStreams];
       for (int count = 0; count < numberOfArchiveStreams; count++) {
          ts[count] = new Timestamp(startTime);
@@ -345,15 +351,25 @@ public final class StreamProcessor {
             cepRTJoin, monitor, executor, streamRate,
             Float.parseFloat(configProperties
                   .getProperty("archive.stream.rate.param")));
-      future = streamer.startStreaming();
+      archiveStreamFuture = streamer.startStreaming();
 
       // retrieve records from the database for every 25,000 records from the
       // live stream. This really depends upon the nature of the live
       // stream..
       AbstractLoader<HistoryAggregateBean> loader = new RecordLoaderAggregate<HistoryAggregateBean>(
             buffer, ts, connectionProperties, monitor, streamOption);
-      executor.scheduleAtFixedRate(loader, 0, dbLoadRate, TimeUnit.SECONDS);
+      ScheduledFuture<?> dbLoadFuture = executor.scheduleAtFixedRate(loader, 0,
+            dbLoadRate, TimeUnit.SECONDS);
 
+      // Change the rate at which data is fetched from the database and
+      // the rate at which records are fetched and streamed
+      StreamRateChanger change = new StreamRateChanger(streamRate,
+            new GenericArchiveStreamer[] { streamer },
+            new AbstractLoader<?>[] { loader },
+            new ScheduledFuture<?>[] { archiveStreamFuture },
+            new ScheduledFuture<?>[] { dbLoadFuture }, configProperties,
+            executor, monitor);
+      executor.scheduleAtFixedRate(change, 0, 20, TimeUnit.SECONDS);
    }
 
 }

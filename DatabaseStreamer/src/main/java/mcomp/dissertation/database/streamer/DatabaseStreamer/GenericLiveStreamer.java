@@ -1,18 +1,18 @@
 package mcomp.dissertation.database.streamer.DatabaseStreamer;
 
 import java.text.DateFormat;
+import java.util.Calendar;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 import mcomp.dissertation.beans.LiveTrafficBean;
 import mcomp.dissertation.beans.LiveWeatherBean;
 import mcomp.dissertation.helper.NettyServer;
-
-import org.apache.log4j.Logger;
 
 import com.espertech.esper.client.EPRuntime;
 
@@ -24,8 +24,8 @@ public class GenericLiveStreamer<E> implements Runnable {
    private EPRuntime[] cepRTArray;
    private AtomicInteger streamRate;
    private int port;
-   private static final Logger LOGGER = Logger
-         .getLogger(GenericLiveStreamer.class);
+   private AtomicLong timer;
+   private boolean throughputFlag;
 
    /**
     * 
@@ -46,6 +46,8 @@ public class GenericLiveStreamer<E> implements Runnable {
       this.executor = executor;
       this.streamRate = streamRate;
       this.port = port;
+      timer = new AtomicLong(0);
+      throughputFlag = true;
       startListening();
 
    }
@@ -71,7 +73,6 @@ public class GenericLiveStreamer<E> implements Runnable {
          long linkId = bean.getLinkId();
          long bucket = linkId % cepRTArray.length;
          cepRTArray[(int) bucket].sendEvent(obj);
-         count++;
       }
 
       if (obj instanceof LiveWeatherBean) {
@@ -79,7 +80,17 @@ public class GenericLiveStreamer<E> implements Runnable {
          long linkId = bean.getLinkId();
          long bucket = linkId % cepRTArray.length;
          cepRTArray[(int) bucket].sendEvent(obj);
-         count++;
+      }
+      count++;
+      if (throughputFlag) {
+         timer.set(Calendar.getInstance().getTimeInMillis());
+      }
+      throughputFlag = false;
+      if (count % 5000 == 0) {
+         double throughput = ((5000 * 1000) / (Calendar.getInstance()
+               .getTimeInMillis() - timer.get()));
+         streamRate.compareAndSet(streamRate.get(), 1000000 / (int) throughput);
+         throughputFlag = true;
       }
 
    }
