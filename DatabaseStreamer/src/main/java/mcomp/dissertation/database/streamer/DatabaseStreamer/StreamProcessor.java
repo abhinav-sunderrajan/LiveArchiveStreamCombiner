@@ -1,7 +1,10 @@
 package mcomp.dissertation.database.streamer.DatabaseStreamer;
 
+import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Timestamp;
@@ -10,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -25,6 +29,8 @@ import mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscri
 import mcomp.dissertation.helper.CommonHelper;
 
 import org.apache.log4j.Logger;
+import org.apache.poi.hssf.usermodel.HSSFSheet;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -36,6 +42,10 @@ import com.espertech.esper.client.EPRuntime;
 import com.espertech.esper.client.EPServiceProvider;
 import com.espertech.esper.client.EPServiceProviderManager;
 import com.espertech.esper.client.EPStatement;
+import com.vividsolutions.jts.geom.Coordinate;
+import com.vividsolutions.jts.geom.GeometryFactory;
+import com.vividsolutions.jts.geom.Polygon;
+import com.vividsolutions.jts.io.WKTReader;
 
 /**
  * The main class which sets the ball rolling for the simulated live stream and
@@ -52,7 +62,12 @@ public final class StreamProcessor {
    private static DateFormat df;
    private static AtomicInteger streamRate;
    private static long dbLoadRate;
-   private static long windowSize;
+   private File file;
+   private BufferedReader br;
+   private static HSSFWorkbook workbook;
+   private static HSSFSheet sheet;
+   private static ConcurrentHashMap<Long, Coordinate> linkIdCoord;
+   private static Polygon polygon;
    private static Properties configProperties;
    private static int numberOfArchiveStreams;
    private static Object monitor;
@@ -64,7 +79,10 @@ public final class StreamProcessor {
    private static final String CONNECTION_FILE_PATH = "src/main/resources/connection.properties";
    private static final String XML_FILE_PATH = "src/main/resources/livestreams.xml";
    private static final int ARCHIVE_STREAM_COUNT = 6;
+   private static final String[] METRICS = { "INGESTION RATE", "THROUGHPUT",
+         "LATENCY", "JVM FREE MEMORY %" };
    private static final Logger LOGGER = Logger.getLogger(StreamProcessor.class);
+   private static final GeometryFactory gf = new GeometryFactory();;
 
    /**
     * @param configFilePath
@@ -93,11 +111,26 @@ public final class StreamProcessor {
          reader = new SAXReader();
          dbLoadRate = (long) (streamRate.get() * Float
                .parseFloat(configProperties.getProperty("db.prefetch.rate")));
-         windowSize = dbLoadRate / 2;
          df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss");
          startTime = df.parse(
                configProperties.getProperty("archive.stream.start.time"))
                .getTime();
+
+         CommonHelper helper = CommonHelper.getHelperInstance();
+
+         // Link Id co=ordinate settings.
+         LOGGER.info("Loading link ID coordinate information to memory");
+         file = new File(configProperties.getProperty("linkid.cordinate.file"));
+         br = new BufferedReader(new FileReader(file));
+         linkIdCoord = new ConcurrentHashMap<Long, Coordinate>();
+         helper.loadLinkIdCoordinates(linkIdCoord, file, br);
+         LOGGER.info("Finished loading link ID coordinate information for "
+               + linkIdCoord.size() + " link Ids to memory");
+
+         // Create the polygon for spatial filter
+         WKTReader reader = new WKTReader(gf);
+         polygon = (Polygon) reader.read(configProperties
+               .getProperty("spatial.polygon"));
 
          // Instantiate the Esper parameter arrays
 
@@ -121,13 +154,23 @@ public final class StreamProcessor {
                   .setShareViews(false);
             cepRTJoin[count] = cepJoin[count].getEPRuntime();
             cepAdmJoin[count] = cepJoin[count].getEPAdministrator();
-            CommonHelper helper = CommonHelper.getHelperInstance();
             EPStatement cepStatement = cepAdmJoin[count].createEPL(helper
                   .getJoinQuery(streamOption, dbLoadRate));
             // cepStatement.addListener(new FinalListener());
             cepStatement.setSubscriber(new FinalSubscriber());
          }
          // End of Esper configuration for the join
+
+         // Initialize the parameters required for generating the excel sheet
+         // containing the performance metrics
+         // workbook = new HSSFWorkbook();
+         // sheet = workbook.createSheet("Performance_at_"
+         // + (1000000 / streamRate.get()));
+         // HSSFRow row = sheet.createRow(0);
+         // for (int metric = 0; metric < METRICS.length; metric++) {
+         // HSSFCell cell = row.createCell(metric);
+         // cell.setCellValue(METRICS[metric]);
+         // }
 
       } catch (ParseException e) {
          LOGGER.error(
@@ -139,6 +182,8 @@ public final class StreamProcessor {
                e);
       } catch (IOException e) {
          LOGGER.error("Properties file contains non unicode values ", e);
+      } catch (com.vividsolutions.jts.io.ParseException e) {
+         LOGGER.error("Error parsing the polygon string please check the config file");
       }
 
    }
@@ -173,7 +218,7 @@ public final class StreamProcessor {
          SigarSystemMonitor sysMonitor = SigarSystemMonitor.getInstance();
          sysMonitor.setCpuUsageScalefactor((Double.parseDouble(configProperties
                .getProperty("cpu.usage.scale.factor"))));
-         executor.scheduleAtFixedRate(sysMonitor, 0, 60, TimeUnit.SECONDS);
+         executor.scheduleAtFixedRate(sysMonitor, 0, 30, TimeUnit.SECONDS);
 
          // Depending upon the mode chosen aggregate at the database or
          // aggregate the sub-streams using the Esper engine.
@@ -199,17 +244,8 @@ public final class StreamProcessor {
                ConcurrentLinkedQueue<LiveTrafficBean> buffer = new ConcurrentLinkedQueue<LiveTrafficBean>();
                GenericLiveStreamer<LiveTrafficBean> streamer = new GenericLiveStreamer<LiveTrafficBean>(
                      buffer, streamerCore.cepRTJoin, monitor, executor,
-                     streamRate, df, serverPort);
+                     streamRate, df, serverPort, gf, polygon, linkIdCoord);
                streamer.startStreaming();
-
-            } else {
-               // ConcurrentLinkedQueue<LiveWeatherBean> buffer = new
-               // ConcurrentLinkedQueue<LiveWeatherBean>();
-               // GenericLiveStreamer<LiveWeatherBean> streamer = new
-               // GenericLiveStreamer<LiveWeatherBean>(
-               // buffer, streamerCore.cepRTJoin, monitor, executor,
-               // streamRate, df, serverPort);
-               // streamer.startStreaming();
 
             }
 
@@ -268,13 +304,11 @@ public final class StreamProcessor {
          cepAdmAggregateArray[count] = cepAggregateArray[count]
                .getEPAdministrator();
          // The statement is active on start to deactivate call the stop method.
+
+         CommonHelper helper = CommonHelper.getHelperInstance();
          EPStatement cepStatementAggregate = cepAdmAggregateArray[count]
-               .createEPL("@Hint('reclaim_group_aged="
-                     + dbLoadRate
-                     + ",') select  COUNT(*) as countRec, avg(volume) as avgVolume, avg(speed) as avgSpeed, linkId,readingMinutes as mins, "
-                     + "readingHours as hrs from mcomp.dissertation.beans.HistoryBean.std:groupwin(linkId,readingMinutes,readingHours)"
-                     + ".win:time_length_batch(" + windowSize
-                     + "sec,6) group by linkId,readingMinutes,readingHours");
+               .createEPL(helper.getAggregationQuery(dbLoadRate,
+                     streamRate.get()));
 
          // cepStatementAggregate.addListener(new AggregateListener(cepRT));
          cepStatementAggregate
@@ -304,10 +338,10 @@ public final class StreamProcessor {
          archiveStreamFutures[count] = streamers[count].startStreaming();
       }
 
-      for (int count = 0; count <= numberOfArchiveStreams; count++) {
+      for (int count = 0; count < numberOfArchiveStreams; count++) {
          loaders[count] = new RecordLoader<HistoryBean>(buffer[count],
                startTime, connectionProperties, monitor,
-               numberOfArchiveStreams, streamOption);
+               numberOfArchiveStreams, streamOption, gf, polygon, linkIdCoord);
 
          // retrieve records from the database for every 30,000 records from the
          // live stream. This really depends upon the nature of the live
@@ -324,7 +358,7 @@ public final class StreamProcessor {
       StreamRateChanger change = new StreamRateChanger(streamRate, streamers,
             loaders, archiveStreamFutures, dbLoadFutures, configProperties,
             executor, monitor);
-      executor.scheduleAtFixedRate(change, 20, 20, TimeUnit.SECONDS);
+      // executor.scheduleAtFixedRate(change, 100, 200, TimeUnit.SECONDS);
 
    }
 
@@ -357,7 +391,9 @@ public final class StreamProcessor {
       // live stream. This really depends upon the nature of the live
       // stream..
       AbstractLoader<HistoryAggregateBean> loader = new RecordLoaderAggregate<HistoryAggregateBean>(
-            buffer, ts, connectionProperties, monitor, streamOption);
+            buffer, ts, connectionProperties, monitor, streamOption, gf,
+            polygon, linkIdCoord);
+
       ScheduledFuture<?> dbLoadFuture = executor.scheduleAtFixedRate(loader, 0,
             dbLoadRate, TimeUnit.SECONDS);
 
@@ -369,7 +405,7 @@ public final class StreamProcessor {
             new ScheduledFuture<?>[] { archiveStreamFuture },
             new ScheduledFuture<?>[] { dbLoadFuture }, configProperties,
             executor, monitor);
-      executor.scheduleAtFixedRate(change, 0, 20, TimeUnit.SECONDS);
+      // executor.scheduleAtFixedRate(change, 100, 200, TimeUnit.SECONDS);
    }
 
 }

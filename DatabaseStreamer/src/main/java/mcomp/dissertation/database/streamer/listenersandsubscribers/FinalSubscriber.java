@@ -25,13 +25,14 @@ import org.jfree.data.time.TimeSeries;
 public class FinalSubscriber {
 
    private DateFormat df;
-   private int count = 0;
-   private static final Logger LOGGER = Logger.getLogger(FinalSubscriber.class);
+   private long count = 0;
+   private long numOfMsgsin30Sec = 0;
    private StreamJoinDisplay display;
    private long latency;
    private Map<Integer, Double> valueMap;
    private AtomicLong timer;
    private boolean throughputFlag;
+   private static final Logger LOGGER = Logger.getLogger(FinalSubscriber.class);
 
    @SuppressWarnings("deprecation")
    public FinalSubscriber() {
@@ -47,7 +48,6 @@ public class FinalSubscriber {
       valueMap = new HashMap<Integer, Double>();
       valueMap.put((2 + this.hashCode()), 0.0);
       valueMap.put((1 + this.hashCode()), 0.0);
-      System.out.println((1 + this.hashCode()));
    }
 
    /**
@@ -68,10 +68,12 @@ public class FinalSubscriber {
          final Float liveVolume, final Long historyLinkid,
          final Double historyAvgSpeed, final Double historyAvgVolume,
          final Timestamp liveTimeStamp, final long evalTime) {
-      count++;
+
       if (throughputFlag) {
          timer.set(Calendar.getInstance().getTimeInMillis());
+         numOfMsgsin30Sec = count;
       }
+      count++;
       throughputFlag = false;
       if (count % 1000 == 0) {
          LOGGER.info("hashCode:" + this.hashCode() + " " + count + ":"
@@ -82,9 +84,11 @@ public class FinalSubscriber {
                + liveVolume + "--" + historyAvgVolume + ") Live Time stamp("
                + liveTimeStamp + ")]");
       }
-      if (count % 5000 == 0) {
-         double throughput = ((5000 * 1000) / (Calendar.getInstance()
-               .getTimeInMillis() - timer.get()));
+
+      // Refresh display values every 30 seconds
+      if ((Calendar.getInstance().getTimeInMillis() - timer.get()) >= 30000) {
+         double throughput = (1000 * (count - numOfMsgsin30Sec))
+               / (Calendar.getInstance().getTimeInMillis() - timer.get());
          latency = Calendar.getInstance().getTimeInMillis() - evalTime;
          valueMap.put((1 + this.hashCode()), latency / 1.0);
          valueMap.put((2 + this.hashCode()), throughput);
@@ -109,8 +113,8 @@ public class FinalSubscriber {
                   + " [Details(EventTime:" + live.getEventTime()
                   + " Linkid live and history(" + live.getLinkId() + "--"
                   + history.getLinkId() + "), speeds live and history("
-                  + live.getAvgSpeed() + "--" + history.getAggregateSpeed()
-                  + "), volume live and history(" + live.getAvgVolume() + "--"
+                  + live.getSpeed() + "--" + history.getAggregateSpeed()
+                  + "), volume live and history(" + live.getVolume() + "--"
                   + history.getAggregateVolume() + ") Live time stamp("
                   + live.getTimeStamp() + ")]");
          } else {
@@ -119,8 +123,8 @@ public class FinalSubscriber {
                   + df.format(Calendar.getInstance().getTime())
                   + " [Details(EventTime:" + live.getEventTime()
                   + " Linkid live and history(" + live.getLinkId()
-                  + "-- null ), speeds live and history(" + live.getAvgSpeed()
-                  + "-- null), volume live and history(" + live.getAvgVolume()
+                  + "-- null ), speeds live and history(" + live.getSpeed()
+                  + "-- null), volume live and history(" + live.getVolume()
                   + "-- null) Live time stamp(" + live.getTimeStamp() + ")]");
 
          }

@@ -1,9 +1,10 @@
 package mcomp.dissertation.database.streamer.listenersandsubscribers;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import mcomp.dissertation.beans.HistoryAggregateBean;
+
+import org.apache.log4j.Logger;
 
 import com.espertech.esper.client.EPRuntime;
 
@@ -17,8 +18,9 @@ import com.espertech.esper.client.EPRuntime;
 public class AggregateSubscriber {
 
    private EPRuntime[] cepRTJoinArray;
-   private DateFormat df;
    private int count;
+   private static final Logger LOGGER = Logger
+         .getLogger(AggregateSubscriber.class);
 
    /**
     * @param cepRT -- Use this event processing run time service to send the
@@ -26,7 +28,7 @@ public class AggregateSubscriber {
     */
    public AggregateSubscriber(final EPRuntime[] cepRT) {
       this.cepRTJoinArray = cepRT;
-      this.df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
+      new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
       count = 0;
 
    }
@@ -57,14 +59,11 @@ public class AggregateSubscriber {
          count++;
          // print for evaluation purposes only..
          // if (count % 1000 == 0) {
-         // System.out.println(count + " The aggregator hashCode: "
-         // + this.hashCode() + " : "
-         // + df.format(Calendar.getInstance().getTime())
-         // + " Number of records :" + countRec.longValue() + " Bean: "
-         // + aggBean);
+         // LOGGER.info(" Number of records :" + countRec.longValue()
+         // + " link: " + linkId + " speed " + avgSpeed + " at " + hrs
+         // + ":" + mins);
          // }
       }
 
    }
-
 }

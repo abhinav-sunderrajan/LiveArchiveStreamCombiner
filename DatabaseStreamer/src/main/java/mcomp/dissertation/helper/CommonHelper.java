@@ -1,5 +1,12 @@
 package mcomp.dissertation.helper;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.ConcurrentHashMap;
+
+import com.vividsolutions.jts.geom.Coordinate;
+
 public class CommonHelper {
 
    private static CommonHelper helper;
@@ -34,22 +41,20 @@ public class CommonHelper {
     * 
     * @param streamOption
     * @param dbLoadRate
-    * @returns the join query depending upon the mode chosen
+    * @returns the join query
     */
 
    public String getJoinQuery(final int streamOption, long dbLoadRate) {
       String joinQuery;
-      long reclaimFrequency = 2 * dbLoadRate;
-      if (dbLoadRate < 60) {
-         dbLoadRate = 60;
-         reclaimFrequency = 200;
+      if (dbLoadRate < 20) {
+         dbLoadRate = 20;
       }
-
+      long reclaimFrequency = 2 * dbLoadRate;
       joinQuery = "@Hint('reclaim_group_aged="
             + dbLoadRate
             + ", reclaim_group_freq="
             + reclaimFrequency
-            + "') select live.linkId,live.avgSpeed,live.avgVolume,"
+            + "') select live.linkId,live.speed,live.volume,"
             + "historyAgg.linkId, historyAgg.aggregateSpeed,historyAgg.aggregateVolume,live.timeStamp,current_timestamp "
             + "from  mcomp.dissertation.beans.LiveTrafficBean.std:unique(linkId,"
             + "timeStamp.`hours`,timeStamp.`minutes`) as live inner join mcomp.dissertation"
@@ -57,6 +62,46 @@ public class CommonHelper {
             + "=live.linkId and historyAgg.mins=live.timeStamp.`minutes` and historyAgg.hrs=live.timeStamp.`hours`";
 
       return joinQuery;
+
+   }
+
+   public String getAggregationQuery(long dbLoadRate, int streamRate) {
+      String aggregationQuery;
+      if (dbLoadRate < 50 && dbLoadRate >= 30) {
+         dbLoadRate = 50;
+      } else if (dbLoadRate < 30) {
+         dbLoadRate = 40;
+      }
+      aggregationQuery = "@Hint('reclaim_group_aged="
+            + dbLoadRate
+            + ",') select  COUNT(*) as countRec, avg(volume) as avgVolume, avg(speed) as avgSpeed, linkId,readingMinutes as mins, "
+            + "readingHours as hrs from mcomp.dissertation.beans.HistoryBean.std:groupwin(linkId,readingMinutes,readingHours)"
+            + ".win:time_length_batch(" + (int) (streamRate / 2)
+            + " milliseconds, 6) group by linkId,readingMinutes,readingHours";
+      return aggregationQuery;
+
+   }
+
+   /**
+    * 
+    * @param linkIdCoord
+    * @param file
+    * @param br
+    * @throws IOException
+    */
+   public void loadLinkIdCoordinates(
+         ConcurrentHashMap<Long, Coordinate> linkIdCoord, File file,
+         BufferedReader br) throws IOException {
+      while (br.ready()) {
+         String[] items = br.readLine().split(",");
+         linkIdCoord.put(
+               Long.parseLong(items[0]),
+               new Coordinate(Double.parseDouble(items[1]), Double
+                     .parseDouble(items[2])));
+
+      }
+
+      br.close();
 
    }
 }

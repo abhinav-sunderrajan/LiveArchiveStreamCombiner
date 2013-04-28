@@ -86,7 +86,8 @@ public class DBConnect {
          preparedStatement.setTimestamp(1, start);
          preparedStatement.setTimestamp(2, end);
          rs = preparedStatement.executeQuery();
-         LOGGER.info("Fetched records between " + start + " and " + end);
+         LOGGER.info("Fetched aggregated records between " + start + " and "
+               + end);
       } catch (SQLException e) {
          LOGGER.error("Unable to retreive records", e);
 

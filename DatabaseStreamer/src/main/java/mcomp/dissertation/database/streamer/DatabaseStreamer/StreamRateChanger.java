@@ -18,13 +18,15 @@ public class StreamRateChanger implements Runnable {
    private AtomicInteger streamRate;
    private GenericArchiveStreamer<?>[] streamers;
    private AbstractLoader<?>[] histroyLoaders;
-   private long dbLoadRate;
+   private float dbPrefetchParam;
    private float streamRateSpeedUp;
    private ScheduledFuture<?>[] dbLoadFutures;
    private ScheduledFuture<?>[] archiveStreamFutures;
    private ScheduledExecutorService executor;
    private Object monitor;
    private boolean wakeFlag;
+   private long dbLoadRate;
+   private int streamRatePrev;
    private static final Logger LOGGER = Logger
          .getLogger(StreamRateChanger.class);
 
@@ -44,16 +46,20 @@ public class StreamRateChanger implements Runnable {
          final GenericArchiveStreamer<?>[] archiveStreamers,
          final AbstractLoader<?>[] histroyLoader,
          final ScheduledFuture<?>[] archiveStreamFutures,
-         final ScheduledFuture<?>[] dbLoadFuture,
+         final ScheduledFuture<?>[] dbLoadFutures,
          final Properties configProperties,
          final ScheduledExecutorService executor, final Object monitor) {
       this.streamRate = streamRate;
+      streamRatePrev = streamRate.get();
       this.streamers = archiveStreamers;
       this.histroyLoaders = histroyLoader;
       wakeFlag = true;
       this.executor = executor;
-      dbLoadRate = (long) (streamRate.get() * Float.parseFloat(configProperties
-            .getProperty("db.prefetch.rate")));
+      this.archiveStreamFutures = archiveStreamFutures;
+      this.dbLoadFutures = dbLoadFutures;
+      dbPrefetchParam = Float.parseFloat(configProperties
+            .getProperty("db.prefetch.rate"));
+      dbLoadRate = (long) (streamRate.get() * dbPrefetchParam);
       streamRateSpeedUp = Float.parseFloat(configProperties
             .getProperty("archive.stream.rate.param"));
       this.monitor = monitor;
@@ -74,30 +80,42 @@ public class StreamRateChanger implements Runnable {
       }
       wakeFlag = false;
 
-      executor.schedule(new Runnable() {
-         public void run() {
-            for (int count = 0; count < histroyLoaders.length; count++) {
-               dbLoadFutures[count].cancel(true);
-               dbLoadFutures[count] = executor.scheduleAtFixedRate(
-                     histroyLoaders[count], 0, dbLoadRate, TimeUnit.SECONDS);
+      // Change archive stream rate
+      int percentChange = (Math.abs(streamRatePrev - streamRate.get()) * 100 / streamRatePrev);
+      if (percentChange > 20) {
+         LOGGER.info("Significant change in the live stream rate.. exceeding 20% hence changing");
+         executor.schedule(new Runnable() {
+            public void run() {
+               for (int count = 0; count < streamers.length; count++) {
+                  archiveStreamFutures[count].cancel(true);
+                  archiveStreamFutures[count] = executor
+                        .scheduleWithFixedDelay(streamers[count], 0,
+                              (long) (streamRateSpeedUp * streamRate.get()),
+                              TimeUnit.MICROSECONDS);
+                  streamRatePrev = streamRate.get();
+               }
             }
-         }
-      }, 1, TimeUnit.SECONDS);
 
-      executor.schedule(new Runnable() {
-         public void run() {
-            for (int count = 0; count < streamers.length; count++) {
-               archiveStreamFutures[count].cancel(true);
-               archiveStreamFutures[count] = executor.scheduleWithFixedDelay(
-                     streamers[count], 0,
-                     (long) (streamRate.get() * streamRateSpeedUp),
-                     TimeUnit.MICROSECONDS);
-            }
-         }
-      }, 1, TimeUnit.SECONDS);
+         }, 1, TimeUnit.SECONDS);
+         LOGGER.info("Retaining DB load rate at " + dbLoadRate
+               + " seconds but changing archive streamer rates to "
+               + streamRate.get() + " microseconds to match live stream rate.");
+      } else {
+         streamRatePrev = streamRate.get();
+         LOGGER.info("Not changing archive stream rate the change is insignificant and equal to "
+               + percentChange + "%");
+      }
+      // Change DB pre-fetch rate.
+      // executor.schedule(new Runnable() {
+      // public void run() {
+      // for (int count = 0; count < histroyLoaders.length; count++) {
+      // dbLoadFutures[count].cancel(true);
+      // dbLoadRate = (long) (streamRate.get() * dbPrefetchParam);
+      // dbLoadFutures[count] = executor.scheduleAtFixedRate(
+      // histroyLoaders[count], 0, dbLoadRate, TimeUnit.SECONDS);
+      // }
+      // }
+      // }, 1, TimeUnit.SECONDS);
 
-      LOGGER.info("Changed DB load rate to " + dbLoadRate
-            + " seconds and archive streamer rates to " + streamRate
-            + " microseconds to match live stream rate.");
    }
 }

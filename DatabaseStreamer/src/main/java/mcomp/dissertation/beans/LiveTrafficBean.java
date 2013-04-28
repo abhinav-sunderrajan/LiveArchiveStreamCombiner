@@ -4,46 +4,42 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
- * Bean class representing the LTA link data.
+ * Bean class representing the dummy traffic link data.
  */
 public class LiveTrafficBean implements Serializable {
-
-   /**
-    * 
-    */
    private static final long serialVersionUID = -2023628198459947776L;
    private long linkId;
    private Timestamp timeStamp;
-   private float avgSpeed;
-   private float avgVolume;
+   private float speed;
+   private float volume;
    private String eventTime;
 
    /**
     * @return the avgVolume
     */
-   public float getAvgVolume() {
-      return avgVolume;
+   public float getVolume() {
+      return volume;
    }
 
    /**
     * @param avgVolume the avgVolume to set
     */
-   public void setAvgVolume(final float avgVolume) {
-      this.avgVolume = avgVolume;
+   public void setVolume(final float volume) {
+      this.volume = volume;
    }
 
    /**
     * @return the avgSpeed
     */
-   public float getAvgSpeed() {
-      return avgSpeed;
+   public float getSpeed() {
+      return speed;
    }
 
    /**
     * @param avgSpeed the avgSpeed to set
     */
-   public void setAvgSpeed(final float avgSpeed) {
-      this.avgSpeed = avgSpeed;
+   public void setSpeed(final float speed) {
+      this.speed = speed;
    }
 
    /**
