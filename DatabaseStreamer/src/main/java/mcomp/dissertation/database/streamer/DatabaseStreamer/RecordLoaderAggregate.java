@@ -23,6 +23,7 @@ public class RecordLoaderAggregate<T> extends AbstractLoader<T> {
    private GeometryFactory gf;
    private Polygon polygon;
    private ConcurrentHashMap<Long, Coordinate> linkIdCoord;
+   private boolean partionByLinkId;
    private static final Logger LOGGER = Logger.getLogger(RecordLoader.class);
 
    /**
@@ -34,17 +35,20 @@ public class RecordLoaderAggregate<T> extends AbstractLoader<T> {
     * @param polygon
     * @param gf
     * @param linkIdCoord
+    * @param partionByLinkId
     */
    public RecordLoaderAggregate(final ConcurrentLinkedQueue<T> buffer,
          final Timestamp[] startTimes, final Properties connectionProperties,
          final Object monitor, final int streamOption,
          final GeometryFactory gf, final Polygon polygon,
-         final ConcurrentHashMap<Long, Coordinate> linkIdCoord) {
+         final ConcurrentHashMap<Long, Coordinate> linkIdCoord,
+         final boolean partionByLinkId) {
       super(buffer, connectionProperties, monitor, streamOption);
       this.startTimes = startTimes;
       this.gf = gf;
       this.polygon = polygon;
       this.linkIdCoord = linkIdCoord;
+      this.partionByLinkId = partionByLinkId;
       wakeFlag = true;
 
    }
@@ -54,7 +58,8 @@ public class RecordLoaderAggregate<T> extends AbstractLoader<T> {
       try {
 
          // Initial load of data and wait for signal from live stream before st
-         ResultSet rs = dbconnect.retrieveAggregates(startTimes);
+         ResultSet rs = dbconnect.retrieveAggregates(startTimes,
+               partionByLinkId);
          Coordinate coord;
          Point point;
          long linkid;

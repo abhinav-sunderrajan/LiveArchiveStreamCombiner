@@ -6,6 +6,8 @@ import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.Properties;
 
+import mcomp.dissertation.helper.CommonHelper;
+
 import org.apache.log4j.Logger;
 
 import com.mysql.jdbc.Connection;
@@ -18,6 +20,8 @@ public class DBConnect {
 
    private Connection connect = null;
    private Object lock;
+   private int oddOrEven;
+   private static CommonHelper helper;
    private static final Logger LOGGER = Logger.getLogger(DBConnect.class);
    private static final String TABLE_NAME = "dataarchive";
    private static final String SELECT_QUERY = "SELECT LINKID,SPEED,VOLUME,TIME_STAMP FROM "
@@ -30,6 +34,8 @@ public class DBConnect {
     */
    public DBConnect(Object lock) {
       this.lock = lock;
+      oddOrEven = -1;
+      helper = CommonHelper.getHelperInstance();
    }
 
    /**
@@ -98,12 +104,14 @@ public class DBConnect {
    /**
     * 
     * @param timestamps
+    * @param partionByLinkId
     * @return ResultSet
     * @throws SQLException
     */
-   public ResultSet retrieveAggregates(final Timestamp[] timestamps)
-         throws SQLException {
+   public ResultSet retrieveAggregates(final Timestamp[] timestamps,
+         boolean partionByLinkId) throws SQLException {
       ResultSet rs = null;
+      oddOrEven++;
       synchronized (lock) {
          StringBuffer temp = new StringBuffer("");
          for (int count = 0; count < timestamps.length; count++) {
@@ -113,19 +121,15 @@ public class DBConnect {
                temp.append("?,");
             }
          }
-         String aggregateQuery = "SELECT LINKID,AVG(SPEED),AVG(VOLUME) FROM "
-               + TABLE_NAME + " WHERE TIME_STAMP IN(" + temp
-               + ") GROUP BY LINKID ORDER BY LINKID";
-         PreparedStatement preparedStatement = (PreparedStatement) connect
-               .prepareStatement(aggregateQuery);
-         preparedStatement.setFetchSize(Integer.MIN_VALUE);
          try {
-            for (int count = 0; count < timestamps.length; count++) {
-               preparedStatement.setTimestamp(count + 1, timestamps[count]);
-            }
+            PreparedStatement preparedStatement = helper.getDBAggregationQuery(
+                  partionByLinkId, timestamps, oddOrEven, TABLE_NAME, temp,
+                  connect);
+
             rs = preparedStatement.executeQuery();
             LOGGER.info("Fetched records between " + timestamps[0] + " and "
                   + timestamps[timestamps.length - 1]);
+
          } catch (SQLException e) {
             LOGGER.error("Unable to retreive records", e);
 

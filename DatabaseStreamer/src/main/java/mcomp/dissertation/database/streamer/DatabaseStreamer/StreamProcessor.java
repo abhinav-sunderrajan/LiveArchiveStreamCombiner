@@ -29,8 +29,6 @@ import mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscri
 import mcomp.dissertation.helper.CommonHelper;
 
 import org.apache.log4j.Logger;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
@@ -64,8 +62,6 @@ public final class StreamProcessor {
    private static long dbLoadRate;
    private File file;
    private BufferedReader br;
-   private static HSSFWorkbook workbook;
-   private static HSSFSheet sheet;
    private static ConcurrentHashMap<Long, Coordinate> linkIdCoord;
    private static Polygon polygon;
    private static Properties configProperties;
@@ -75,12 +71,11 @@ public final class StreamProcessor {
    private static int numberOfJoinOperators;
    private static int streamOption;
    private static SAXReader reader;
+   private static boolean partionByLinkId;
    private static final String CONFIG_FILE_PATH = "src/main/resources/config.properties";
    private static final String CONNECTION_FILE_PATH = "src/main/resources/connection.properties";
    private static final String XML_FILE_PATH = "src/main/resources/livestreams.xml";
    private static final int ARCHIVE_STREAM_COUNT = 6;
-   private static final String[] METRICS = { "INGESTION RATE", "THROUGHPUT",
-         "LATENCY", "JVM FREE MEMORY %" };
    private static final Logger LOGGER = Logger.getLogger(StreamProcessor.class);
    private static final GeometryFactory gf = new GeometryFactory();;
 
@@ -115,6 +110,8 @@ public final class StreamProcessor {
          startTime = df.parse(
                configProperties.getProperty("archive.stream.start.time"))
                .getTime();
+         partionByLinkId = Boolean.parseBoolean(configProperties
+               .getProperty("partition.by.linkid"));
 
          CommonHelper helper = CommonHelper.getHelperInstance();
 
@@ -160,17 +157,6 @@ public final class StreamProcessor {
             cepStatement.setSubscriber(new FinalSubscriber());
          }
          // End of Esper configuration for the join
-
-         // Initialize the parameters required for generating the excel sheet
-         // containing the performance metrics
-         // workbook = new HSSFWorkbook();
-         // sheet = workbook.createSheet("Performance_at_"
-         // + (1000000 / streamRate.get()));
-         // HSSFRow row = sheet.createRow(0);
-         // for (int metric = 0; metric < METRICS.length; metric++) {
-         // HSSFCell cell = row.createCell(metric);
-         // cell.setCellValue(METRICS[metric]);
-         // }
 
       } catch (ParseException e) {
          LOGGER.error(
@@ -244,7 +230,8 @@ public final class StreamProcessor {
                ConcurrentLinkedQueue<LiveTrafficBean> buffer = new ConcurrentLinkedQueue<LiveTrafficBean>();
                GenericLiveStreamer<LiveTrafficBean> streamer = new GenericLiveStreamer<LiveTrafficBean>(
                      buffer, streamerCore.cepRTJoin, monitor, executor,
-                     streamRate, df, serverPort, gf, polygon, linkIdCoord);
+                     streamRate, df, serverPort, gf, polygon, linkIdCoord,
+                     partionByLinkId);
                streamer.startStreaming();
 
             }
@@ -392,7 +379,7 @@ public final class StreamProcessor {
       // stream..
       AbstractLoader<HistoryAggregateBean> loader = new RecordLoaderAggregate<HistoryAggregateBean>(
             buffer, ts, connectionProperties, monitor, streamOption, gf,
-            polygon, linkIdCoord);
+            polygon, linkIdCoord, partionByLinkId);
 
       ScheduledFuture<?> dbLoadFuture = executor.scheduleAtFixedRate(loader, 0,
             dbLoadRate, TimeUnit.SECONDS);

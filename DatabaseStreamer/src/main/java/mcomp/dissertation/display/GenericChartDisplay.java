@@ -82,7 +82,7 @@ public class GenericChartDisplay extends ApplicationFrame {
       chartPanel.setMouseZoomable(true, false);
       setContentPane(chartPanel);
       plot = chart.getXYPlot();
-      plot.setAxisOffset(new RectangleInsets(5.0, 5.0, 5.0, 5.0));
+      plot.setAxisOffset(new RectangleInsets(3.0, 3.0, 3.0, 3.0));
       plot.setDomainCrosshairVisible(true);
       plot.setRangeCrosshairVisible(true);
 
@@ -112,7 +112,7 @@ public class GenericChartDisplay extends ApplicationFrame {
       this.pack();
       RefineryUtilities.centerFrameOnScreen(this);
       this.setVisible(true);
-      executor.scheduleAtFixedRate(new LazySave(), 8, 8, TimeUnit.MINUTES);
+      executor.scheduleAtFixedRate(new LazySave(), 6, 6, TimeUnit.MINUTES);
    }
 
    /**

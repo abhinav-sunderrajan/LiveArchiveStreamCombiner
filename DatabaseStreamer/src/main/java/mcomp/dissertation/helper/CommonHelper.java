@@ -3,13 +3,20 @@ package mcomp.dissertation.helper;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.apache.log4j.Logger;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.PreparedStatement;
 import com.vividsolutions.jts.geom.Coordinate;
 
 public class CommonHelper {
 
    private static CommonHelper helper;
+   private static final Logger LOGGER = Logger.getLogger(CommonHelper.class);
 
    /**
     * 
@@ -102,6 +109,57 @@ public class CommonHelper {
       }
 
       br.close();
+
+   }
+
+   /**
+    * Return the prepared statement depending on weather the partition by linkID
+    * mode of operation is chosen.
+    * @return preparedStatement
+    * @param partitionByLinkId
+    * @param timestamps
+    * @param oddOrEven
+    * @param linkidRange
+    * @param connect
+    * @param temp
+    * @throws SQLException
+    */
+   public PreparedStatement getDBAggregationQuery(boolean partitionByLinkId,
+         Timestamp[] timestamps, int oddOrEven, String tableName,
+         StringBuffer temp, Connection connect) throws SQLException {
+      String aggregateQuery = "";
+      PreparedStatement preparedStatement = null;
+      if (partitionByLinkId) {
+         switch (oddOrEven % 2) {
+         case 0:
+            aggregateQuery = "SELECT LINKID,AVG(SPEED),AVG(VOLUME) FROM "
+                  + tableName + " WHERE TIME_STAMP IN(" + temp
+                  + ") AND LINKID%2=0 GROUP BY LINKID ORDER BY LINKID";
+            LOGGER.info("Even numbered link IDS");
+            break;
+
+         case 1:
+            aggregateQuery = "SELECT LINKID,AVG(SPEED),AVG(VOLUME) FROM "
+                  + tableName + " WHERE TIME_STAMP IN(" + temp
+                  + ") AND LINKID%2=1 GROUP BY LINKID ORDER BY LINKID";
+            LOGGER.info("Odd numbered link IDS");
+            break;
+
+         }
+      } else {
+         aggregateQuery = "SELECT LINKID,AVG(SPEED),AVG(VOLUME) FROM "
+               + tableName + " WHERE TIME_STAMP IN(" + temp
+               + ") GROUP BY LINKID ORDER BY LINKID";
+      }
+
+      preparedStatement = (PreparedStatement) connect
+            .prepareStatement(aggregateQuery);
+      preparedStatement.setFetchSize(Integer.MIN_VALUE);
+      for (int count = 0; count < timestamps.length; count++) {
+         preparedStatement.setTimestamp(count + 1, timestamps[count]);
+      }
+
+      return preparedStatement;
 
    }
 }
