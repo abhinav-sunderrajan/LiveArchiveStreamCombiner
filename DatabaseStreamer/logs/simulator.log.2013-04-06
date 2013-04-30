@@ -1,0 +1,284 @@
+2013-04-06 13:30:19.045 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
+2013-04-06 13:30:38.811 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 13:30:38.811 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 13:30:38.811 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:184 - Aggregating archive data in the database itself. MODE 2
+2013-04-06 13:30:38.905 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-06 13:30:39.358 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-06 13:30:39.358 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=5287544, SoftIrq=0, Idle=9296676, Stolen=0, Wait=0, Total=25390672, Irq=195984, Nice=0, Sys=2342822}
+2013-04-06 13:30:39.358 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 682233856
+2013-04-06 13:30:39.358 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1326055424
+2013-04-06 13:30:39.358 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 7126328
+2013-04-06 13:30:39.358 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 16318464
+2013-04-06 13:30:46.159 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-06 13:30:48.781 [INFO] mcomp.dissertation.helper.NettyServer:67 - Started server on port 8080
+2013-04-06 13:31:00.248 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:126 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-16 00:00:00.0
+2013-04-06 13:31:01.265 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:53 - Initial database load complete. Wait for live stream before further load..
+2013-04-06 19:17:17.353 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
+2013-04-06 19:17:26.433 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_1' version 4.9.0
+2013-04-06 19:17:27.931 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 19:17:27.931 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 19:17:27.931 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:184 - Aggregating archive data in the database itself. MODE 2
+2013-04-06 19:17:27.932 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-06 19:17:28.276 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-06 19:17:28.338 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=14121100, SoftIrq=0, Idle=27790064, Stolen=0, Wait=0, Total=74446651, Irq=706169, Nice=0, Sys=7719864}
+2013-04-06 19:17:28.338 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 807092224
+2013-04-06 19:17:28.338 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1201197056
+2013-04-06 19:17:28.338 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 7027744
+2013-04-06 19:17:28.338 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 16318464
+2013-04-06 19:17:31.583 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-06 19:17:33.253 [INFO] mcomp.dissertation.helper.NettyServer:67 - Started server on port 8080
+2013-04-06 19:17:38.293 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:126 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-16 00:00:00.0
+2013-04-06 19:17:39.343 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:53 - Initial database load complete. Wait for live stream before further load..
+2013-04-06 19:17:49.173 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:55 - Start databse load normally
+2013-04-06 19:17:49.173 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:58 - Awake!! Starting to streaming now
+2013-04-06 19:18:02.919 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:76 - hashCode:27916412 1000:06-Apr-2013 19:18:02.919 Linkid live and history(103006410--103006410), speeds live and history(33.0--40.5), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:18:09.831 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:76 - hashCode:4349625 1000:06-Apr-2013 19:18:09.831 Linkid live and history(103009811--103009811), speeds live and history(39.0--45.66669845581055), volume live and history(852.0--659.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:18:16.151 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:76 - hashCode:27916412 2000:06-Apr-2013 19:18:16.151 Linkid live and history(103012758--103012758), speeds live and history(36.0--35.83330154418945), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:18:16.151 [ERROR] com.espertech.esper.core.service.ResultDeliveryStrategyImpl:179 - Invocation exception when invoking method 'update' of class 'mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber' passing parameters [103012758, 36.0, 0.0, 103012758, 35.83330154418945, 0.0, 2011-04-17 00:00:00.0, 1365247096136] for statement '733216a5-111b-47b0-b8dc-4fbf4d0c4218': NullPointerException : null
+java.lang.NullPointerException
+	at mcomp.dissertation.display.GenericChartDisplay.refreshDisplayValues(GenericChartDisplay.java:126)
+	at mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber.update(FinalSubscriber.java:91)
+	at mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber$$FastClassByCGLIB$$23a1de2c.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at com.espertech.esper.core.service.ResultDeliveryStrategyImpl.execute(ResultDeliveryStrategyImpl.java:124)
+	at com.espertech.esper.core.service.StatementResultServiceImpl.dispatchInternal(StatementResultServiceImpl.java:364)
+	at com.espertech.esper.core.service.StatementResultServiceImpl.processDispatch(StatementResultServiceImpl.java:249)
+	at com.espertech.esper.core.service.StatementResultServiceImpl.execute(StatementResultServiceImpl.java:235)
+	at com.espertech.esper.core.service.UpdateDispatchViewBase.execute(UpdateDispatchViewBase.java:75)
+	at com.espertech.esper.dispatch.DispatchServiceImpl.dispatchFromQueue(DispatchServiceImpl.java:52)
+	at com.espertech.esper.dispatch.DispatchServiceImpl.dispatch(DispatchServiceImpl.java:31)
+	at com.espertech.esper.core.service.EPRuntimeImpl.dispatch(EPRuntimeImpl.java:1269)
+	at com.espertech.esper.core.service.EPRuntimeImpl.processWrappedEvent(EPRuntimeImpl.java:473)
+	at com.espertech.esper.core.service.EPRuntimeImpl.processEvent(EPRuntimeImpl.java:437)
+	at com.espertech.esper.core.service.EPRuntimeImpl.sendEvent(EPRuntimeImpl.java:196)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.GenericLiveStreamer.run(GenericLiveStreamer.java:73)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRunAndReset(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$101(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.runPeriodic(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2013-04-06 19:20:01.342 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
+2013-04-06 19:20:05.133 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_1' version 4.9.0
+2013-04-06 19:20:05.618 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 19:20:05.618 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 19:20:05.618 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:184 - Aggregating archive data in the database itself. MODE 2
+2013-04-06 19:20:05.712 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-06 19:20:05.883 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-06 19:20:05.914 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=14220395, SoftIrq=0, Idle=27966814, Stolen=0, Wait=0, Total=74919384, Irq=708867, Nice=0, Sys=7758974}
+2013-04-06 19:20:05.914 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 736677888
+2013-04-06 19:20:05.914 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1271611392
+2013-04-06 19:20:05.914 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 7661960
+2013-04-06 19:20:05.914 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 16318464
+2013-04-06 19:20:06.445 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-06 19:20:06.820 [INFO] mcomp.dissertation.helper.NettyServer:67 - Started server on port 8080
+2013-04-06 19:20:09.644 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:126 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-16 00:00:00.0
+2013-04-06 19:20:10.893 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:53 - Initial database load complete. Wait for live stream before further load..
+2013-04-06 19:20:29.335 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:55 - Start databse load normally
+2013-04-06 19:20:29.351 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:58 - Awake!! Starting to streaming now
+2013-04-06 19:20:43.081 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:76 - hashCode:25782860 1000:06-Apr-2013 19:20:43.081 Linkid live and history(103006410--103006410), speeds live and history(33.0--40.5), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:20:50.040 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:76 - hashCode:21344303 1000:06-Apr-2013 19:20:50.040 Linkid live and history(103009811--103009811), speeds live and history(39.0--45.66669845581055), volume live and history(852.0--659.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:20:56.407 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:76 - hashCode:25782860 2000:06-Apr-2013 19:20:56.407 Linkid live and history(103012758--103012758), speeds live and history(36.0--35.83330154418945), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:20:56.423 [ERROR] com.espertech.esper.core.service.ResultDeliveryStrategyImpl:179 - Invocation exception when invoking method 'update' of class 'mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber' passing parameters [103012758, 36.0, 0.0, 103012758, 35.83330154418945, 0.0, 2011-04-17 00:00:00.0, 1365247256407] for statement '0ec964e6-375b-42ce-9d26-cf1d2944d8f5': NullPointerException : null
+java.lang.NullPointerException
+	at mcomp.dissertation.display.GenericChartDisplay.refreshDisplayValues(GenericChartDisplay.java:126)
+	at mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber.update(FinalSubscriber.java:91)
+	at mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber$$FastClassByCGLIB$$23a1de2c.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at com.espertech.esper.core.service.ResultDeliveryStrategyImpl.execute(ResultDeliveryStrategyImpl.java:124)
+	at com.espertech.esper.core.service.StatementResultServiceImpl.dispatchInternal(StatementResultServiceImpl.java:364)
+	at com.espertech.esper.core.service.StatementResultServiceImpl.processDispatch(StatementResultServiceImpl.java:249)
+	at com.espertech.esper.core.service.StatementResultServiceImpl.execute(StatementResultServiceImpl.java:235)
+	at com.espertech.esper.core.service.UpdateDispatchViewBase.execute(UpdateDispatchViewBase.java:75)
+	at com.espertech.esper.dispatch.DispatchServiceImpl.dispatchFromQueue(DispatchServiceImpl.java:52)
+	at com.espertech.esper.dispatch.DispatchServiceImpl.dispatch(DispatchServiceImpl.java:31)
+	at com.espertech.esper.core.service.EPRuntimeImpl.dispatch(EPRuntimeImpl.java:1269)
+	at com.espertech.esper.core.service.EPRuntimeImpl.processWrappedEvent(EPRuntimeImpl.java:473)
+	at com.espertech.esper.core.service.EPRuntimeImpl.processEvent(EPRuntimeImpl.java:437)
+	at com.espertech.esper.core.service.EPRuntimeImpl.sendEvent(EPRuntimeImpl.java:196)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.GenericLiveStreamer.run(GenericLiveStreamer.java:73)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRunAndReset(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$101(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.runPeriodic(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2013-04-06 19:27:08.161 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
+2013-04-06 19:27:25.883 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_1' version 4.9.0
+2013-04-06 19:27:28.427 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 19:27:28.427 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 19:27:28.443 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:184 - Aggregating archive data in the database itself. MODE 2
+2013-04-06 19:27:28.584 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-06 19:27:29.707 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-06 19:27:29.739 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=14495331, SoftIrq=0, Idle=28477483, Stolen=0, Wait=0, Total=76236859, Irq=716839, Nice=0, Sys=7851686}
+2013-04-06 19:27:29.739 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 642166784
+2013-04-06 19:27:29.739 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1366122496
+2013-04-06 19:27:29.739 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 6736352
+2013-04-06 19:27:29.739 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 16318464
+2013-04-06 19:27:32.548 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-06 19:27:35.513 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:126 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-16 00:00:00.0
+2013-04-06 19:27:36.578 [INFO] mcomp.dissertation.helper.NettyServer:67 - Started server on port 8080
+2013-04-06 19:27:37.172 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:53 - Initial database load complete. Wait for live stream before further load..
+2013-04-06 19:28:28.449 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-06 19:28:28.449 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=14582520, SoftIrq=0, Idle=28495859, Stolen=0, Wait=0, Total=76416757, Irq=717760, Nice=0, Sys=7866053}
+2013-04-06 19:28:28.449 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 627220480
+2013-04-06 19:28:28.449 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1381068800
+2013-04-06 19:28:28.449 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 10514800
+2013-04-06 19:28:28.449 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 22966272
+2013-04-06 19:28:52.555 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
+2013-04-06 19:28:56.284 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_1' version 4.9.0
+2013-04-06 19:28:56.929 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 19:28:56.929 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 19:28:56.929 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:184 - Aggregating archive data in the database itself. MODE 2
+2013-04-06 19:28:57.085 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-06 19:28:57.210 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-06 19:28:57.210 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=14610148, SoftIrq=0, Idle=28519696, Stolen=0, Wait=0, Total=76502683, Irq=718227, Nice=0, Sys=7871872}
+2013-04-06 19:28:57.225 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 635527168
+2013-04-06 19:28:57.225 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1372762112
+2013-04-06 19:28:57.225 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 8272752
+2013-04-06 19:28:57.225 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 16318464
+2013-04-06 19:28:57.928 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-06 19:28:58.490 [INFO] mcomp.dissertation.helper.NettyServer:67 - Started server on port 8080
+2013-04-06 19:29:00.799 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:126 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-16 00:00:00.0
+2013-04-06 19:29:01.957 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:53 - Initial database load complete. Wait for live stream before further load..
+2013-04-06 19:29:26.593 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:55 - Start databse load normally
+2013-04-06 19:29:26.593 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:58 - Awake!! Starting to streaming now
+2013-04-06 19:29:40.307 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:8358178 1000:06-Apr-2013 19:29:40.307 Linkid live and history(103006410--103006410), speeds live and history(33.0--40.5), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:29:47.235 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:13033964 1000:06-Apr-2013 19:29:47.235 Linkid live and history(103009811--103009811), speeds live and history(39.0--45.66669845581055), volume live and history(852.0--659.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:29:53.555 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:8358178 2000:06-Apr-2013 19:29:53.555 Linkid live and history(103012758--103012758), speeds live and history(36.0--35.83330154418945), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:29:53.555 [ERROR] com.espertech.esper.core.service.ResultDeliveryStrategyImpl:179 - Invocation exception when invoking method 'update' of class 'mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber' passing parameters [103012758, 36.0, 0.0, 103012758, 35.83330154418945, 0.0, 2011-04-17 00:00:00.0, 1365247793493] for statement '4f7c3348-2803-4c04-8175-b150c4cc19d8': NullPointerException : null
+java.lang.NullPointerException
+	at mcomp.dissertation.display.GenericChartDisplay.refreshDisplayValues(GenericChartDisplay.java:126)
+	at mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber.update(FinalSubscriber.java:91)
+	at mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber$$FastClassByCGLIB$$23a1de2c.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at com.espertech.esper.core.service.ResultDeliveryStrategyImpl.execute(ResultDeliveryStrategyImpl.java:124)
+	at com.espertech.esper.core.service.StatementResultServiceImpl.dispatchInternal(StatementResultServiceImpl.java:364)
+	at com.espertech.esper.core.service.StatementResultServiceImpl.processDispatch(StatementResultServiceImpl.java:249)
+	at com.espertech.esper.core.service.StatementResultServiceImpl.execute(StatementResultServiceImpl.java:235)
+	at com.espertech.esper.core.service.UpdateDispatchViewBase.execute(UpdateDispatchViewBase.java:75)
+	at com.espertech.esper.dispatch.DispatchServiceImpl.dispatchFromQueue(DispatchServiceImpl.java:52)
+	at com.espertech.esper.dispatch.DispatchServiceImpl.dispatch(DispatchServiceImpl.java:31)
+	at com.espertech.esper.core.service.EPRuntimeImpl.dispatch(EPRuntimeImpl.java:1269)
+	at com.espertech.esper.core.service.EPRuntimeImpl.processWrappedEvent(EPRuntimeImpl.java:473)
+	at com.espertech.esper.core.service.EPRuntimeImpl.processEvent(EPRuntimeImpl.java:437)
+	at com.espertech.esper.core.service.EPRuntimeImpl.sendEvent(EPRuntimeImpl.java:196)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.GenericLiveStreamer.run(GenericLiveStreamer.java:73)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRunAndReset(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$101(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.runPeriodic(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2013-04-06 19:31:02.831 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
+2013-04-06 19:31:06.608 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_1' version 4.9.0
+2013-04-06 19:31:07.160 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 19:31:07.160 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 19:31:07.160 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:184 - Aggregating archive data in the database itself. MODE 2
+2013-04-06 19:31:07.222 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-06 19:31:07.394 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-06 19:31:07.409 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=14759613, SoftIrq=0, Idle=28595934, Stolen=0, Wait=0, Total=76893046, Irq=721628, Nice=0, Sys=7906411}
+2013-04-06 19:31:07.409 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 661643264
+2013-04-06 19:31:07.409 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1346646016
+2013-04-06 19:31:07.409 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 9038488
+2013-04-06 19:31:07.409 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 16318464
+2013-04-06 19:31:08.111 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-06 19:31:08.533 [INFO] mcomp.dissertation.helper.NettyServer:67 - Started server on port 8080
+2013-04-06 19:31:11.185 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:126 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-16 00:00:00.0
+2013-04-06 19:31:12.419 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:53 - Initial database load complete. Wait for live stream before further load..
+2013-04-06 19:31:24.030 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:55 - Start databse load normally
+2013-04-06 19:31:24.030 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:58 - Awake!! Starting to streaming now
+2013-04-06 19:31:37.692 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31583366 1000:06-Apr-2013 19:31:37.692 Linkid live and history(103006410--103006410), speeds live and history(33.0--40.5), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:31:44.698 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:14864562 1000:06-Apr-2013 19:31:44.698 Linkid live and history(103009811--103009811), speeds live and history(39.0--45.66669845581055), volume live and history(852.0--659.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:31:51.008 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31583366 2000:06-Apr-2013 19:31:51.008 Linkid live and history(103012758--103012758), speeds live and history(36.0--35.83330154418945), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:31:51.008 [ERROR] com.espertech.esper.core.service.ResultDeliveryStrategyImpl:179 - Invocation exception when invoking method 'update' of class 'mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber' passing parameters [103012758, 36.0, 0.0, 103012758, 35.83330154418945, 0.0, 2011-04-17 00:00:00.0, 1365247910993] for statement 'f9eeccb0-cc20-4457-8635-d5887dc24554': NullPointerException : null
+java.lang.NullPointerException
+	at mcomp.dissertation.display.GenericChartDisplay.refreshDisplayValues(GenericChartDisplay.java:126)
+	at mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber.update(FinalSubscriber.java:92)
+	at mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber$$FastClassByCGLIB$$23a1de2c.invoke(<generated>)
+	at net.sf.cglib.reflect.FastMethod.invoke(FastMethod.java:53)
+	at com.espertech.esper.core.service.ResultDeliveryStrategyImpl.execute(ResultDeliveryStrategyImpl.java:124)
+	at com.espertech.esper.core.service.StatementResultServiceImpl.dispatchInternal(StatementResultServiceImpl.java:364)
+	at com.espertech.esper.core.service.StatementResultServiceImpl.processDispatch(StatementResultServiceImpl.java:249)
+	at com.espertech.esper.core.service.StatementResultServiceImpl.execute(StatementResultServiceImpl.java:235)
+	at com.espertech.esper.core.service.UpdateDispatchViewBase.execute(UpdateDispatchViewBase.java:75)
+	at com.espertech.esper.dispatch.DispatchServiceImpl.dispatchFromQueue(DispatchServiceImpl.java:52)
+	at com.espertech.esper.dispatch.DispatchServiceImpl.dispatch(DispatchServiceImpl.java:31)
+	at com.espertech.esper.core.service.EPRuntimeImpl.dispatch(EPRuntimeImpl.java:1269)
+	at com.espertech.esper.core.service.EPRuntimeImpl.processWrappedEvent(EPRuntimeImpl.java:473)
+	at com.espertech.esper.core.service.EPRuntimeImpl.processEvent(EPRuntimeImpl.java:437)
+	at com.espertech.esper.core.service.EPRuntimeImpl.sendEvent(EPRuntimeImpl.java:196)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.GenericLiveStreamer.run(GenericLiveStreamer.java:73)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source)
+	at java.util.concurrent.FutureTask$Sync.innerRunAndReset(Unknown Source)
+	at java.util.concurrent.FutureTask.runAndReset(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$101(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.runPeriodic(Unknown Source)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+2013-04-06 19:51:03.320 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
+2013-04-06 19:51:12.500 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_1' version 4.9.0
+2013-04-06 19:51:14.278 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 19:51:14.278 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-06 19:51:14.278 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:184 - Aggregating archive data in the database itself. MODE 2
+2013-04-06 19:51:14.342 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-06 19:51:14.654 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-06 19:51:14.654 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=15248411, SoftIrq=0, Idle=30280730, Stolen=0, Wait=0, Total=80514267, Irq=739942, Nice=0, Sys=8146964}
+2013-04-06 19:51:14.654 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 747737088
+2013-04-06 19:51:14.654 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1260552192
+2013-04-06 19:51:14.654 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 9401376
+2013-04-06 19:51:14.654 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 16318464
+2013-04-06 19:51:16.026 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-06 19:51:17.509 [INFO] mcomp.dissertation.helper.NettyServer:67 - Started server on port 8080
+2013-04-06 19:51:18.782 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:126 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-16 00:00:00.0
+2013-04-06 19:51:20.125 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:53 - Initial database load complete. Wait for live stream before further load..
+2013-04-06 19:51:34.058 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:55 - Start databse load normally
+2013-04-06 19:51:34.058 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:58 - Awake!! Starting to streaming now
+2013-04-06 19:51:47.850 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31548547 1000:06-Apr-2013 19:51:47.850 Linkid live and history(103006410--103006410), speeds live and history(33.0--40.5), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:51:54.732 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:32654289 1000:06-Apr-2013 19:51:54.732 Linkid live and history(103009811--103009811), speeds live and history(39.0--45.66669845581055), volume live and history(852.0--659.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:52:01.021 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31548547 2000:06-Apr-2013 19:52:01.021 Linkid live and history(103012758--103012758), speeds live and history(36.0--35.83330154418945), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:52:14.290 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-06 19:52:14.290 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=15346582, SoftIrq=0, Idle=30290807, Stolen=0, Wait=0, Total=80694306, Irq=740692, Nice=0, Sys=8158742}
+2013-04-06 19:52:14.290 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 575983616
+2013-04-06 19:52:14.290 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1432305664
+2013-04-06 19:52:14.290 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 10482376
+2013-04-06 19:52:14.290 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 35381248
+2013-04-06 19:52:14.649 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:32654289 2000:06-Apr-2013 19:52:14.649 Linkid live and history(103020075--103020075), speeds live and history(35.0--37.5), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:52:15.133 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31548547 3000:06-Apr-2013 19:52:15.133 Linkid live and history(103020272--103020272), speeds live and history(42.0--38.5), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:52:29.704 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31548547 4000:06-Apr-2013 19:52:29.704 Linkid live and history(103028172--103028172), speeds live and history(43.0--44.5), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:52:33.658 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:32654289 3000:06-Apr-2013 19:52:33.658 Linkid live and history(103030391--103030391), speeds live and history(31.0--37.83330154418945), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:52:44.700 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31548547 5000:06-Apr-2013 19:52:44.700 Linkid live and history(103036414--103036414), speeds live and history(41.0--35.83330154418945), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:52:54.145 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:32654289 4000:06-Apr-2013 19:52:54.003 Linkid live and history(103040447--103040447), speeds live and history(38.0--40.5), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:53:01.462 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31548547 6000:06-Apr-2013 19:53:01.462 Linkid live and history(103043588--103043588), speeds live and history(34.0--60.0), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:53:14.295 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-06 19:53:14.295 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=15453333, SoftIrq=0, Idle=30294411, Stolen=0, Wait=0, Total=80874299, Irq=741565, Nice=0, Sys=8168383}
+2013-04-06 19:53:14.295 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 360587264
+2013-04-06 19:53:14.310 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1647702016
+2013-04-06 19:53:14.310 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 3668080
+2013-04-06 19:53:14.310 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 35381248
+2013-04-06 19:53:18.306 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:32654289 5000:06-Apr-2013 19:53:18.306 Linkid live and history(103050171--103050171), speeds live and history(52.0--37.599998474121094), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:53:21.271 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31548547 7000:06-Apr-2013 19:53:21.271 Linkid live and history(103051322--103051322), speeds live and history(39.0--47.79999923706055), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:53:37.853 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31548547 8000:06-Apr-2013 19:53:37.853 Linkid live and history(103057912--103057912), speeds live and history(43.0--49.16669845581055), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:53:41.873 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:32654289 6000:06-Apr-2013 19:53:41.872 Linkid live and history(103059331--103059331), speeds live and history(39.0--41.83330154418945), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:53:54.081 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31548547 9000:06-Apr-2013 19:53:54.081 Linkid live and history(103063956--103063956), speeds live and history(34.0--63.0), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:54:01.821 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:32654289 7000:06-Apr-2013 19:54:01.821 Linkid live and history(103067187--103067187), speeds live and history(52.0--66.66670227050781), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:54:06.721 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31548547 10000:06-Apr-2013 19:54:06.721 Linkid live and history(103069096--103069096), speeds live and history(37.0--38.16669845581055), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:54:14.367 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-06 19:54:14.367 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=15549196, SoftIrq=0, Idle=30300760, Stolen=0, Wait=0, Total=81054528, Irq=742735, Nice=0, Sys=8186323}
+2013-04-06 19:54:14.367 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 329736192
+2013-04-06 19:54:14.367 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1678553088
+2013-04-06 19:54:14.367 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 11262568
+2013-04-06 19:54:14.367 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 59125760
+2013-04-06 19:54:20.094 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:32654289 8000:06-Apr-2013 19:54:20.094 Linkid live and history(103073927--103073927), speeds live and history(54.0--40.0), volume live and history(169.0--187.0) Live Time stamp(2011-04-17 00:00:00.0)]
+2013-04-06 19:54:20.297 [INFO] mcomp.dissertation.database.streamer.listenersandsubscribers.FinalSubscriber:77 - hashCode:31548547 11000:06-Apr-2013 19:54:20.297 Linkid live and history(103073980--103073980), speeds live and history(37.0--39.5), volume live and history(0.0--0.0) Live Time stamp(2011-04-17 00:00:00.0)]

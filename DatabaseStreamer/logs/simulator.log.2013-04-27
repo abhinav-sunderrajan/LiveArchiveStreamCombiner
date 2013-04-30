@@ -1,0 +1,294 @@
+2013-04-27 11:32:36.268 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:116 - Loading link ID coordinate information to memory
+2013-04-27 11:32:41.036 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:121 - Finished loading link ID coordinate information for 46175 link Ids to memory
+2013-04-27 11:32:45.656 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
+2013-04-27 11:33:17.833 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-27 11:33:17.835 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-27 11:33:17.837 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:209 - Creating esper aggregating operator array. MODE 1
+2013-04-27 11:33:17.929 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.9.0
+2013-04-27 11:33:18.210 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-27 11:33:18.368 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=4355843, SoftIrq=0, Idle=16577695, Stolen=0, Wait=0, Total=33427734, Irq=38063, Nice=0, Sys=1351545}
+2013-04-27 11:33:18.369 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 520052736
+2013-04-27 11:33:18.369 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1488236544
+2013-04-27 11:33:18.370 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 8413472
+2013-04-27 11:33:18.370 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 22646784
+2013-04-27 11:33:18.362 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.9.0
+2013-04-27 11:33:18.524 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.9.0
+2013-04-27 11:33:18.660 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_3' version 4.9.0
+2013-04-27 11:33:18.812 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_4' version 4.9.0
+2013-04-27 11:33:19.011 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-27 11:33:19.012 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-27 11:33:19.020 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-27 11:33:19.025 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-27 11:33:19.026 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-27 11:33:19.027 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-27 11:33:22.258 [ERROR] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:65 - Unable to connect to database. Please check the settings
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:355)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:317)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect.openDBConnection(DBConnect.java:58)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.AbstractLoader.<init>(AbstractLoader.java:35)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader.<init>(RecordLoader.java:51)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.setUpArchiveSubStreams(StreamProcessor.java:327)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.main(StreamProcessor.java:210)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(Unknown Source)
+	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:305)
+	... 19 more
+2013-04-27 11:33:23.285 [ERROR] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:65 - Unable to connect to database. Please check the settings
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:355)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:317)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect.openDBConnection(DBConnect.java:58)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.AbstractLoader.<init>(AbstractLoader.java:35)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader.<init>(RecordLoader.java:51)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.setUpArchiveSubStreams(StreamProcessor.java:327)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.main(StreamProcessor.java:210)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(Unknown Source)
+	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:305)
+	... 19 more
+2013-04-27 11:33:24.301 [ERROR] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:65 - Unable to connect to database. Please check the settings
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:355)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:317)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect.openDBConnection(DBConnect.java:58)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.AbstractLoader.<init>(AbstractLoader.java:35)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader.<init>(RecordLoader.java:51)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.setUpArchiveSubStreams(StreamProcessor.java:327)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.main(StreamProcessor.java:210)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(Unknown Source)
+	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:305)
+	... 19 more
+2013-04-27 11:33:25.315 [ERROR] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:65 - Unable to connect to database. Please check the settings
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:355)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:317)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect.openDBConnection(DBConnect.java:58)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.AbstractLoader.<init>(AbstractLoader.java:35)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader.<init>(RecordLoader.java:51)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.setUpArchiveSubStreams(StreamProcessor.java:327)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.main(StreamProcessor.java:210)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(Unknown Source)
+	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:305)
+	... 19 more
+2013-04-27 11:33:26.315 [ERROR] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:65 - Unable to connect to database. Please check the settings
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:355)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:317)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect.openDBConnection(DBConnect.java:58)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.AbstractLoader.<init>(AbstractLoader.java:35)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader.<init>(RecordLoader.java:51)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.setUpArchiveSubStreams(StreamProcessor.java:327)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.main(StreamProcessor.java:210)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(Unknown Source)
+	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:305)
+	... 19 more
+2013-04-27 11:34:35.981 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:116 - Loading link ID coordinate information to memory
+2013-04-27 11:34:36.754 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:121 - Finished loading link ID coordinate information for 46175 link Ids to memory
+2013-04-27 11:34:37.055 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
+2013-04-27 11:34:42.058 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-27 11:34:42.063 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-27 11:34:42.064 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:212 - Aggregating archive data in the database itself. MODE 2
+2013-04-27 11:34:42.073 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-27 11:34:42.281 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-27 11:34:42.303 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=4427370, SoftIrq=0, Idle=16648504, Stolen=0, Wait=0, Total=33680176, Irq=39607, Nice=0, Sys=1377504}
+2013-04-27 11:34:42.303 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 463704064
+2013-04-27 11:34:42.304 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1544585216
+2013-04-27 11:34:42.304 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 9730864
+2013-04-27 11:34:42.305 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 22704128
+2013-04-27 11:34:43.767 [ERROR] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:65 - Unable to connect to database. Please check the settings
+com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:355)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
+	at java.lang.reflect.Constructor.newInstance(Unknown Source)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:317)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at java.sql.DriverManager.getConnection(Unknown Source)
+	at mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect.openDBConnection(DBConnect.java:58)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.AbstractLoader.<init>(AbstractLoader.java:35)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoaderAggregate.<init>(RecordLoaderAggregate.java:43)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.setUpAggregatedArchiveStream(StreamProcessor.java:376)
+	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.main(StreamProcessor.java:213)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.PlainSocketImpl.socketConnect(Native Method)
+	at java.net.PlainSocketImpl.doConnect(Unknown Source)
+	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:305)
+	... 19 more

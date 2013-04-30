@@ -1,0 +1,67 @@
+2013-04-18 16:14:15.540 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
+2013-04-18 16:14:23.887 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-18 16:14:23.887 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-18 16:14:23.887 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:179 - Creating esper aggregating operator array. MODE 1
+2013-04-18 16:14:24.606 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.9.0
+2013-04-18 16:14:24.622 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-18 16:14:24.622 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=100775678, SoftIrq=0, Idle=171540961, Stolen=0, Wait=0, Total=485512907, Irq=3549880, Nice=0, Sys=51358570}
+2013-04-18 16:14:24.622 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 648777728
+2013-04-18 16:14:24.622 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1359511552
+2013-04-18 16:14:24.622 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 7395352
+2013-04-18 16:14:24.622 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 16318464
+2013-04-18 16:14:25.355 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.9.0
+2013-04-18 16:14:25.481 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.9.0
+2013-04-18 16:14:25.621 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_3' version 4.9.0
+2013-04-18 16:14:25.777 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_4' version 4.9.0
+2013-04-18 16:14:25.902 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-18 16:14:25.917 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-18 16:14:25.949 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-18 16:14:25.949 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-18 16:14:25.949 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-18 16:14:25.949 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-18 16:14:27.821 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-18 16:14:27.897 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-18 16:14:27.929 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-18 16:14:27.960 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-18 16:14:28.038 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-18 16:14:28.069 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-18 16:14:29.395 [INFO] mcomp.dissertation.helper.NettyServer:67 - Started server on port 8080
+2013-04-18 16:14:37.044 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:89 - Fetched records between 2011-04-16 00:00:00.0 and 2011-04-16 00:05:00.0
+2013-04-18 16:14:37.758 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:89 - Fetched records between 2011-04-15 00:00:00.0 and 2011-04-15 00:05:00.0
+2013-04-18 16:14:38.336 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:59 - Wait for live streams before further databse loading
+2013-04-18 16:14:38.945 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:59 - Wait for live streams before further databse loading
+2013-04-18 16:14:39.943 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:89 - Fetched records between 2011-04-13 00:00:00.0 and 2011-04-13 00:05:00.0
+2013-04-18 16:14:40.012 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:89 - Fetched records between 2011-04-14 00:00:00.0 and 2011-04-14 00:05:00.0
+2013-04-18 16:14:40.362 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:89 - Fetched records between 2011-04-12 00:00:00.0 and 2011-04-12 00:05:00.0
+2013-04-18 16:14:40.393 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:89 - Fetched records between 2011-04-11 00:00:00.0 and 2011-04-11 00:05:00.0
+2013-04-18 16:14:41.610 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:59 - Wait for live streams before further databse loading
+2013-04-18 16:14:42.107 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:59 - Wait for live streams before further databse loading
+2013-04-18 16:14:42.388 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:59 - Wait for live streams before further databse loading
+2013-04-18 16:14:42.419 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoader:59 - Wait for live streams before further databse loading
+2013-04-18 20:47:49.536 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
+2013-04-18 20:48:12.251 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-18 20:48:12.251 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-04-18 20:48:12.251 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:179 - Creating esper aggregating operator array. MODE 1
+2013-04-18 20:48:12.548 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_0' version 4.9.0
+2013-04-18 20:48:12.704 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
+2013-04-18 20:48:12.720 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=107609255, SoftIrq=0, Idle=191276476, Stolen=0, Wait=0, Total=530423833, Irq=3819870, Nice=0, Sys=54730095}
+2013-04-18 20:48:12.720 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 656117760
+2013-04-18 20:48:12.720 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1352171520
+2013-04-18 20:48:12.720 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 6304432
+2013-04-18 20:48:12.720 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 16318464
+2013-04-18 20:48:13.172 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_1' version 4.9.0
+2013-04-18 20:48:13.297 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_2' version 4.9.0
+2013-04-18 20:48:13.454 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_3' version 4.9.0
+2013-04-18 20:48:13.579 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'PROVIDER_4' version 4.9.0
+2013-04-18 20:48:13.719 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-18 20:48:13.719 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-18 20:48:13.719 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-18 20:48:13.719 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-18 20:48:13.719 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-18 20:48:13.719 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-04-18 20:48:21.004 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-18 20:48:21.292 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-18 20:48:21.432 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-18 20:48:21.978 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-18 20:48:22.056 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
+2013-04-18 20:48:22.104 [INFO] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:61 - Connected to MySQL
