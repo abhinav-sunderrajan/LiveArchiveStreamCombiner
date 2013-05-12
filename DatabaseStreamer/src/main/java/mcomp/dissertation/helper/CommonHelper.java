@@ -63,8 +63,7 @@ public class CommonHelper {
             + reclaimFrequency
             + "') select live.linkId,live.speed,live.volume,"
             + "historyAgg.linkId, historyAgg.aggregateSpeed,historyAgg.aggregateVolume,live.timeStamp,current_timestamp "
-            + "from  mcomp.dissertation.beans.LiveTrafficBean.std:unique(linkId,"
-            + "timeStamp.`hours`,timeStamp.`minutes`) as live inner join mcomp.dissertation"
+            + "from  mcomp.dissertation.beans.LiveTrafficBean as live unidirectional inner join mcomp.dissertation"
             + ".beans.HistoryAggregateBean.std:unique(linkId,hrs,mins) as historyAgg on historyAgg.linkId"
             + "=live.linkId and historyAgg.mins=live.timeStamp.`minutes` and historyAgg.hrs=live.timeStamp.`hours`";
 
@@ -74,16 +73,14 @@ public class CommonHelper {
 
    public String getAggregationQuery(long dbLoadRate, int streamRate) {
       String aggregationQuery;
-      if (dbLoadRate < 50 && dbLoadRate >= 30) {
-         dbLoadRate = 50;
-      } else if (dbLoadRate < 30) {
-         dbLoadRate = 40;
+      if (dbLoadRate < 20) {
+         dbLoadRate = 20;
       }
       aggregationQuery = "@Hint('reclaim_group_aged="
             + dbLoadRate
             + ",') select  COUNT(*) as countRec, avg(volume) as avgVolume, avg(speed) as avgSpeed, linkId,readingMinutes as mins, "
             + "readingHours as hrs from mcomp.dissertation.beans.HistoryBean.std:groupwin(linkId,readingMinutes,readingHours)"
-            + ".win:time_length_batch(" + (int) (streamRate / 2)
+            + ".win:time_length_batch(" + (int) (streamRate / 4)
             + " milliseconds, 6) group by linkId,readingMinutes,readingHours";
       return aggregationQuery;
 

@@ -45,6 +45,7 @@ public class GenericLiveStreamer<E> implements Runnable {
     * @param polygon
     * @param gf
     * @param partionByLinkId
+    * @param writeFileDir
     */
    public GenericLiveStreamer(final ConcurrentLinkedQueue<E> buffer,
          final EPRuntime[] cepRTArray, final Object monitor,
@@ -52,7 +53,8 @@ public class GenericLiveStreamer<E> implements Runnable {
          final AtomicInteger streamRate, final DateFormat df, final int port,
          final GeometryFactory gf, final Polygon polygon,
          final ConcurrentHashMap<Long, Coordinate> linkIdCoord,
-         boolean partionByLinkId) {
+         final boolean partionByLinkId, final String writeFileDir,
+         final String imageSaveDirectory) {
       this.buffer = buffer;
       this.cepRTArray = cepRTArray;
       this.monitor = monitor;
@@ -64,16 +66,18 @@ public class GenericLiveStreamer<E> implements Runnable {
          cepRTLinkFilter = setUpPartitionFilter();
       }
 
-      startListening(linkIdCoord, polygon, gf, executor, streamRate);
+      startListening(linkIdCoord, polygon, gf, executor, streamRate,
+            writeFileDir, imageSaveDirectory);
 
    }
 
    private void startListening(ConcurrentHashMap<Long, Coordinate> linkIdCoord,
          Polygon polygon, GeometryFactory gf,
-         ScheduledExecutorService executor, AtomicInteger streamRate) {
+         ScheduledExecutorService executor, AtomicInteger streamRate,
+         String writeFileDir, String imageSaveDirectory) {
       NettyServer<E> server = new NettyServer<E>(
             (ConcurrentLinkedQueue<E>) buffer, linkIdCoord, polygon, gf,
-            executor, streamRate);
+            executor, streamRate, writeFileDir, imageSaveDirectory);
       server.listen(port);
    }
 

@@ -1,5 +1,7 @@
 package mcomp.dissertation.database.streamer.listenersandsubscribers;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -32,22 +34,39 @@ public class FinalSubscriber {
    private Map<Integer, Double> valueMap;
    private AtomicLong timer;
    private boolean throughputFlag;
+   private FileWriter writeFile;
    private static final Logger LOGGER = Logger.getLogger(FinalSubscriber.class);
 
    @SuppressWarnings("deprecation")
-   public FinalSubscriber() {
-      this.df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
-      display = StreamJoinDisplay.getInstance("Join Performance Measure");
-      timer = new AtomicLong(0);
-      throughputFlag = true;
-      display.addToDataSeries(
-            new TimeSeries("Latency for Subscriber#" + this.hashCode()
-                  + " in msec", Minute.class), (1 + this.hashCode()));
-      display.addToDataSeries(new TimeSeries("Throughput/sec for Subscriber# "
-            + this.hashCode(), Minute.class), (2 + this.hashCode()));
-      valueMap = new HashMap<Integer, Double>();
-      valueMap.put((2 + this.hashCode()), 0.0);
-      valueMap.put((1 + this.hashCode()), 0.0);
+   /**
+    * 
+    * @param writeFileDir
+    * @param streamRate
+    * @param imageSaveDirectory
+    */
+   public FinalSubscriber(final String writeFileDir, final int streamRate,
+         final String imageSaveDirectory) {
+      try {
+         this.df = new SimpleDateFormat("dd-MMM-yyyy HH:mm:ss.SSS");
+         display = StreamJoinDisplay.getInstance("Join Performance Measure",
+               imageSaveDirectory);
+         timer = new AtomicLong(0);
+         throughputFlag = true;
+         display.addToDataSeries(new TimeSeries("Latency for Subscriber#"
+               + this.hashCode() + " in msec", Minute.class),
+               (1 + this.hashCode()));
+         display.addToDataSeries(new TimeSeries(
+               "Throughput/sec for Subscriber# " + this.hashCode(),
+               Minute.class), (2 + this.hashCode()));
+         valueMap = new HashMap<Integer, Double>();
+         valueMap.put((2 + this.hashCode()), 0.0);
+         valueMap.put((1 + this.hashCode()), 0.0);
+         writeFile = new FileWriter(writeFileDir + "Throughput_"
+               + Integer.toString(this.hashCode()) + "_"
+               + Integer.toString(streamRate) + ".csv");
+      } catch (IOException e) {
+         LOGGER.error("Error creating file in the specified directory", e);
+      }
    }
 
    /**
@@ -68,32 +87,38 @@ public class FinalSubscriber {
          final Float liveVolume, final Long historyLinkid,
          final Double historyAvgSpeed, final Double historyAvgVolume,
          final Timestamp liveTimeStamp, final long evalTime) {
+      try {
+         if (throughputFlag) {
+            timer.set(Calendar.getInstance().getTimeInMillis());
+            numOfMsgsin30Sec = count;
+         }
+         count++;
+         throughputFlag = false;
+         if (count % 1000 == 0) {
+            LOGGER.info("hashCode:" + this.hashCode() + " " + count + ":"
+                  + df.format(Calendar.getInstance().getTime())
+                  + " Linkid live and history(" + liveLinkId + "--"
+                  + historyLinkid + "), speeds live and history(" + liveSpeed
+                  + "--" + historyAvgSpeed + "), volume live and history("
+                  + liveVolume + "--" + historyAvgVolume + ") Live Time stamp("
+                  + liveTimeStamp + ")]");
+         }
 
-      if (throughputFlag) {
-         timer.set(Calendar.getInstance().getTimeInMillis());
-         numOfMsgsin30Sec = count;
-      }
-      count++;
-      throughputFlag = false;
-      if (count % 1000 == 0) {
-         LOGGER.info("hashCode:" + this.hashCode() + " " + count + ":"
-               + df.format(Calendar.getInstance().getTime())
-               + " Linkid live and history(" + liveLinkId + "--"
-               + historyLinkid + "), speeds live and history(" + liveSpeed
-               + "--" + historyAvgSpeed + "), volume live and history("
-               + liveVolume + "--" + historyAvgVolume + ") Live Time stamp("
-               + liveTimeStamp + ")]");
-      }
-
-      // Refresh display values every 30 seconds
-      if ((Calendar.getInstance().getTimeInMillis() - timer.get()) >= 30000) {
-         double throughput = (1000 * (count - numOfMsgsin30Sec))
-               / (Calendar.getInstance().getTimeInMillis() - timer.get());
-         latency = Calendar.getInstance().getTimeInMillis() - evalTime;
-         valueMap.put((1 + this.hashCode()), latency / 1.0);
-         valueMap.put((2 + this.hashCode()), throughput);
-         display.refreshDisplayValues(valueMap);
-         throughputFlag = true;
+         // Refresh display values every 30 seconds
+         if ((Calendar.getInstance().getTimeInMillis() - timer.get()) >= 30000) {
+            double throughput = (1000 * (count - numOfMsgsin30Sec))
+                  / (Calendar.getInstance().getTimeInMillis() - timer.get());
+            latency = Calendar.getInstance().getTimeInMillis() - evalTime;
+            valueMap.put((1 + this.hashCode()), latency / 1.0);
+            valueMap.put((2 + this.hashCode()), throughput);
+            display.refreshDisplayValues(valueMap);
+            writeFile.append(Double.toString(throughput));
+            writeFile.append("\n");
+            writeFile.flush();
+            throughputFlag = true;
+         }
+      } catch (IOException e) {
+         LOGGER.error("Error writing to file", e);
       }
 
    }

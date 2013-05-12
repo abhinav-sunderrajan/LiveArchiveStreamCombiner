@@ -77,7 +77,7 @@ public final class StreamProcessor {
    private static final String XML_FILE_PATH = "src/main/resources/livestreams.xml";
    private static final int ARCHIVE_STREAM_COUNT = 6;
    private static final Logger LOGGER = Logger.getLogger(StreamProcessor.class);
-   private static final GeometryFactory gf = new GeometryFactory();;
+   private static final GeometryFactory gf = new GeometryFactory();
 
    /**
     * @param configFilePath
@@ -154,7 +154,9 @@ public final class StreamProcessor {
             EPStatement cepStatement = cepAdmJoin[count].createEPL(helper
                   .getJoinQuery(streamOption, dbLoadRate));
             // cepStatement.addListener(new FinalListener());
-            cepStatement.setSubscriber(new FinalSubscriber());
+            cepStatement.setSubscriber(new FinalSubscriber(configProperties
+                  .getProperty("throughput.file.dir"), streamRate.get(),
+                  configProperties.getProperty("image.save.directory")));
          }
          // End of Esper configuration for the join
 
@@ -201,7 +203,10 @@ public final class StreamProcessor {
          streamerCore = new StreamProcessor(configFilePath, connectionFilePath);
 
          // Start monitoring the system CPU, memory parameters
-         SigarSystemMonitor sysMonitor = SigarSystemMonitor.getInstance();
+         SigarSystemMonitor sysMonitor = SigarSystemMonitor.getInstance(
+               configProperties.getProperty("memory.file.dir"),
+               streamRate.get(),
+               configProperties.getProperty("image.save.directory"));
          sysMonitor.setCpuUsageScalefactor((Double.parseDouble(configProperties
                .getProperty("cpu.usage.scale.factor"))));
          executor.scheduleAtFixedRate(sysMonitor, 0, 30, TimeUnit.SECONDS);
@@ -216,7 +221,7 @@ public final class StreamProcessor {
             streamerCore.setUpAggregatedArchiveStream();
          }
 
-         // Start streaming the live data.
+         // Start server to receive live data.
          reader = new SAXReader();
          InputStream streamxml = new FileInputStream(xmlFilePath);
          reader = new SAXReader();
@@ -231,7 +236,9 @@ public final class StreamProcessor {
                GenericLiveStreamer<LiveTrafficBean> streamer = new GenericLiveStreamer<LiveTrafficBean>(
                      buffer, streamerCore.cepRTJoin, monitor, executor,
                      streamRate, df, serverPort, gf, polygon, linkIdCoord,
-                     partionByLinkId);
+                     partionByLinkId,
+                     configProperties.getProperty("ingestion.file.dir"),
+                     configProperties.getProperty("image.save.directory"));
                streamer.startStreaming();
 
             }
@@ -381,8 +388,13 @@ public final class StreamProcessor {
             buffer, ts, connectionProperties, monitor, streamOption, gf,
             polygon, linkIdCoord, partionByLinkId);
 
-      ScheduledFuture<?> dbLoadFuture = executor.scheduleAtFixedRate(loader, 0,
-            dbLoadRate, TimeUnit.SECONDS);
+      ScheduledFuture<?> dbLoadFuture = executor.scheduleAtFixedRate(
+            loader,
+            0,
+            (long) (streamRate.get()
+                  * Float.parseFloat(configProperties
+                        .getProperty("db.prefetch.rate")) * 1000000),
+            TimeUnit.MICROSECONDS);
 
       // Change the rate at which data is fetched from the database and
       // the rate at which records are fetched and streamed

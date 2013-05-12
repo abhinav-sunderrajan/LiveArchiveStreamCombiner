@@ -54,16 +54,19 @@ public class GenericChartDisplay extends ApplicationFrame {
    private static final Logger LOGGER = Logger
          .getLogger(GenericChartDisplay.class);
    private static Object lock;
-   private static final String DIRECTORY = "/home/sadm/images/";
+   private static String directory;
 
    /**
     * 
     * @param timeseriesList
+    * @param imageSaveDirectory
     */
-   public GenericChartDisplay(String title) {
+   public GenericChartDisplay(final String title,
+         final String imageSaveDirectory) {
       super(title);
       this.title = title;
       dataset = new TimeSeriesCollection();
+      directory = imageSaveDirectory;
       timeSeriesMap = new HashMap<Integer, TimeSeries>();
       executor = Executors.newScheduledThreadPool(1);
       settings();
@@ -150,7 +153,7 @@ public class GenericChartDisplay extends ApplicationFrame {
       public void run() {
          try {
             synchronized (lock) {
-               jpeg = new File(DIRECTORY + title + "_" + df.format(new Date())
+               jpeg = new File(directory + title + "_" + df.format(new Date())
                      + ".jpg");
                jpeg.createNewFile();
                ChartUtilities.saveChartAsJPEG(jpeg, chart, 1024, 600);

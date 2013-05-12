@@ -1,56 +1,13 @@
-2013-04-28 12:34:51.590 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:124 - Loading link ID coordinate information to memory
-2013-04-28 12:34:53.495 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:129 - Finished loading link ID coordinate information for 46175 link Ids to memory
-2013-04-28 12:34:55.555 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
-2013-04-28 12:35:16.288 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
-2013-04-28 12:35:16.288 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:61 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
-2013-04-28 12:35:16.288 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:231 - Aggregating archive data in the database itself. MODE 2
-2013-04-28 12:35:16.320 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
-2013-04-28 12:35:16.742 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:114 - System RAM available 1920
-2013-04-28 12:35:16.742 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:115 - Information about the CPU {User=6518547, SoftIrq=0, Idle=10057493, Stolen=0, Wait=0, Total=29737576, Irq=166467, Nice=0, Sys=3248938}
-2013-04-28 12:35:16.742 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:116 - Total memory free 662388736
-2013-04-28 12:35:16.742 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:117 - Total memory used 1345900544
-2013-04-28 12:35:16.742 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:118 - JVM free memory 7059720
-2013-04-28 12:35:16.742 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:119 - JVM total memory 22654976
-2013-04-28 12:35:18.785 [ERROR] mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect:65 - Unable to connect to database. Please check the settings
-com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
-
-The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
-	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121)
-	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:355)
-	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2479)
-	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2516)
-	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2301)
-	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834)
-	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at sun.reflect.NativeConstructorAccessorImpl.newInstance(Unknown Source)
-	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(Unknown Source)
-	at java.lang.reflect.Constructor.newInstance(Unknown Source)
-	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411)
-	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416)
-	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:317)
-	at java.sql.DriverManager.getConnection(Unknown Source)
-	at java.sql.DriverManager.getConnection(Unknown Source)
-	at mcomp.dissertation.database.streamer.RDBMSAccess.DBConnect.openDBConnection(DBConnect.java:58)
-	at mcomp.dissertation.database.streamer.DatabaseStreamer.AbstractLoader.<init>(AbstractLoader.java:35)
-	at mcomp.dissertation.database.streamer.DatabaseStreamer.RecordLoaderAggregate.<init>(RecordLoaderAggregate.java:43)
-	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.setUpAggregatedArchiveStream(StreamProcessor.java:395)
-	at mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor.main(StreamProcessor.java:232)
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.net.PlainSocketImpl.socketConnect(Native Method)
-	at java.net.PlainSocketImpl.doConnect(Unknown Source)
-	at java.net.PlainSocketImpl.connectToAddress(Unknown Source)
-	at java.net.PlainSocketImpl.connect(Unknown Source)
-	at java.net.SocksSocketImpl.connect(Unknown Source)
-	at java.net.Socket.connect(Unknown Source)
-	at java.net.Socket.connect(Unknown Source)
-	at java.net.Socket.<init>(Unknown Source)
-	at java.net.Socket.<init>(Unknown Source)
-	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:259)
-	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:305)
-	... 19 more
+2013-05-05 18:56:16.980 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:119 - Loading link ID coordinate information to memory
+2013-05-05 18:56:18.510 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:124 - Finished loading link ID coordinate information for 46175 link Ids to memory
+2013-05-05 18:56:21.116 [INFO] com.espertech.esper.core.service.EPServiceProviderImpl:393 - Initializing engine URI 'JOINPROVIDER_0' version 4.9.0
+2013-05-05 18:56:43.347 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:64 - CPU 0: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-05-05 18:56:43.347 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:64 - CPU 1: {TotalSockets=2, Mhz=2161, Model=Pentium(R) Dual  CPU  T3400  @ 2.16GHz, TotalCores=2, Vendor=Intel, CoresPerSocket=1}
+2013-05-05 18:56:43.348 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.StreamProcessor:220 - Aggregating archive data in the database itself. MODE 2
+2013-05-05 18:56:43.629 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.GenericArchiveStreamer:55 - Wait for the initial data base load before streaming..
+2013-05-05 18:56:43.941 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:128 - System RAM available 1920
+2013-05-05 18:56:43.941 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:129 - Information about the CPU {User=178248255, SoftIrq=0, Idle=349346657, Stolen=0, Wait=0, Total=918756467, Irq=6630291, Nice=0, Sys=84909316}
+2013-05-05 18:56:43.941 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:130 - Total memory free 616898560
+2013-05-05 18:56:43.941 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:131 - Total memory used 1391390720
+2013-05-05 18:56:43.941 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:132 - JVM free memory 9502024
+2013-05-05 18:56:43.941 [INFO] mcomp.dissertation.database.streamer.DatabaseStreamer.SigarSystemMonitor:133 - JVM total memory 22679552
