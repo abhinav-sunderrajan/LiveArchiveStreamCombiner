@@ -1,5 +1,6 @@
 package mcomp.dissertation.display;
 
+import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
@@ -85,6 +86,7 @@ public class GenericChartDisplay extends ApplicationFrame {
       chartPanel.setMouseZoomable(true, false);
       setContentPane(chartPanel);
       plot = chart.getXYPlot();
+      plot.setBackgroundPaint(Color.WHITE);
       plot.setAxisOffset(new RectangleInsets(3.0, 3.0, 3.0, 3.0));
       plot.setDomainCrosshairVisible(true);
       plot.setRangeCrosshairVisible(true);

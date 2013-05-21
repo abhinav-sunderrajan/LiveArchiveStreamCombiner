@@ -143,7 +143,7 @@ public final class StreamProcessor {
                   .setListenerDispatchPreserveOrder(false);
             cepJoin[count] = EPServiceProviderManager.getProvider(
                   "JOINPROVIDER_" + count, cepConfigJoin[count]);
-            cepConfigJoin[count].addEventType("LTALINKBEAN_" + count,
+            cepConfigJoin[count].addEventType("LIVETRAFFICBEAN_" + count,
                   LiveTrafficBean.class.getName());
             cepConfigJoin[count].addEventType("ARCHIVEAGGREGATEBEAN_" + count,
                   HistoryAggregateBean.class.getName());
@@ -151,8 +151,15 @@ public final class StreamProcessor {
                   .setShareViews(false);
             cepRTJoin[count] = cepJoin[count].getEPRuntime();
             cepAdmJoin[count] = cepJoin[count].getEPAdministrator();
+            cepAdmJoin[count].getConfiguration().addVariable("livehours",
+                  Integer.class, 0);
+            cepAdmJoin[count].getConfiguration().addVariable("livemins",
+                  Integer.class, 0);
+            cepAdmJoin[count]
+                  .createEPL("on mcomp.dissertation.beans.LiveTrafficBean as traffic "
+                        + "set livehours = traffic.timeStamp.`hours`,livemins=traffic.timeStamp.`minutes`");
             EPStatement cepStatement = cepAdmJoin[count].createEPL(helper
-                  .getJoinQuery(streamOption, dbLoadRate));
+                  .getJoinQuery());
             // cepStatement.addListener(new FinalListener());
             cepStatement.setSubscriber(new FinalSubscriber(configProperties
                   .getProperty("throughput.file.dir"), streamRate.get(),
@@ -340,8 +347,13 @@ public final class StreamProcessor {
          // retrieve records from the database for every 30,000 records from the
          // live stream. This really depends upon the nature of the live
          // stream..
-         dbLoadFutures[count] = executor.scheduleAtFixedRate(loaders[count], 0,
-               dbLoadRate, TimeUnit.SECONDS);
+         dbLoadFutures[count] = executor.scheduleAtFixedRate(
+               loaders[count],
+               0,
+               (long) (streamRate.get()
+                     * Float.parseFloat(configProperties
+                           .getProperty("db.prefetch.rate")) * 1000000),
+               TimeUnit.MICROSECONDS);
          // Start the next archive stream for the records exactly a day after
          startTime = startTime + 24 * 3600 * 1000;
 

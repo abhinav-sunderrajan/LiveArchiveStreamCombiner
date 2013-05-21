@@ -44,27 +44,12 @@ public class CommonHelper {
       return helper;
    }
 
-   /**
-    * 
-    * @param streamOption
-    * @param dbLoadRate
-    * @returns the join query
-    */
-
-   public String getJoinQuery(final int streamOption, long dbLoadRate) {
-      String joinQuery;
-      if (dbLoadRate < 20) {
-         dbLoadRate = 20;
-      }
-      long reclaimFrequency = 2 * dbLoadRate;
-      joinQuery = "@Hint('reclaim_group_aged="
-            + dbLoadRate
-            + ", reclaim_group_freq="
-            + reclaimFrequency
-            + "') select live.linkId,live.speed,live.volume,"
+   public String getJoinQuery() {
+      String joinQuery = "select live.linkId,live.speed,live.volume,"
             + "historyAgg.linkId, historyAgg.aggregateSpeed,historyAgg.aggregateVolume,live.timeStamp,current_timestamp "
             + "from  mcomp.dissertation.beans.LiveTrafficBean as live unidirectional inner join mcomp.dissertation"
-            + ".beans.HistoryAggregateBean.std:unique(linkId,hrs,mins) as historyAgg on historyAgg.linkId"
+            + ".beans.HistoryAggregateBean.std:unique(linkId,hrs,mins)"
+            + ".win:expr(livemins <= mins AND livehours <= hrs) as historyAgg on historyAgg.linkId"
             + "=live.linkId and historyAgg.mins=live.timeStamp.`minutes` and historyAgg.hrs=live.timeStamp.`hours`";
 
       return joinQuery;

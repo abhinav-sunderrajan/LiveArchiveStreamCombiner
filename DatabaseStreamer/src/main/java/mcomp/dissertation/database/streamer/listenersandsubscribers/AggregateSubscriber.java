@@ -58,11 +58,11 @@ public class AggregateSubscriber {
          cepRTJoinArray[(int) bucket].sendEvent(aggBean);
          count++;
          // print for evaluation purposes only..
-         // if (count % 1000 == 0) {
-         // LOGGER.info(" Number of records :" + countRec.longValue()
-         // + " link: " + linkId + " speed " + avgSpeed + " at " + hrs
-         // + ":" + mins);
-         // }
+         if (count % 5000 == 0) {
+            LOGGER.info(" Number of records :" + countRec.longValue()
+                  + " link: " + linkId + " speed " + avgSpeed + " at " + hrs
+                  + ":" + mins);
+         }
       }
 
    }
